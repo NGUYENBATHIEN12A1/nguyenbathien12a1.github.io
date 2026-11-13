@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ========== SEO cơ bản ========== -->
+  <title>Học vấn · Nguyễn Bá Thiện</title>
+  <meta name="description" content="Hành trình học tập của Nguyễn Bá Thiện từ tiểu học đến đại học (VKU). Nội dung được khóa bằng mã PIN.">
+  <meta name="author" content="Nguyễn Bá Thiện">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#93d1ec" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a4565" media="(prefers-color-scheme: dark)">
+  <!-- SỬA: khi có tên miền riêng (vd: thiennb23.id.vn từ 1/1/2027) thì đổi https://thienic.github.io/ ở cả 5 trang -->
+  <link rel="canonical" href="https://thienic.github.io/hoc-van.html">
+
+  <!-- ========== Open Graph (hiển thị khi chia sẻ lên Facebook, Zalo...) ========== -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nguyễn Bá Thiện">
+  <meta property="og:title" content="Học vấn · Nguyễn Bá Thiện">
+  <meta property="og:description" content="Hành trình học tập của Nguyễn Bá Thiện từ tiểu học đến đại học (VKU). Nội dung được khóa bằng mã PIN.">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:url" content="https://thienic.github.io/hoc-van.html">
+  <meta property="og:image" content="https://thienic.github.io/images/avatar.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Học vấn · Nguyễn Bá Thiện">
+  <meta name="twitter:description" content="Hành trình học tập của Nguyễn Bá Thiện từ tiểu học đến đại học (VKU). Nội dung được khóa bằng mã PIN.">
+
+  <!-- Biểu tượng tab trình duyệt (hình con chip) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231d4ed8'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round'%3E%3Crect x='10' y='10' width='12' height='12' rx='2'/%3E%3Cpath d='M13 6v3M19 6v3M13 23v3M19 23v3M6 13h3M6 19h3M23 13h3M23 19h3'/%3E%3C/g%3E%3C/svg%3E">
+
+  <!-- Font hỗ trợ tốt tiếng Việt -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <!-- Font có chân cho chữ ký "thiện." (chỉ tải đúng các ký tự cần dùng) -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&text=thi%E1%BB%87n.&display=swap" rel="stylesheet">
+
+  <!-- Áp dụng chế độ sáng/tối đã lưu TRƯỚC khi trang hiển thị (tránh nháy màu) -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+      } catch (e) { /* trình duyệt chặn localStorage: dùng theo hệ thống */ }
+    })();
+  </script>
+
+  <!-- Giao diện chung của cả 5 trang -->
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <!-- Bộ biểu tượng SVG dùng chung (không cần sửa) -->
+  <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-chip" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.2-6.2 3.2L7 14.2 2 9.3l6.9-1z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
+    <symbol id="i-school" viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M10 21v-5h4v5M12 10h.01"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2 8.8a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16.3a5 5 0 0 1 7 0M12 20h.01"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1v.2h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M12 2v2M4.9 4.9l1.4 1.4M20 12h2M19.1 4.9l-1.4 1.4M15.9 12.7a4 4 0 0 0-5.9-4.2"/><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6z"/></symbol>
+    <symbol id="i-board" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="8" y="7" width="8" height="6" rx="1"/><path d="M8 17h.01M12 17h.01M16 17h.01"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><path d="M12 15v2"/></symbol>
+    <symbol id="i-unlock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.7-1.5"/><path d="M12 15v2"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#noi-dung">Bỏ qua, đến nội dung chính</a>
+
+  <!-- ===================== THANH ĐIỀU HƯỚNG (giống nhau ở cả 5 trang) ===================== -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Điều hướng chính">
+      <a class="brand" href="index.html" aria-label="Nguyễn Bá Thiện – Trang chủ">
+        <span class="wordmark" aria-hidden="true">thiện<span class="wordmark-dot">.</span></span>
+      </a>
+
+      <!-- Menu: mỗi mục là 1 trang riêng; trang đang mở có aria-current="page" -->
+      <ul class="nav-menu" id="nav-menu">
+        <li><a class="nav-link" href="index.html">Trang chủ</a></li>
+        <li><a class="nav-link" href="gioi-thieu.html">Giới thiệu</a></li>
+        <li><a class="nav-link is-active" href="hoc-van.html" aria-current="page">Học vấn</a></li>
+        <li><a class="nav-link" href="du-an.html">Dự án</a></li>
+        <li><a class="nav-link" href="lien-he.html">Liên hệ</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a class="icon-btn" href="https://github.com/thienic" target="_blank" rel="noopener noreferrer" aria-label="GitHub (mở tab mới)" title="GitHub">
+          <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+        </a>
+        <a class="icon-btn" href="mailto:thiennb.23ce@vku.udn.vn" aria-label="Gửi email" title="Gửi email">
+          <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+        </a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="Đổi chế độ sáng/tối">
+          <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div class="scroll-progress" aria-hidden="true"></div>
+  </header>
+
+  <main id="noi-dung" tabindex="-1">
+
+    <!-- ===================== ĐẦU TRANG ===================== -->
+    <header class="page-hero">
+      <div class="hero-waves" aria-hidden="true">
+        <span class="wave wave--1"></span>
+        <span class="wave wave--2"></span>
+        <span class="wave wave--3"></span>
+      </div>
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-num">02</span>Học vấn</p>
+        <h1 class="page-title">Học vấn &amp; thành tích</h1>
+        <p class="page-lead">
+          Hành trình học tập của mình từ tiểu học đến đại học, kèm các giấy khen và kết quả trong từng giai đoạn — mốc gần nhất ở trên cùng. Phần này được khóa bằng mã PIN.
+        </p>
+      </div>
+    </header>
+
+    <!-- ===================== NỘI DUNG (khóa bằng mã PIN) ===================== -->
+    <section class="section section--page has-lane" id="hoc-van" aria-label="Học vấn">
+      <div class="container">
+        <!-- HOC-VAN-LOCK:BEGIN (phần này do tools/khoa-hoc-van.mjs tạo, đừng sửa tay) -->
+        <div class="edu-lock-root" id="edu-lock-root">
+          <div class="edu-lock reveal" id="edu-lock">
+            <span class="edu-lock-icon" aria-hidden="true"><svg class="icon"><use href="#i-lock"/></svg></span>
+            <h3 class="edu-lock-title">Phần này đang được khóa</h3>
+            <p class="edu-lock-text">Nhập mã PIN để xem quá trình học tập và thành tích.</p>
+            <form class="edu-lock-form" id="edu-lock-form" autocomplete="off" novalidate>
+              <label class="sr-only" for="edu-pin">Mã PIN</label>
+              <input class="edu-pin" id="edu-pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="12" placeholder="••••••" autocomplete="off" spellcheck="false">
+              <button class="btn btn--primary" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-unlock"/></svg>Mở khóa</button>
+            </form>
+            <p class="edu-lock-msg" id="edu-lock-msg" role="status" aria-live="polite"></p>
+          </div>
+          <script type="application/json" id="edu-locked-data">{"v":1,"iter":300000,"salt":"idHgEYmWJWhiRs2VinCGeQ==","iv":"9UV3QY4JyQ3lFALE","data":"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"}</script>
+        </div>
+        <!-- HOC-VAN-LOCK:END -->
+
+        <!-- Chuyển sang trang trước / sau -->
+        <nav class="pager" aria-label="Chuyển trang">
+        <a class="pager-link pager-link--prev" href="gioi-thieu.html">
+          <span class="pager-label">← Trang trước</span>
+          <span class="pager-title">Giới thiệu</span>
+        </a>
+        <a class="pager-link pager-link--next" href="du-an.html">
+          <span class="pager-label">Trang sau →</span>
+          <span class="pager-title">Dự án</span>
+        </a>
+        </nav>
+      </div>
+
+      <!-- Nhân vật Clash of Clans của trang này (trang trí, bấm vào để xem chiêu).
+           SỬA: --x = vị trí ban đầu, --s = cỡ; thêm/bớt nhân vật thì chép/xóa 1 thẻ .barb -->
+      <div class="barb-lane barb-lane--section" aria-hidden="true">
+        <span class="barb barb--witch" data-face="-1" style="--x:60%; --s:1"><span class="barb-body"><span class="barb-sprite"><img src="images/witch.png" alt="" width="240" height="246" decoding="async"></span><span class="barb-slash"></span></span><span class="barb-bubble"></span></span>
+        <span class="barb barb--dragon" style="--x:30%; --s:1"><span class="barb-body"><span class="barb-sprite"><img class="dr-wing dr-wing--l" src="images/dragon-wing-l.png" alt="" width="325" height="410" decoding="async"><img class="dr-wing dr-wing--r" src="images/dragon-wing-r.png" alt="" width="325" height="410" decoding="async"><img class="dr-body" src="images/dragon-body.png" alt="" width="325" height="410" decoding="async"></span><span class="barb-slash"></span></span><span class="barb-bubble"></span></span>
+        <span class="barb barb--wizard" data-face="-1" style="--x:26%; --s:1"><span class="barb-body"><span class="barb-sprite"><img src="images/wizard.png" alt="" width="206" height="346" decoding="async"></span><span class="barb-slash"></span></span><span class="barb-bubble"></span></span>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== CHÂN TRANG (giống nhau ở cả 5 trang) ===================== -->
+  <footer class="site-footer">
+    <div class="footer-waves" aria-hidden="true">
+      <span class="wave wave--f1"></span>
+      <span class="wave wave--f2"></span>
+    </div>
+    <div class="container footer-main">
+      <a class="brand" href="index.html" aria-label="Trang chủ">
+        <span class="wordmark" aria-hidden="true">thiện<span class="wordmark-dot">.</span></span>
+      </a>
+      <nav aria-label="Liên kết chân trang">
+        <ul class="footer-nav">
+          <li><a href="gioi-thieu.html">Giới thiệu</a></li>
+          <li><a href="hoc-van.html">Học vấn</a></li>
+          <li><a href="du-an.html">Dự án</a></li>
+          <li><a href="lien-he.html">Liên hệ</a></li>
+        </ul>
+      </nav>
+      <div class="footer-icons">
+        <a class="icon-btn" href="https://github.com/thienic" target="_blank" rel="noopener noreferrer" aria-label="GitHub (mở tab mới)" title="GitHub">
+          <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+        </a>
+        <a class="icon-btn" href="mailto:thiennb.23ce@vku.udn.vn" aria-label="Gửi email" title="Gửi email">
+          <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p><span>© 2026 Nguyễn Bá Thiện.</span><span>Người theo đuổi ước mơ.</span></p>
+      <a class="icon-btn" href="#top" aria-label="Lên đầu trang" title="Lên đầu trang">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Thông báo nhỏ (ví dụ: đã sao chép email) -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Nút lên đầu trang (hiện khi đã cuộn xuống) -->
+  <a class="to-top" id="to-top" href="#top" aria-label="Lên đầu trang" title="Lên đầu trang">
+    <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+  </a>
+
+  <!-- Mã dùng chung của cả 5 trang -->
+  <script src="assets/site.js"></script>
+</body>
+</html>

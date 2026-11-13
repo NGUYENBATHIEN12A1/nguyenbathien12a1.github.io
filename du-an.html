@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ========== SEO cơ bản ========== -->
+  <title>Dự án · Nguyễn Bá Thiện</title>
+  <meta name="description" content="Các dự án và đồ án của Nguyễn Bá Thiện: CPU RISC-V RV32I pipeline 5 tầng, cầu nối TileLink ↔ UART trong SoC, AI trên FPGA, hệ thống nhúng với ESP32/Arduino và mạch điện tử số.">
+  <meta name="author" content="Nguyễn Bá Thiện">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#93d1ec" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a4565" media="(prefers-color-scheme: dark)">
+  <!-- SỬA: khi có tên miền riêng (vd: thiennb23.id.vn từ 1/1/2027) thì đổi https://thienic.github.io/ ở cả 5 trang -->
+  <link rel="canonical" href="https://thienic.github.io/du-an.html">
+
+  <!-- ========== Open Graph (hiển thị khi chia sẻ lên Facebook, Zalo...) ========== -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nguyễn Bá Thiện">
+  <meta property="og:title" content="Dự án · Nguyễn Bá Thiện">
+  <meta property="og:description" content="Các dự án và đồ án của Nguyễn Bá Thiện: CPU RISC-V RV32I pipeline 5 tầng, cầu nối TileLink ↔ UART trong SoC, AI trên FPGA, hệ thống nhúng với ESP32/Arduino và mạch điện tử số.">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:url" content="https://thienic.github.io/du-an.html">
+  <meta property="og:image" content="https://thienic.github.io/images/avatar.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dự án · Nguyễn Bá Thiện">
+  <meta name="twitter:description" content="Các dự án và đồ án của Nguyễn Bá Thiện: CPU RISC-V RV32I pipeline 5 tầng, cầu nối TileLink ↔ UART trong SoC, AI trên FPGA, hệ thống nhúng với ESP32/Arduino và mạch điện tử số.">
+
+  <!-- Biểu tượng tab trình duyệt (hình con chip) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231d4ed8'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round'%3E%3Crect x='10' y='10' width='12' height='12' rx='2'/%3E%3Cpath d='M13 6v3M19 6v3M13 23v3M19 23v3M6 13h3M6 19h3M23 13h3M23 19h3'/%3E%3C/g%3E%3C/svg%3E">
+
+  <!-- Font hỗ trợ tốt tiếng Việt -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <!-- Font có chân cho chữ ký "thiện." (chỉ tải đúng các ký tự cần dùng) -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&text=thi%E1%BB%87n.&display=swap" rel="stylesheet">
+
+  <!-- Áp dụng chế độ sáng/tối đã lưu TRƯỚC khi trang hiển thị (tránh nháy màu) -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+      } catch (e) { /* trình duyệt chặn localStorage: dùng theo hệ thống */ }
+    })();
+  </script>
+
+  <!-- Giao diện chung của cả 5 trang -->
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <!-- Bộ biểu tượng SVG dùng chung (không cần sửa) -->
+  <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-chip" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.2-6.2 3.2L7 14.2 2 9.3l6.9-1z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
+    <symbol id="i-school" viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M10 21v-5h4v5M12 10h.01"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2 8.8a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16.3a5 5 0 0 1 7 0M12 20h.01"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1v.2h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M12 2v2M4.9 4.9l1.4 1.4M20 12h2M19.1 4.9l-1.4 1.4M15.9 12.7a4 4 0 0 0-5.9-4.2"/><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6z"/></symbol>
+    <symbol id="i-board" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="8" y="7" width="8" height="6" rx="1"/><path d="M8 17h.01M12 17h.01M16 17h.01"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><path d="M12 15v2"/></symbol>
+    <symbol id="i-unlock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.7-1.5"/><path d="M12 15v2"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#noi-dung">Bỏ qua, đến nội dung chính</a>
+
+  <!-- ===================== THANH ĐIỀU HƯỚNG (giống nhau ở cả 5 trang) ===================== -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Điều hướng chính">
+      <a class="brand" href="index.html" aria-label="Nguyễn Bá Thiện – Trang chủ">
+        <span class="wordmark" aria-hidden="true">thiện<span class="wordmark-dot">.</span></span>
+      </a>
+
+      <!-- Menu: mỗi mục là 1 trang riêng; trang đang mở có aria-current="page" -->
+      <ul class="nav-menu" id="nav-menu">
+        <li><a class="nav-link" href="index.html">Trang chủ</a></li>
+        <li><a class="nav-link" href="gioi-thieu.html">Giới thiệu</a></li>
+        <li><a class="nav-link" href="hoc-van.html">Học vấn</a></li>
+        <li><a class="nav-link is-active" href="du-an.html" aria-current="page">Dự án</a></li>
+        <li><a class="nav-link" href="lien-he.html">Liên hệ</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a class="icon-btn" href="https://github.com/thienic" target="_blank" rel="noopener noreferrer" aria-label="GitHub (mở tab mới)" title="GitHub">
+          <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+        </a>
+        <a class="icon-btn" href="mailto:thiennb.23ce@vku.udn.vn" aria-label="Gửi email" title="Gửi email">
+          <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+        </a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="Đổi chế độ sáng/tối">
+          <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div class="scroll-progress" aria-hidden="true"></div>
+  </header>
+
+  <main id="noi-dung" tabindex="-1">
+
+    <!-- ===================== ĐẦU TRANG ===================== -->
+    <header class="page-hero">
+      <div class="hero-waves" aria-hidden="true">
+        <span class="wave wave--1"></span>
+        <span class="wave wave--2"></span>
+        <span class="wave wave--3"></span>
+      </div>
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-num">03</span>Dự án</p>
+        <h1 class="page-title">Những thứ mình đã làm</h1>
+        <p class="page-lead">
+          <span data-project-total>10</span> dự án và đồ án qua các học phần, từ mạch điện tử rời đến thiết kế SoC — nhóm theo năm, mới nhất ở trên cùng.
+        </p>
+        <p class="page-lead">
+          Mỗi thẻ có một sơ đồ khối tóm tắt; bấm <strong>Xem chi tiết</strong> để đọc mục tiêu, cách thực hiện, linh kiện, kết quả và hướng phát triển của từng dự án. Có thể lọc theo lĩnh vực ở hàng nhãn bên dưới.
+        </p>
+      </div>
+    </header>
+
+    <!-- ===================== DANH SÁCH DỰ ÁN ===================== -->
+    <section class="section section--page has-lane" id="du-an" aria-label="Danh sách dự án">
+      <div class="container">
+        <!-- Bộ lọc: các nút được tạo tự động từ PROJECT_FILTERS trong phần JS -->
+        <div class="project-filters reveal" id="project-filters" role="group" aria-label="Lọc dự án theo lĩnh vực"></div>
+        <p class="sr-only" id="projects-status" role="status" aria-live="polite"></p>
+
+        <!-- Dự án nổi bật viết sẵn bằng HTML (nội dung chi tiết trong <template class="project-detail">).
+             Các dự án còn lại được tạo tự động từ mảng `projects` trong phần JS. -->
+        <div class="projects-grid" id="projects-grid">
+
+          <!-- Dự án 1 (nổi bật) — data-category: nhóm lọc, cách nhau bằng dấu cách -->
+          <article class="project project--featured reveal spotlight" data-project-id="fall" data-category="fpga" data-year="2026">
+            <div class="project-cover" aria-hidden="true">
+              <span class="cover-caption">// luồng xử lý</span>
+              <!-- SỬA: kiểm tra lại vai trò của từng khối cho đúng thiết kế -->
+              <div class="pipeline">
+                <div class="pl-node pl-node--sensor">
+                  <span class="pl-slot"><span class="pl-chip">MPU<br>6050</span></span>
+                  <span class="pl-label">Đo chuyển động</span>
+                </div>
+                <span class="pl-wire"></span>
+                <div class="pl-node">
+                  <span class="pl-slot"><span class="pl-chip">MCU<br>SONiX</span></span>
+                  <span class="pl-label">Thu thập dữ liệu</span>
+                </div>
+                <span class="pl-wire"></span>
+                <div class="pl-node pl-node--main">
+                  <span class="pl-slot"><span class="pl-chip">FPGA<br>Gowin</span></span>
+                  <span class="pl-label">1D-CNN · INT8</span>
+                </div>
+                <span class="pl-wire"></span>
+                <div class="pl-node">
+                  <span class="pl-slot"><span class="pl-chip">ESP32</span></span>
+                  <span class="pl-label">Gửi cảnh báo</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-body">
+              <p class="project-meta"><span class="project-cat tone-rose">FPGA/AI</span><span class="meta-sep" aria-hidden="true">·</span><span>Cuộc thi MCU &amp; FPGA mở rộng miền Trung</span><span class="meta-sep" aria-hidden="true">·</span><span>2026</span></p>
+              <h3 class="project-title" id="p1-title">Thiết bị đeo ngực phát hiện té ngã</h3>
+              <p class="project-desc">
+                Thiết bị nhỏ gọn đeo trước ngực, phát hiện té ngã và gửi cảnh báo kịp thời cho người thân — hướng tới
+                người cao tuổi và người cần được chăm sóc. Mô hình 1D-CNN lượng tử hóa INT8 chạy trên FPGA Gowin,
+                kết hợp cảm biến MPU6050, MCU SONiX và ESP32.
+              </p>
+              <p class="project-advisor">Đề tài của đội VKU-NewBie tại cuộc thi MCU &amp; FPGA mở rộng miền Trung 2026.</p>
+              <ul class="tech" aria-label="Công nghệ sử dụng">
+                <li>MPU6050</li><li>FPGA Gowin</li><li>1D-CNN</li><li>INT8</li><li>MCU SONiX</li><li>ESP32</li>
+              </ul>
+              <div class="project-foot">
+                <button class="btn btn--soft btn--sm" type="button" data-open-detail aria-haspopup="dialog" aria-describedby="p1-title">
+                  Xem chi tiết <svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+                </button>
+              </div>
+              <!-- SỬA: nội dung chi tiết dự án 1 -->
+              <template class="project-detail">
+                <h3>Bài toán</h3>
+                <p>Té ngã là nguy cơ lớn với người cao tuổi và người cần được chăm sóc. Một thiết bị nhỏ gọn đeo trước ngực giúp phát hiện té ngã và gửi cảnh báo kịp thời cho người thân.</p>
+                <h3>Giải pháp</h3>
+                <ul>
+                  <li>Cảm biến MPU6050 (gia tốc kế và con quay hồi chuyển 3 trục) đo chuyển động của người đeo.</li>
+                  <li>Mô hình 1D-CNN xử lý chuỗi dữ liệu chuyển động, được lượng tử hóa INT8 để chạy hiệu quả trên FPGA Gowin.</li>
+                  <li>MCU SONiX đảm nhận thu thập và điều phối dữ liệu.</li>
+                  <li>ESP32 phụ trách kết nối không dây để gửi cảnh báo.</li>
+                </ul>
+                <h3>Kết quả</h3>
+                <p>Giải Ba Vòng chung kết cuộc thi MCU &amp; FPGA mở rộng miền Trung 2026.</p>
+                <div class="modal-links">
+                  <!-- SỬA: thay bằng link repo của dự án nếu có -->
+                  <a class="btn btn--outline btn--sm" href="https://github.com/thienic" target="_blank" rel="noopener noreferrer">
+                    <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>GitHub<span class="sr-only"> (mở tab mới)</span>
+                  </a>
+                </div>
+              </template>
+            </div>
+          </article>
+          <!-- Các thẻ dự án khác được chèn vào đây bằng JS -->
+        </div>
+        <p class="projects-empty" id="projects-empty" hidden>Chưa có dự án nào trong nhóm này.</p>
+        <!-- Nút Xem thêm / Thu gọn: chỉ hiện khi số dự án vượt PROJECT_LIMIT (trong JS) -->
+        <div class="projects-more" id="projects-more-wrap" hidden><div class="projects-more" id="projects-more-wrap" hidden>
+          <button class="btn btn--outline" id="projects-more" type="button" aria-expanded="false" aria-controls="projects-grid">
+            <span id="projects-more-label">Xem thêm</span>
+            <svg class="icon" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+          </button>
+        </div>
+
+        <!-- Chuyển sang trang trước / sau -->
+        <nav class="pager" aria-label="Chuyển trang">
+        <a class="pager-link pager-link--prev" href="hoc-van.html">
+          <span class="pager-label">← Trang trước</span>
+          <span class="pager-title">Học vấn</span>
+        </a>
+        <a class="pager-link pager-link--next" href="lien-he.html">
+          <span class="pager-label">Trang sau →</span>
+          <span class="pager-title">Liên hệ</span>
+        </a>
+        </nav>
+      </div>
+
+      <!-- Nhân vật Clash of Clans của trang này (trang trí, bấm vào để xem chiêu).
+           SỬA: --x = vị trí ban đầu, --s = cỡ; thêm/bớt nhân vật thì chép/xóa 1 thẻ .barb -->
+      <div class="barb-lane barb-lane--section" aria-hidden="true">
+        <span class="barb" style="--x:78%; --s:1.12"><span class="barb-body"><span class="barb-sprite"><img src="images/barbarian.png" alt="" width="250" height="296" decoding="async"></span><span class="barb-slash"></span></span><span class="barb-bubble"></span></span>
+        <span class="barb barb--goblin" style="--x:40%; --s:1"><span class="barb-body"><span class="barb-sprite"><img src="images/goblin.png" alt="" width="332" height="181" decoding="async"></span><span class="barb-slash"></span></span><span class="barb-bubble"></span></span>
+        <span class="barb barb--goblin" style="--x:30%; --s:0.9"><span class="barb-body"><span class="barb-sprite"><img src="images/goblin.png" alt="" width="332" height="181" decoding="async"></span><span class="barb-slash"></span></span><span class="barb-bubble"></span></span>
+        <span class="barb barb--goblin" style="--x:20%; --s:0.95"><span class="barb-body"><span class="barb-sprite"><img src="images/goblin.png" alt="" width="332" height="181" decoding="async"></span><span class="barb-slash"></span></span><span class="barb-bubble"></span></span>
+        <span class="barb barb--wb" data-face="-1" style="--x:70%; --s:1"><span class="barb-body"><span class="barb-sprite"><img src="images/wall-breaker.png" alt="" width="220" height="238" decoding="async"></span><span class="barb-slash"></span></span><span class="barb-bubble"></span></span>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== CHÂN TRANG (giống nhau ở cả 5 trang) ===================== -->
+  <footer class="site-footer">
+    <div class="footer-waves" aria-hidden="true">
+      <span class="wave wave--f1"></span>
+      <span class="wave wave--f2"></span>
+    </div>
+    <div class="container footer-main">
+      <a class="brand" href="index.html" aria-label="Trang chủ">
+        <span class="wordmark" aria-hidden="true">thiện<span class="wordmark-dot">.</span></span>
+      </a>
+      <nav aria-label="Liên kết chân trang">
+        <ul class="footer-nav">
+          <li><a href="gioi-thieu.html">Giới thiệu</a></li>
+          <li><a href="hoc-van.html">Học vấn</a></li>
+          <li><a href="du-an.html">Dự án</a></li>
+          <li><a href="lien-he.html">Liên hệ</a></li>
+        </ul>
+      </nav>
+      <div class="footer-icons">
+        <a class="icon-btn" href="https://github.com/thienic" target="_blank" rel="noopener noreferrer" aria-label="GitHub (mở tab mới)" title="GitHub">
+          <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+        </a>
+        <a class="icon-btn" href="mailto:thiennb.23ce@vku.udn.vn" aria-label="Gửi email" title="Gửi email">
+          <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p><span>© 2026 Nguyễn Bá Thiện.</span><span>Người theo đuổi ước mơ.</span></p>
+      <a class="icon-btn" href="#top" aria-label="Lên đầu trang" title="Lên đầu trang">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Hộp thoại chi tiết dự án (nội dung được điền tự động) -->
+  <dialog class="modal" id="project-dialog" aria-labelledby="dialog-title" aria-modal="true">
+    <div class="modal-head">
+      <h2 id="dialog-title">Chi tiết dự án</h2>
+      <button class="icon-btn" type="button" data-close-dialog aria-label="Đóng" autofocus>
+        <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+    </div>
+    <div class="modal-body" id="dialog-body"></div>
+  </dialog>
+
+  <!-- Thông báo nhỏ (ví dụ: đã sao chép email) -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Nút lên đầu trang (hiện khi đã cuộn xuống) -->
+  <a class="to-top" id="to-top" href="#top" aria-label="Lên đầu trang" title="Lên đầu trang">
+    <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+  </a>
+
+  <!-- Mã dùng chung của cả 5 trang -->
+  <script src="assets/site.js"></script>
+</body>
+</html>
