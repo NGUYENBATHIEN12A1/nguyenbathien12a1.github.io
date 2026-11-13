@@ -445,7 +445,7 @@ button { font: inherit; }
 }
 .icon-tile .icon { width: 1.15rem; height: 1.15rem; }
 
-/* Logo: biểu tượng con chip + "thiện.v" (đuôi file Verilog) */
+/* Logo: biểu tượng con chip + "thienba" (phần "ba" màu đồng) */
 .brand-mark {
   display: grid;
   place-items: center;
