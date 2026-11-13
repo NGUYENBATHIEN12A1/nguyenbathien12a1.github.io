@@ -1,7 +1,7 @@
 ﻿# Không đưa lên GitHub
 Intro.html
-# Nội dung Học vấn chưa mã hóa + công cụ mã hóa (chỉ để trên máy)
-hoc-van.private.html
+# Nội dung chưa mã hóa của các mục khóa PIN (Học vấn, Kiến thức) + công cụ mã hóa (chỉ để trên máy)
+*.private.html
 tools/
 
 # Mã nguồn trang mẫu tải về để tham khảo giao diện (không phải của mình)

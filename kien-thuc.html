@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ========== SEO cơ bản ========== -->
+  <title>Kiến thức · Nguyễn Bá Thiện</title>
+  <meta name="description" content="Ghi chép và chia sẻ kiến thức của Nguyễn Bá Thiện trong quá trình học. Nội dung được khóa bằng mã PIN.">
+  <meta name="author" content="Nguyễn Bá Thiện">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#fffbef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111214" media="(prefers-color-scheme: dark)">
+  <!-- SỬA: khi có tên miền riêng (vd: thiennb23.id.vn từ 1/1/2027) thì đổi https://thienic.github.io/ ở cả 5 trang -->
+  <link rel="canonical" href="https://thienic.github.io/kien-thuc.html">
+
+  <!-- ========== Open Graph (hiển thị khi chia sẻ lên Facebook, Zalo...) ========== -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nguyễn Bá Thiện">
+  <meta property="og:title" content="Kiến thức · Nguyễn Bá Thiện">
+  <meta property="og:description" content="Ghi chép và chia sẻ kiến thức của Nguyễn Bá Thiện trong quá trình học. Nội dung được khóa bằng mã PIN.">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:url" content="https://thienic.github.io/kien-thuc.html">
+  <meta property="og:image" content="https://thienic.github.io/images/avatar.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kiến thức · Nguyễn Bá Thiện">
+  <meta name="twitter:description" content="Ghi chép và chia sẻ kiến thức của Nguyễn Bá Thiện trong quá trình học. Nội dung được khóa bằng mã PIN.">
+
+  <!-- Biểu tượng tab trình duyệt (hình con chip) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23c2410c'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round'%3E%3Crect x='10' y='10' width='12' height='12' rx='2'/%3E%3Cpath d='M13 6v3M19 6v3M13 23v3M19 23v3M6 13h3M6 19h3M23 13h3M23 19h3'/%3E%3C/g%3E%3C/svg%3E">
+
+  <!-- Font hỗ trợ tốt tiếng Việt -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- Áp dụng chế độ sáng/tối đã lưu TRƯỚC khi trang hiển thị (tránh nháy màu) -->
+  <script>
+    (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
+      } catch (e) { /* trình duyệt chặn localStorage: dùng theo hệ thống */ }
+    })();
+  </script>
+
+  <!-- Giao diện chung của cả 5 trang -->
+  <link rel="stylesheet" href="assets/site.css?v=7c90912a">
+</head>
+<body>
+  <!-- Bộ biểu tượng SVG dùng chung (không cần sửa) -->
+  <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-chip" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.2-6.2 3.2L7 14.2 2 9.3l6.9-1z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
+    <symbol id="i-school" viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M10 21v-5h4v5M12 10h.01"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/></symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2 8.8a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16.3a5 5 0 0 1 7 0M12 20h.01"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1v.2h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M12 2v2M4.9 4.9l1.4 1.4M20 12h2M19.1 4.9l-1.4 1.4M15.9 12.7a4 4 0 0 0-5.9-4.2"/><path d="M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6z"/></symbol>
+    <symbol id="i-board" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><rect x="8" y="7" width="8" height="6" rx="1"/><path d="M8 17h.01M12 17h.01M16 17h.01"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><path d="M12 15v2"/></symbol>
+    <symbol id="i-unlock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.7-1.5"/><path d="M12 15v2"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#noi-dung">Bỏ qua, đến nội dung chính</a>
+
+  <!-- ===================== THANH ĐIỀU HƯỚNG (giống nhau ở cả 5 trang) ===================== -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Điều hướng chính">
+      <a class="brand" href="index.html" aria-label="Nguyễn Bá Thiện – Trang chủ">
+        <span class="brand-mark" aria-hidden="true"><svg class="icon"><use href="#i-chip"/></svg></span><span class="wordmark" aria-hidden="true">thien<span class="wordmark-ext">ba</span></span>
+      </a>
+
+      <!-- Menu: mỗi mục là 1 trang riêng; trang đang mở có aria-current="page" -->
+      <ul class="nav-menu" id="nav-menu">
+        <li><a class="nav-link" href="index.html">Trang chủ</a></li>
+        <li><a class="nav-link" href="gioi-thieu.html">Giới thiệu</a></li>
+        <li><a class="nav-link" href="hoc-van.html">Học vấn</a></li>
+        <li><a class="nav-link" href="du-an.html">Dự án</a></li>
+        <li><a class="nav-link is-active" href="kien-thuc.html" aria-current="page">Kiến thức</a></li>
+        <li><a class="nav-link" href="lien-he.html">Liên hệ</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a class="icon-btn" href="https://github.com/thienic" target="_blank" rel="noopener noreferrer" aria-label="GitHub (mở tab mới)" title="GitHub">
+          <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+        </a>
+        <a class="icon-btn" href="mailto:thiennb.23ce@vku.udn.vn" aria-label="Gửi email" title="Gửi email">
+          <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+        </a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="Đổi chế độ sáng/tối">
+          <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div class="scroll-progress" aria-hidden="true"></div>
+  </header>
+
+  <main id="noi-dung" tabindex="-1">
+
+    <!-- ===================== ĐẦU TRANG ===================== -->
+    <header class="page-hero">
+      <div class="scope scope--mini" aria-hidden="true">
+        <div class="scope-bar">
+          <span class="scope-dots"><i></i><i></i><i></i></span>
+          <span class="scope-file">tb_thien.vcd</span>
+          <span class="scope-note">uart_tx · 8N1 · đang gửi <b>"THIEN"</b></span>
+        </div>
+        <div class="scope-body">
+          <div class="scope-track"></div>
+          <span class="scope-cursor"></span>
+          <ul class="scope-names">
+            <li>clk</li>
+            <li>uart_tx</li>
+          </ul>
+        </div>
+      </div>
+      <div class="container">
+        <p class="eyebrow"><span class="eyebrow-num">04</span>Kiến thức</p>
+        <h1 class="page-title">Ghi chép &amp; chia sẻ kiến thức</h1>
+        <p class="page-lead">
+          Nơi mình ghi lại và chia sẻ kiến thức trong quá trình học — mỗi bài viết có thể mở ra để đọc ngay trên trang.
+          Phần này được khóa bằng mã PIN.
+        </p>
+      </div>
+    </header>
+
+    <!-- ===================== BÀI VIẾT (khóa bằng mã PIN) ===================== -->
+    <section class="section section--page has-lane" id="kien-thuc" aria-label="Kiến thức">
+      <div class="container">
+        <!-- KIEN-THUC-LOCK:BEGIN (phần này do tools/khoa-kien-thuc.mjs tạo, đừng sửa tay) -->
+        <div class="edu-lock-root" id="edu-lock-root">
+          <div class="edu-lock reveal" id="edu-lock">
+            <span class="edu-lock-icon" aria-hidden="true"><svg class="icon"><use href="#i-lock"/></svg></span>
+            <h3 class="edu-lock-title">Phần này đang được khóa</h3>
+            <p class="edu-lock-text">Nhập mã PIN để xem các bài viết chia sẻ kiến thức.</p>
+            <form class="edu-lock-form" id="edu-lock-form" autocomplete="off" novalidate>
+              <label class="sr-only" for="edu-pin">Mã PIN</label>
+              <input class="edu-pin" id="edu-pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="12" placeholder="••••••" autocomplete="off" spellcheck="false">
+              <button class="btn btn--primary" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-unlock"/></svg>Mở khóa</button>
+            </form>
+            <p class="edu-lock-msg" id="edu-lock-msg" role="status" aria-live="polite"></p>
+          </div>
+          <script type="application/json" id="edu-locked-data">{"v":1,"iter":300000,"salt":"S83nLtraitQRdRjFcwCZ4w==","iv":"RKD8mMQwKvOuZrGT","data":"HKSkP8jr9z1O2qJXILBEbpgxi205lDYdD7QdncDHgOzd4mvNFi1iH05Fh6YW1qQ+SRLrDEruSU/czW7MrISY4ovK3teahsu2NYq78SqcuwZmjnsz0UgFaY7UxlRA6xwRDynxe5+54RUYvBcSw43sOiPCG4VGpMBFArZ/T0zn3QfXIaH4UhRRLTBVTI9XFfU5Mlg5aG7ddvOHDULuT+VNZTbWD/H6aWDwwWah5Ok2D8TDHc9cVtAx6EaQ0QJ1Ds/uNdLGpeaaNceWyQwCd14lWSqmE2XR0gy1XKb0tH1NMY4h5eTn95u+56YiYqFplfCDRCd6kEaSGg+0RU3077it5xvF+7QpI52V3cO33oA2hCJh4gn56TYw8ITuDZ4sW5FRTxLpmBd0P52q7QTM1b7VuRYihWZBqJED87a8hMqv2RSuLtBlTgRn1Xt15Rcf2XiUJL5U7crEWUhCdiTs6/+kgWUOKDUmvFN92WkpNQuta17em+3V2SN8AsZzrdu5WmBQyOPkRlpAfrXPQ15AVRQCp8hV88ruk6cBDZ68gDZF0HgdUJrxswIAicWhzktMnyZPDST4n36KZajhQD6QI0Ogsf7ROkMVkjanYvMPX7PZyieTS2eUYWAkKOoCG7yAB1h5Yxl0N0QkZbeWp03FeAxrwq19PY+H1pWjrbr30kmkC88KZY15KbWR2Po5PWCbzpedzsB0ytZZTn8M71dgH0M6V3fpkeqWYWtqdiU6FDINlpQs04ju1KPE8AlYZ/wzyv1kVB8HtPe0Xi0E5zsrYaMrIwcE5tNGGnThPaH9Fyx/iQ3pjHHWFI9ArUivh7OMHLJIN5pdouCNUKSckHN6sZKEWGhtwcFZEVRG2LfqibBL9g+Sh3bSoZy4ECJMMqZH8Ty0p7r9SVbxJFp+miLDG+3tesg5z0528aRbwf0heShANnRlH+yFD7DOSFKSWwb6VVDfj7eZKvAuj4JKKBOkoRdNvjET1oTktLwfRIlIgV5gs7bVoCAqn8YcRARfOQPpdfDJZeS6R3T4i85mzZgKdUE8dD5xGUBj+kgsQcXaqvyt6subcB7tPlkya8BWsm6amIaR8oQfgn8++f1GrUrCRzUvAc8BauhuWL8itIsTXM7O+A6hwkoqslt8IByYWF2YooWAQM5yy2DFgtRGqkX3ng0Cd9CVMsOeOD2QVKgsVsKiIZG6dn98rN64CvCEopOqFz1zYB8ZjLF3gfdly3yW38qcVYAFnqilbHXy79Vi4+oMn4mL5IfslSqcxqGXT0I0sDAmr5EdxCsCNDlsYC57OPQP4ccOx/YOCgW5hqh/CV1uJZbq9M2P8rbf4Rp8uTgWYcH3vuvYdoJysBV5xE/JZxcqbUgYE5uOX3vGbvXxs8G7c643ovglxejEXYcU1+qgg1lkR0olGExxa5Fm2FwMsDW9PTVK2S5c00GAycDuAd3vvJXYK7hpPjInznzEr/U5Kh7qUfEfm9nXim1f8wTt0W6qUH7o6hMZja6ZaRkHlRBnveQVRkVQzbuqV4fl7OqFbkadzPi9qiLGu2ZhkKmL40Jl2HKVbVk+9O0NI30GL4DCpPVNA/MFSJdVJRBFI1qwEgbaIb9M84TpKcdrEj0eAtytwlms8B0tWbDY/xA7y4gkhR4oS7TOzFgZdzhjdkSbK18dWZnfiAtgNpmtKNprg2iEOr6GHkmYa7elO2Q2P5diT7EjA+xap2vQdxi2yxiAs/bVymrdB227uiYT5Pbb03lqy2H19jUyhZL3YO8uULG3mojfCG/ozrixkrchMwuIIZUTLICYmTH98cPXRUhu1v8J6fVbdMBqmMXMn+m1hK1W3u2Fypm96/lFnePDqW5AgGe+hbbd2zFbIFbCwomspCvV0dkxeoVBr48ULCheORsUrd7smnoqz1s="}</script>
+        </div>
+        <!-- KIEN-THUC-LOCK:END -->
+
+        <!-- Chuyển sang trang trước / sau -->
+        <nav class="pager" aria-label="Chuyển trang">
+        <a class="pager-link pager-link--prev" href="du-an.html">
+          <span class="pager-label">← Trang trước</span>
+          <span class="pager-title">Dự án</span>
+        </a>
+        <a class="pager-link pager-link--next" href="lien-he.html">
+          <span class="pager-label">Trang sau →</span>
+          <span class="pager-title">Liên hệ</span>
+        </a>
+        </nav>
+      </div>
+
+      <!-- Nhân vật Clash of Clans của trang này (trang trí, bấm vào để xem chiêu).
+           SỬA: --x = vị trí ban đầu, --s = cỡ; thêm/bớt nhân vật thì chép/xóa 1 thẻ .barb -->
+      <div class="barb-lane barb-lane--section" aria-hidden="true">
+        <span class="barb" style="--x:18%; --s:1"><span class="barb-body"><span class="barb-sprite"><img src="images/barbarian.png" alt="" width="250" height="296" decoding="async"></span><span class="barb-slash"></span></span><span class="barb-bubble"></span></span>
+        <span class="barb barb--miner" style="--x:52%; --s:1"><span class="barb-body"><span class="barb-sprite"><img src="images/miner.png" alt="" width="250" height="178" decoding="async"></span><span class="barb-slash"></span></span><span class="barb-bubble"></span></span>
+        <span class="barb barb--minion" style="--x:80%; --s:1"><span class="barb-body"><span class="barb-sprite"><img class="mn-wing mn-wing--l" src="images/minion-wing-l.png" alt="" width="206" height="195" decoding="async"><img class="mn-wing mn-wing--r" src="images/minion-wing-r.png" alt="" width="206" height="195" decoding="async"><img class="mn-body" src="images/minion-body.png" alt="" width="206" height="195" decoding="async"></span><span class="barb-slash"></span></span><span class="barb-bubble"></span></span>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== CHÂN TRANG (giống nhau ở cả 5 trang) ===================== -->
+  <footer class="site-footer">
+    <div class="footer-signal" aria-hidden="true"></div>
+    <div class="container footer-main">
+      <a class="brand" href="index.html" aria-label="Trang chủ">
+        <span class="brand-mark" aria-hidden="true"><svg class="icon"><use href="#i-chip"/></svg></span><span class="wordmark" aria-hidden="true">thien<span class="wordmark-ext">ba</span></span>
+      </a>
+      <nav aria-label="Liên kết chân trang">
+        <ul class="footer-nav">
+          <li><a href="gioi-thieu.html">Giới thiệu</a></li>
+          <li><a href="hoc-van.html">Học vấn</a></li>
+          <li><a href="du-an.html">Dự án</a></li>
+          <li><a href="kien-thuc.html">Kiến thức</a></li>
+          <li><a href="lien-he.html">Liên hệ</a></li>
+        </ul>
+      </nav>
+      <div class="footer-icons">
+        <a class="icon-btn" href="https://github.com/thienic" target="_blank" rel="noopener noreferrer" aria-label="GitHub (mở tab mới)" title="GitHub">
+          <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+        </a>
+        <a class="icon-btn" href="mailto:thiennb.23ce@vku.udn.vn" aria-label="Gửi email" title="Gửi email">
+          <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p><span>© 2026 Nguyễn Bá Thiện.</span><span>Người theo đuổi ước mơ.</span><span class="footer-code">endmodule // thienba</span></p>
+      <a class="icon-btn" href="#top" aria-label="Lên đầu trang" title="Lên đầu trang">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Thông báo nhỏ (ví dụ: đã sao chép email) -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Nút lên đầu trang (hiện khi đã cuộn xuống) -->
+  <a class="to-top" id="to-top" href="#top" aria-label="Lên đầu trang" title="Lên đầu trang">
+    <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+  </a>
+
+  <!-- Mã dùng chung của cả 5 trang -->
+  <script src="assets/site.js?v=9e08942f"></script>
+</body>
+</html>
