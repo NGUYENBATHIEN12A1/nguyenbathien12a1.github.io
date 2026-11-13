@@ -8,12 +8,12 @@
   color-scheme: light;
   /* Nền vàng nhạt + màu nhấn đồng (copper) như chân chip / đường mạch in.
      SỬA màu nền tại đây (vd xanh nhạt: --bg #eef5fc, --bg-alt #e2eef9, --surface-2 #e9f2fb, --border #d3e2f0) */
-  --bg: #fff8e5;
-  --bg-alt: #fcefcc;
-  --surface: #fffdf7;
-  --surface-2: #fdf4d8;
-  --border: #eee1b8;
-  --border-strong: #ddca94;
+  --bg: #fffbef;
+  --bg-alt: #fdf5dd;
+  --surface: #fffefa;
+  --surface-2: #fef8e7;
+  --border: #f0e7cc;
+  --border-strong: #e3d5aa;
   --text: #1c1a17;
   --text-muted: #5c574f;
   --text-faint: #7a7368;
@@ -48,7 +48,7 @@
   --foot-ink: #ebe5db;
   --foot-muted: #a59e93;
   --foot-line: rgba(255, 255, 255, 0.1);
-  --grid-dot: rgba(120, 88, 20, 0.1);
+  --grid-dot: rgba(120, 88, 20, 0.08);
   /* Màu huy chương (dùng trong phần Học vấn đã mở khóa) */
   --gold-bg: #fdf6dc;
   --gold-border: #efd98f;
@@ -59,7 +59,7 @@
   --green-bg: #e8f7ee;
   --green-border: #b5e3c7;
   --success-text: #15803d;
-  --nav-bg: rgba(255, 248, 229, 0.9);
+  --nav-bg: rgba(255, 251, 239, 0.9);
   --circuit: #c2410c;
   --circuit-opacity: 0.13;
   --dot: rgba(194, 65, 12, 0.13);
