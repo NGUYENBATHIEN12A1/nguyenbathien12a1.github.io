@@ -10,8 +10,8 @@
   <meta name="author" content="Nguyễn Bá Thiện">
   <meta name="keywords" content="Nguyễn Bá Thiện, VKU, Kỹ thuật máy tính, thiết kế vi mạch bán dẫn, RISC-V, Verilog, OpenLane, FPGA, ESP32, hệ thống nhúng">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#f6f8fc" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0a1020" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#93d1ec" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a4565" media="(prefers-color-scheme: dark)">
   <!-- SỬA: khi có tên miền thiennb23.id.vn (từ 1/1/2027) thì đổi các địa chỉ nguyenbathien12a1.github.io bên dưới -->
   <link rel="canonical" href="https://nguyenbathien12a1.github.io/">
 
@@ -35,6 +35,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <!-- Font có chân cho chữ ký "thiện." (chỉ tải đúng các ký tự cần dùng) -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&text=thi%E1%BB%87n.&display=swap" rel="stylesheet">
 
   <!-- Áp dụng chế độ sáng/tối đã lưu TRƯỚC khi trang hiển thị (tránh nháy màu) -->
   <script>
@@ -69,51 +71,70 @@
     /* =========================================================
        1. BIẾN MÀU & KÍCH THƯỚC (đổi màu chủ đạo tại đây)
        ========================================================= */
+
     :root {
       color-scheme: light;
-      --bg: #f6f8fc;
-      --bg-alt: #edf2fa;
+      --bg: #ffffff;
+      --bg-alt: #f5f8fc;
       --surface: #ffffff;
-      --surface-2: #f3f6fb;
-      --border: #dbe3ef;
-      --border-strong: #c3cfe2;
-      --text: #0b1426;
-      --text-muted: #475569;
-      --primary: #1d4ed8;
-      --primary-hover: #1e40af;
-      --primary-glow: rgba(29, 78, 216, 0.4);
+      --surface-2: #f1f5fb;
+      --border: #dce3ed;
+      --border-strong: #c3cedc;
+      --text: #172330;
+      --text-muted: #4c5c6d;
+      --text-faint: #66768a;
+      --primary: #005bda;
+      --primary-hover: #0047ab;
+      --primary-glow: rgba(0, 91, 218, 0.28);
       --on-primary: #ffffff;
-      --primary-soft: #e3ecff;
-      --primary-ink: #1e3a8a;
-      --accent: #0e7490;
-      --accent-bright: #06b6d4;
-      /* Màu huy chương: vàng (Giải Nhất) · đồng (Giải Ba) · xanh lá (Khuyến khích) */
-      --gold-bg: #fef9e1;
-      --gold-border: #f3d675;
+      --primary-soft: #e7f0ff;
+      --primary-ink: #0a4aa8;
+      --accent: #007b6b;
+      --accent-bright: #2f9fdc;
+      --accent-soft: #e3f4f1;
+      /* Bảng màu phụ cho nhãn chủ đề (giống các nhãn màu nhạt của trang mẫu) */
+      --rose: #c33162;
+      --rose-soft: #fdecf2;
+      --teal: #007b6b;
+      --teal-soft: #e3f4f1;
+      --amber: #94560e;
+      --amber-soft: #fbf0e1;
+      --sky: #1d6b94;
+      --sky-soft: #e4f3fb;
+      --violet: #6447a6;
+      --violet-soft: #f0ecfa;
+      /* Màu các lớp sóng ở đầu và chân trang */
+      --wave-1: #93d1ec;
+      --wave-2: #b5e1f5;
+      --wave-3: #dcf0fa;
+      /* Màu huy chương (dùng trong phần Học vấn đã mở khóa) */
+      --gold-bg: #fdf6dc;
+      --gold-border: #efd98f;
+      --gold-text: #6e4c00;
       --bronze-bg: #fbefe6;
       --bronze-text: #7a3510;
-      --bronze-border: #e6b593;
-      --green-bg: #e9fbef;
-      --green-border: #9fe3b6;
+      --bronze-border: #ebc4a6;
+      --green-bg: #e8f7ee;
+      --green-border: #b5e3c7;
       --success-text: #15803d;
-      --accent-soft: #e0f6fa;
-      --nav-bg: rgba(246, 248, 252, 0.82);
-      --circuit: #1d4ed8;
+      --nav-bg: rgba(255, 255, 255, 0.88);
+      --circuit: #005bda;
       --circuit-opacity: 0.13;
-      --dot: rgba(29, 78, 216, 0.16);
-      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
-      --shadow: 0 1px 2px rgba(15, 23, 42, 0.05), 0 10px 30px -12px rgba(15, 23, 42, 0.18);
-      --shadow-lg: 0 2px 4px rgba(15, 23, 42, 0.06), 0 26px 50px -22px rgba(29, 78, 216, 0.4);
-      --focus: #2563eb;
-      --tab-active: #ffffff;
+      --dot: rgba(0, 91, 218, 0.14);
+      --shadow-sm: 0 1px 2px rgba(23, 35, 48, 0.05);
+      --shadow: 0 1px 2px rgba(23, 35, 48, 0.04), 0 10px 28px -16px rgba(23, 35, 48, 0.22);
+      --shadow-lg: 0 2px 4px rgba(23, 35, 48, 0.05), 0 26px 50px -26px rgba(23, 35, 48, 0.35);
+      --focus: #005bda;
+      --tab-active: #e7f0ff;
 
       --font: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
       --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
-      --radius-sm: 10px;
-      --radius: 16px;
-      --radius-lg: 22px;
-      --nav-h: 64px;
-      --container: 1440px;
+      --wordmark: "Fraunces", Georgia, "Times New Roman", serif;
+      --radius-sm: 6px;
+      --radius: 8px;
+      --radius-lg: 12px;
+      --nav-h: 72px;
+      --container: 1200px;
       --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
     }
 
@@ -121,80 +142,110 @@
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
         color-scheme: dark;
-        --bg: #0a1020;
-        --bg-alt: #0d1529;
-        --surface: #111a2f;
-        --surface-2: #17223b;
-        --border: #22304b;
-        --border-strong: #31436a;
-        --text: #e7edf7;
-        --text-muted: #a3b3cb;
-        --primary: #6ea8ff;
-        --primary-hover: #93bfff;
-        --primary-glow: rgba(110, 168, 255, 0.35);
-        --on-primary: #071330;
-        --primary-soft: rgba(110, 168, 255, 0.14);
-        --primary-ink: #c3d8ff;
-        --accent: #38d6ee;
-        --accent-bright: #22d3ee;
+        --bg: #0e1520;
+        --bg-alt: #111a26;
+        --surface: #141e2b;
+        --surface-2: #19253a;
+        --border: #253244;
+        --border-strong: #35465d;
+        --text: #e8eef5;
+        --text-muted: #a9b6c6;
+        --text-faint: #8a99ab;
+        --primary: #7fb0ff;
+        --primary-hover: #a8c9ff;
+        --primary-glow: rgba(127, 176, 255, 0.3);
+        --on-primary: #08152b;
+        --primary-soft: rgba(127, 176, 255, 0.13);
+        --primary-ink: #c4dbff;
+        --accent: #4fd1b9;
+        --accent-bright: #5cc4f2;
+        --accent-soft: rgba(79, 209, 185, 0.12);
+        --rose: #f38bb0;
+        --rose-soft: rgba(243, 139, 176, 0.13);
+        --teal: #4fd1b9;
+        --teal-soft: rgba(79, 209, 185, 0.12);
+        --amber: #e7b46d;
+        --amber-soft: rgba(231, 180, 109, 0.13);
+        --sky: #7cc7ec;
+        --sky-soft: rgba(124, 199, 236, 0.13);
+        --violet: #b9a6ef;
+        --violet-soft: rgba(185, 166, 239, 0.14);
+        --wave-1: #1a4565;
+        --wave-2: #163a55;
+        --wave-3: #122a3e;
         --gold-bg: rgba(250, 204, 21, 0.10);
-        --gold-border: rgba(250, 204, 21, 0.38);
-        --bronze-bg: rgba(205, 127, 50, 0.14);
+        --gold-border: rgba(250, 204, 21, 0.32);
+        --gold-text: #f5d77a;
+        --bronze-bg: rgba(205, 127, 50, 0.13);
         --bronze-text: #f2b88f;
-        --bronze-border: rgba(205, 127, 50, 0.45);
+        --bronze-border: rgba(205, 127, 50, 0.4);
         --green-bg: rgba(34, 197, 94, 0.11);
-        --green-border: rgba(34, 197, 94, 0.4);
+        --green-border: rgba(34, 197, 94, 0.36);
         --success-text: #86efac;
-        --accent-soft: rgba(34, 211, 238, 0.12);
-        --nav-bg: rgba(10, 16, 32, 0.78);
-        --circuit: #6ea8ff;
+        --nav-bg: rgba(14, 21, 32, 0.86);
+        --circuit: #7fb0ff;
         --circuit-opacity: 0.16;
-        --dot: rgba(110, 168, 255, 0.14);
+        --dot: rgba(127, 176, 255, 0.13);
         --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-        --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -12px rgba(0, 0, 0, 0.6);
-        --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.4), 0 26px 50px -22px rgba(110, 168, 255, 0.3);
-        --focus: #93bfff;
-        --tab-active: rgba(110, 168, 255, 0.16);
+        --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 10px 28px -14px rgba(0, 0, 0, 0.6);
+        --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.35), 0 24px 48px -24px rgba(0, 0, 0, 0.7);
+        --focus: #a8c9ff;
+        --tab-active: rgba(127, 176, 255, 0.14);
       }
     }
 
     /* Chế độ tối: khi người dùng bấm nút chọn */
     :root[data-theme="dark"] {
       color-scheme: dark;
-      --bg: #0a1020;
-      --bg-alt: #0d1529;
-      --surface: #111a2f;
-      --surface-2: #17223b;
-      --border: #22304b;
-      --border-strong: #31436a;
-      --text: #e7edf7;
-      --text-muted: #a3b3cb;
-      --primary: #6ea8ff;
-      --primary-hover: #93bfff;
-      --primary-glow: rgba(110, 168, 255, 0.35);
-      --on-primary: #071330;
-      --primary-soft: rgba(110, 168, 255, 0.14);
-      --primary-ink: #c3d8ff;
-      --accent: #38d6ee;
-      --accent-bright: #22d3ee;
+      --bg: #0e1520;
+      --bg-alt: #111a26;
+      --surface: #141e2b;
+      --surface-2: #19253a;
+      --border: #253244;
+      --border-strong: #35465d;
+      --text: #e8eef5;
+      --text-muted: #a9b6c6;
+      --text-faint: #8a99ab;
+      --primary: #7fb0ff;
+      --primary-hover: #a8c9ff;
+      --primary-glow: rgba(127, 176, 255, 0.3);
+      --on-primary: #08152b;
+      --primary-soft: rgba(127, 176, 255, 0.13);
+      --primary-ink: #c4dbff;
+      --accent: #4fd1b9;
+      --accent-bright: #5cc4f2;
+      --accent-soft: rgba(79, 209, 185, 0.12);
+      --rose: #f38bb0;
+      --rose-soft: rgba(243, 139, 176, 0.13);
+      --teal: #4fd1b9;
+      --teal-soft: rgba(79, 209, 185, 0.12);
+      --amber: #e7b46d;
+      --amber-soft: rgba(231, 180, 109, 0.13);
+      --sky: #7cc7ec;
+      --sky-soft: rgba(124, 199, 236, 0.13);
+      --violet: #b9a6ef;
+      --violet-soft: rgba(185, 166, 239, 0.14);
+      --wave-1: #1a4565;
+      --wave-2: #163a55;
+      --wave-3: #122a3e;
       --gold-bg: rgba(250, 204, 21, 0.10);
-      --gold-border: rgba(250, 204, 21, 0.38);
-      --bronze-bg: rgba(205, 127, 50, 0.14);
+      --gold-border: rgba(250, 204, 21, 0.32);
+      --gold-text: #f5d77a;
+      --bronze-bg: rgba(205, 127, 50, 0.13);
       --bronze-text: #f2b88f;
-      --bronze-border: rgba(205, 127, 50, 0.45);
+      --bronze-border: rgba(205, 127, 50, 0.4);
       --green-bg: rgba(34, 197, 94, 0.11);
-      --green-border: rgba(34, 197, 94, 0.4);
+      --green-border: rgba(34, 197, 94, 0.36);
       --success-text: #86efac;
-      --accent-soft: rgba(34, 211, 238, 0.12);
-      --nav-bg: rgba(10, 16, 32, 0.78);
-      --circuit: #6ea8ff;
+      --nav-bg: rgba(14, 21, 32, 0.86);
+      --circuit: #7fb0ff;
       --circuit-opacity: 0.16;
-      --dot: rgba(110, 168, 255, 0.14);
+      --dot: rgba(127, 176, 255, 0.13);
       --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-      --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -12px rgba(0, 0, 0, 0.6);
-      --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.4), 0 26px 50px -22px rgba(110, 168, 255, 0.3);
-      --focus: #93bfff;
-      --tab-active: rgba(110, 168, 255, 0.16);
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 10px 28px -14px rgba(0, 0, 0, 0.6);
+      --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.35), 0 24px 48px -24px rgba(0, 0, 0, 0.7);
+      --focus: #a8c9ff;
+      --tab-active: rgba(127, 176, 255, 0.14);
     }
 
     /* =========================================================
@@ -232,7 +283,7 @@
     body { overflow-x: clip; }   /* khi nội dung rung (vụ nổ) không làm hiện thanh cuộn ngang */
 
     img { max-width: 100%; height: auto; display: block; }
-    h1, h2, h3, h4 { margin: 0; line-height: 1.25; font-weight: 700; }
+    h1, h2, h3, h4 { margin: 0; line-height: 1.3; font-weight: 600; letter-spacing: -0.015em; }
     p { margin: 0; }
     a { color: var(--primary); text-underline-offset: 3px; }
     button { font: inherit; }
@@ -284,207 +335,242 @@
     }
 
     /* =========================================================
-       3. NÚT BẤM, HUY HIỆU, THẺ TAG
+       3. NÚT BẤM, NHÃN, THẺ TAG
        ========================================================= */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      min-height: 48px;
-      padding: 0.75rem 1.4rem;
-      border-radius: 999px;
-      border: 1.5px solid transparent;
+      min-height: 44px;
+      padding: 0.65rem 1.15rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
       font-weight: 600;
-      font-size: 0.975rem;
+      font-size: 0.93rem;
       line-height: 1.2;
       text-decoration: none;
       cursor: pointer;
-      transition: transform 0.2s var(--ease), translate 0.3s var(--ease), background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+      transition: transform 0.2s var(--ease), translate 0.3s var(--ease), background-color 0.2s, border-color 0.2s, color 0.2s;
     }
-    .btn .icon { width: 1.1em; height: 1.1em; transition: transform 0.2s var(--ease); }
+    .btn .icon { width: 1.05em; height: 1.05em; transition: transform 0.2s var(--ease); }
     .btn:hover .icon-arrow { transform: translateX(3px); }
 
-    .btn--primary {
-      background: var(--primary);
-      color: var(--on-primary);
-      box-shadow: 0 10px 24px -10px var(--primary-glow);
-    }
-    .btn--primary:hover { background: var(--primary-hover); transform: translateY(-2px); }
+    .btn--primary { background: var(--primary); color: var(--on-primary); }
+    .btn--primary:hover { background: var(--primary-hover); transform: translateY(-1px); }
 
-    .btn--outline {
-      background: var(--surface);
-      color: var(--text);
-      border-color: var(--border-strong);
-    }
-    .btn--outline:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
+    .btn--outline { background: var(--surface); color: var(--text); border-color: var(--border-strong); }
+    .btn--outline:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-soft); }
 
-    .btn--soft {
-      background: var(--primary-soft);
-      color: var(--primary-ink);
-    }
+    .btn--soft { background: var(--primary-soft); color: var(--primary-ink); }
     .btn--soft:hover { background: var(--primary); color: var(--on-primary); }
 
-    .btn--sm { min-height: 44px; padding: 0.55rem 1.05rem; font-size: 0.9rem; }
+    .btn--sm { min-height: 40px; padding: 0.5rem 0.95rem; font-size: 0.88rem; }
 
     .icon-btn {
       display: inline-grid;
       place-items: center;
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: var(--surface);
+      width: 40px; height: 40px;
+      border-radius: var(--radius-sm);
+      border: 0;
+      background: transparent;
       color: var(--text);
       cursor: pointer;
-      transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+      transition: color 0.2s, background-color 0.2s;
     }
-    .icon-btn:hover { border-color: var(--primary); color: var(--primary); }
+    .icon-btn:hover { color: var(--primary); background: var(--surface-2); }
+    .icon-btn .icon { width: 1.15rem; height: 1.15rem; }
+
+    /* Liên kết dạng chữ có mũi tên (giống "Đọc bài >" của trang mẫu) */
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      min-height: 40px;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .text-link:hover { color: var(--primary); }
+    .text-link .icon { width: 1.05em; height: 1.05em; }
+    .text-link .icon-ext { width: 0.8em; height: 0.8em; color: var(--text-faint); transition: translate 0.2s var(--ease); }
+    .text-link:hover .icon-ext { translate: 2px -2px; color: var(--primary); }
 
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      padding: 0.18rem 0.62rem;
-      border-radius: 999px;
+      padding: 0.12rem 0.55rem;
+      border-radius: 4px;
       border: 1px solid transparent;
       font-size: 0.76rem;
-      font-weight: 700;
-      line-height: 1.5;
+      font-weight: 600;
+      line-height: 1.55;
       white-space: nowrap;
     }
     .badge .icon { width: 0.95em; height: 0.95em; }
-    /* Huy hiệu giải thưởng theo màu huy chương */
-    .badge--gold   { --m1: #fff4b8; --m2: #f2b705; --m3: #a87400; background: linear-gradient(135deg, #fff4c2, #f7d354); color: #5c3d00; border-color: #e5b829; }
-    .badge--bronze { --m1: #fde0c8; --m2: #cd7f32; --m3: #78390f; background: linear-gradient(135deg, #fbe3d0, #e9a877); color: #5a260a; border-color: #cf8a5a; }
-    .badge--green  { --m1: #c6f6d5; --m2: #22c55e; --m3: #116b33; background: linear-gradient(135deg, #d6f8e0, #86e3a5); color: #0f4a23; border-color: #4fcf7c; }
-    .badge--gold, .badge--bronze, .badge--green { padding-left: 0.2rem; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6); }
+    /* Nhãn kết quả: màu nhạt, phẳng, không phô trương */
+    .badge--gold   { --m1: #fff4b8; --m2: #e9b10a; --m3: #a87400; background: var(--gold-bg);   color: var(--gold-text);   border-color: var(--gold-border); }
+    .badge--bronze { --m1: #fde0c8; --m2: #cd7f32; --m3: #78390f; background: var(--bronze-bg); color: var(--bronze-text); border-color: var(--bronze-border); }
+    .badge--green  { --m1: #c6f6d5; --m2: #22c55e; --m3: #116b33; background: var(--green-bg);  color: var(--success-text); border-color: var(--green-border); }
+    .badge--gold, .badge--bronze, .badge--green { padding-left: 0.3rem; }
     .medal {
       display: grid;
       place-items: center;
-      width: 1.5em; height: 1.5em;
+      width: 1.15em; height: 1.15em;
       flex-shrink: 0;
       border-radius: 50%;
       background: radial-gradient(circle at 32% 28%, var(--m1), var(--m2) 55%, var(--m3));
       color: #fff;
-      box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.25);
     }
-    .badge .medal .icon { width: 0.8em; height: 0.8em; fill: currentColor; stroke: none; }
+    .badge .medal .icon { width: 0.7em; height: 0.7em; fill: currentColor; stroke: none; }
     .badge--honor { background: var(--primary-soft); color: var(--primary-ink); }
 
     .tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.45rem; }
     .tag {
       display: inline-flex;
       align-items: center;
-      padding: 0.32rem 0.75rem;
-      border-radius: 8px;
+      padding: 0.28rem 0.7rem;
+      border-radius: var(--radius-sm);
       background: var(--surface-2);
-      border: 1px solid var(--border);
       color: var(--text);
       font-size: 0.86rem;
       font-weight: 500;
       line-height: 1.45;
-      transition: border-color 0.2s, transform 0.2s var(--ease);
     }
-    .tag:hover { border-color: var(--primary); transform: translateY(-1px); }
-    .tag--core { background: var(--primary-soft); border-color: transparent; color: var(--primary-ink); font-weight: 600; }
+
+    /* Nhãn màu theo chủ đề (tone-*) */
+    .tone-blue   { --tone: var(--primary); --tone-soft: var(--primary-soft); }
+    .tone-rose   { --tone: var(--rose);    --tone-soft: var(--rose-soft); }
+    .tone-teal   { --tone: var(--teal);    --tone-soft: var(--teal-soft); }
+    .tone-amber  { --tone: var(--amber);   --tone-soft: var(--amber-soft); }
+    .tone-sky    { --tone: var(--sky);     --tone-soft: var(--sky-soft); }
+    .tone-violet { --tone: var(--violet);  --tone-soft: var(--violet-soft); }
+    .tone-slate  { --tone: var(--text);    --tone-soft: var(--surface-2); }
+
+    .chip-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0; padding: 0; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.3rem 0.7rem;
+      border-radius: var(--radius-sm);
+      background: var(--tone-soft, var(--surface-2));
+      color: var(--tone, var(--text));
+      font-size: 0.85rem;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+    /* Nhãn viền tròn (dùng ở phần đầu trang, như "Những điều mình tò mò") */
+    .chip--line {
+      padding: 0.32rem 0.85rem;
+      border-radius: 999px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-color: color-mix(in srgb, var(--tone, var(--text)) 38%, transparent);
+    }
 
     .icon-tile {
       display: grid;
       place-items: center;
-      width: 44px; height: 44px;
+      width: 42px; height: 42px;
       flex-shrink: 0;
-      border-radius: 12px;
-      background: var(--primary-soft);
-      color: var(--primary);
+      border-radius: 50%;
+      background: var(--tone-soft, var(--primary-soft));
+      color: var(--tone, var(--primary));
     }
+    .icon-tile .icon { width: 1.15rem; height: 1.15rem; }
+
+    /* Chữ ký "thiện." (font có chân, chấm màu xanh như trang mẫu) */
+    .wordmark {
+      font-family: var(--wordmark);
+      font-weight: 700;
+      font-size: 1.75rem;
+      line-height: 1;
+      letter-spacing: -0.035em;
+      color: var(--text);
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+    .wordmark-dot { color: var(--primary); }
 
     /* =========================================================
        4. THANH ĐIỀU HƯỚNG CỐ ĐỊNH
+       (trong suốt trên dải sóng; cuộn xuống thì có nền trắng mờ + đường kẻ)
        ========================================================= */
     .site-header {
       position: fixed;
       inset: 0 0 auto 0;
       z-index: 50;
       height: var(--nav-h);
-      background: var(--nav-bg);
-      -webkit-backdrop-filter: saturate(160%) blur(14px);
-      backdrop-filter: saturate(160%) blur(14px);
+      background: transparent;
       border-bottom: 1px solid transparent;
-      transition: border-color 0.3s, box-shadow 0.3s;
+      transition: background-color 0.3s, border-color 0.3s;
     }
-    .site-header.is-scrolled { border-bottom-color: var(--border); box-shadow: var(--shadow-sm); }
+    .site-header.is-scrolled {
+      background: var(--nav-bg);
+      -webkit-backdrop-filter: saturate(160%) blur(12px);
+      backdrop-filter: saturate(160%) blur(12px);
+      border-bottom-color: var(--border);
+    }
 
-    .nav { display: flex; flex-wrap: wrap; align-items: center; align-content: flex-start; justify-content: space-between; column-gap: 1rem; height: 100%; }
+    .nav { display: flex; flex-wrap: wrap; align-items: center; align-content: flex-start; justify-content: space-between; column-gap: 1.5rem; height: 100%; }
     @media (min-width: 900px) { .nav { align-content: center; } }
 
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      min-height: 44px;
       color: var(--text);
       text-decoration: none;
-      font-weight: 700;
-      font-size: 1.02rem;
     }
-    .brand-mark {
-      display: grid;
-      place-items: center;
-      width: 36px; height: 36px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #1d4ed8, #0891b2);
-      color: #fff;
-    }
-    .brand-mark .icon { width: 20px; height: 20px; }
+    .brand:hover .wordmark { color: var(--primary); }
 
-    /* Thanh tab (mỗi tab mở một mục riêng) */
     .nav-menu {
       display: flex;
-      gap: 2px;
-      margin: 0;
-      padding: 4px;
+      gap: 0.2rem;
+      margin: 0 auto 0 2.25rem;
+      padding: 0;
       list-style: none;
-      border-radius: 999px;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
     }
     .nav-link {
       display: flex;
       align-items: center;
-      min-height: 36px;
-      padding: 0 0.95rem;
-      border-radius: 999px;
-      color: var(--text-muted);
+      min-height: 38px;
+      padding: 0 0.8rem;
+      border-radius: var(--radius-sm);
+      color: var(--text);
       font-weight: 500;
-      font-size: 0.9rem;
+      font-size: 0.93rem;
       white-space: nowrap;
       text-decoration: none;
-      transition: color 0.2s, background-color 0.2s, box-shadow 0.2s;
+      transition: color 0.2s, background-color 0.2s;
     }
-    .nav-link:hover { color: var(--text); }
-    .nav-link.is-active {
-      color: var(--primary);
-      background: var(--tab-active);
-      font-weight: 600;
-      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.14);
-    }
+    .nav-link:hover { color: var(--primary); }
+    .nav-link.is-active { color: var(--primary); font-weight: 600; }
 
-    .nav-actions { display: flex; align-items: center; gap: 0.5rem; }
+    .nav-actions { display: flex; align-items: center; gap: 0.15rem; }
 
     .theme-toggle .i-sun { display: none; }
     .theme-toggle[data-mode="dark"] .i-sun { display: block; }
     .theme-toggle[data-mode="dark"] .i-moon { display: none; }
 
-    /* Điện thoại & máy tính bảng: thanh tab xuống hàng thứ hai, vuốt ngang được */
+    /* Điện thoại & máy tính bảng: menu xuống hàng thứ hai, vuốt ngang được */
     @media (max-width: 899.98px) {
-      :root { --nav-h: 116px; }
-      .brand, .nav-actions { height: 64px; }
+      :root { --nav-h: 108px; }
+      .brand, .nav-actions { height: 60px; }
+      .wordmark { font-size: 1.55rem; }
       .nav-menu {
         order: 3;
         flex: 1 0 100%;
+        margin: 0;
         overflow-x: auto;
         scrollbar-width: none;
       }
       .nav-menu::-webkit-scrollbar { display: none; }
+      .nav-link { min-height: 40px; padding: 0 0.75rem; }
+      .nav-link.is-active { background: var(--primary-soft); }
     }
 
     /* Trang cuộn liên tục: mọi mục luôn hiển thị, xếp từ trên xuống theo thứ tự menu */
@@ -492,219 +578,117 @@
     main > section[tabindex="-1"]:focus { outline: none; }   /* không viền khi được focus do bấm menu */
 
     /* =========================================================
-       5. HERO
+       5. HERO (dải sóng + giới thiệu ngắn + ảnh chân dung nghiêng)
        ========================================================= */
     .hero {
       position: relative;
       isolation: isolate;
       overflow: hidden;
-      padding: calc(var(--nav-h) + 40px) 0 72px;
+      padding: 150px 0 128px;
     }
     @media (min-width: 900px) {
-      .hero {
-        display: flex;
-        align-items: center;
-        min-height: min(100vh, 880px);
-        padding: calc(var(--nav-h) + 72px) 0 104px;
-      }
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      z-index: -2;
-      width: 680px; height: 680px;
-      top: -220px; right: -200px;
-      background: radial-gradient(circle, var(--primary-soft), transparent 65%);
-      pointer-events: none;
+      .hero { padding: 208px 0 136px; }
     }
 
-    /* Họa tiết mạch điện ở nền */
-    .hero-bg {
+    /* Dải sóng: 3 lớp trôi chậm với tốc độ khác nhau, lớp cuối trùng màu nền trang */
+    .hero-waves {
       position: absolute;
-      inset: 0;
+      inset: 0 0 auto 0;
       z-index: -1;
-      color: var(--circuit);
+      height: 210px;
+      overflow: hidden;
+      background: var(--wave-1);
       pointer-events: none;
-      -webkit-mask-image: radial-gradient(ellipse 85% 75% at 72% 38%, #000 22%, transparent 74%);
-      mask-image: radial-gradient(ellipse 85% 75% at 72% 38%, #000 22%, transparent 74%);
     }
-    .hero-bg svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-    .circuit { opacity: var(--circuit-opacity); }
-    .circuit .pad { fill: var(--bg); stroke: currentColor; stroke-width: 1.3; }
-    .trace { fill: none; stroke: currentColor; stroke-width: 1.5; opacity: 0.22; }
-    .pulse {
-      fill: none;
-      stroke: var(--accent-bright);
-      stroke-width: 2.2;
-      stroke-linecap: round;
-      stroke-dasharray: 70 1600;
-      stroke-dashoffset: 1670;
-      opacity: 0.7;
-      animation: pulse 7s linear infinite;
+    @media (min-width: 900px) { .hero-waves { height: 232px; } }
+    .wave {
+      position: absolute;
+      top: 0; bottom: 0; left: 0;
+      width: calc(100% + var(--w));
+      background: var(--c);
+      -webkit-mask: var(--m) repeat-x 0 0 / var(--w) 100%;
+      mask: var(--m) repeat-x 0 0 / var(--w) 100%;
+      animation: wave-drift var(--t) linear infinite;
     }
-    @keyframes pulse { to { stroke-dashoffset: 0; } }
+    .wave--1 { --w: 1440px; --c: var(--wave-2); --t: 40s; --m: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 240' preserveAspectRatio='none'%3E%3Cpath d='M0 92C240 66 480 66 720 92S1200 118 1440 92V240H0Z'/%3E%3C/svg%3E"); }
+    .wave--2 { --w: 1100px; --c: var(--wave-3); --t: 28s; --m: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1100 240' preserveAspectRatio='none'%3E%3Cpath d='M0 138C183 114 367 114 550 138S917 162 1100 138V240H0Z'/%3E%3C/svg%3E"); animation-direction: reverse; }
+    .wave--3 { --w: 1700px; --c: var(--bg);     --t: 48s; --m: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1700 240' preserveAspectRatio='none'%3E%3Cpath d='M0 182C283 158 567 158 850 182S1417 206 1700 182V240H0Z'/%3E%3C/svg%3E"); }
+    @keyframes wave-drift { to { translate: calc(var(--w) * -1) 0; } }
 
-    .hero-grid { display: grid; gap: 40px; align-items: center; width: 100%; }
-    @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.3fr 1fr; gap: 64px; } }
+    .hero-grid { display: grid; gap: 2.25rem; align-items: center; width: 100%; }
+    @media (min-width: 900px) {
+      .hero-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.85fr); gap: clamp(3rem, 7vw, 6rem); }
+    }
 
-    .award-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      padding: 0.35rem 0.95rem 0.35rem 0.38rem;
-      border-radius: 999px;
-      background: var(--bronze-bg);
-      border: 1px solid var(--bronze-border);
-      color: var(--bronze-text);
-      font-size: 0.875rem;
-      font-weight: 600;
-      line-height: 1.35;
-    }
-    .award-pill-icon {
-      display: grid;
-      place-items: center;
-      width: 28px; height: 28px;
-      flex-shrink: 0;
-      border-radius: 50%;
-      background: radial-gradient(circle at 32% 28%, #f9d1b0, #c8773a 55%, #7a3d12);  /* huy chương đồng */
-      color: #fff;
-      box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.5), 0 1px 3px rgba(0, 0, 0, 0.25);
-    }
-    .award-pill-icon .icon { width: 14px; height: 14px; fill: currentColor; stroke: none; }
-
-    .hero-hello {
-      margin-top: 1.6rem;
-      font-family: var(--mono);
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--accent);
-    }
-    .hero-hello::after {
-      content: "";
-      display: inline-block;
-      width: 0.55em; height: 1.05em;
-      margin-left: 0.3em;
-      vertical-align: -0.18em;
-      background: currentColor;
-      animation: blink 1.1s steps(1) infinite;
-    }
-    @keyframes blink { 50% { opacity: 0; } }
-
+    .hero-kicker { font-size: 0.85rem; font-weight: 600; color: var(--primary); letter-spacing: 0.02em; }
     .hero-title {
-      margin-top: 0.4rem;
-      font-size: clamp(2.4rem, 6vw, 4.4rem);
-      font-weight: 800;
-      line-height: 1.12;
-      letter-spacing: -0.025em;
-    }
-    .grad {
-      display: inline-block;
-      padding: 0.04em 0 0.1em;
-      background: linear-gradient(100deg, var(--primary), var(--accent), var(--primary));
-      background-size: 200% auto;
-      animation: grad-shift 7s ease-in-out infinite alternate;   /* ánh màu chuyển nhẹ */
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    @media (forced-colors: active) { .grad { background: none; color: CanvasText; } }
-
-    .hero-tagline {
-      margin-top: 1rem;
-      max-width: 34ch;
-      font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+      margin-top: 0.55rem;
+      font-size: clamp(2.2rem, 4.8vw, 3.6rem);
       font-weight: 600;
-      line-height: 1.45;
+      line-height: 1.2;
+      letter-spacing: -0.045em;
     }
-    .hero-lead {
-      margin-top: 0.85rem;
-      max-width: 60ch;
-      color: var(--text-muted);
-      font-size: 1.05rem;
+    .hero-name { display: inline-block; color: var(--primary); }
+    .hero-lede {
+      margin-top: 1rem;
+      max-width: 42ch;
+      font-size: clamp(1.1rem, 1.9vw, 1.3rem);
+      line-height: 1.7;
+      letter-spacing: -0.015em;
     }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+    .hero-bio { margin-top: 1.15rem; max-width: 64ch; }
+    .hero-bio p { color: var(--text-muted); font-size: 1rem; line-height: 1.95; }
+    .hero-bio p + p { margin-top: 0.7rem; }
+    .hero-rule { margin: 1.6rem 0 1.35rem; max-width: 640px; border: 0; border-top: 1px solid var(--border); }
+    .hero-interests h2 { font-size: 0.95rem; font-weight: 600; letter-spacing: -0.01em; }
+    .hero-interests .chip-list { margin-top: 0.8rem; }
+    .hero-interests p { margin-top: 0.8rem; color: var(--text-muted); font-size: 0.92rem; line-height: 1.8; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1.5rem; margin-top: 1.8rem; }
 
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem 1.4rem;
-      margin: 2rem 0 0;
-      padding: 0;
-      list-style: none;
-      color: var(--text-muted);
-      font-size: 0.925rem;
-    }
-    .hero-meta li { display: inline-flex; align-items: center; gap: 0.45rem; }
-    .hero-meta .icon { color: var(--primary); width: 1.1em; height: 1.1em; }
-
-    /* Ảnh đại diện */
+    /* Ảnh chân dung: khung nghiêng nhẹ, góc trên phải bo tròn, lớp nền xanh nhạt lệch phía sau */
     .hero-visual { display: flex; justify-content: center; order: -1; }
-    @media (min-width: 900px) { .hero-visual { order: 0; } }
-
-    .avatar-wrap {
+    @media (min-width: 900px) { .hero-visual { order: 0; justify-content: flex-end; } }
+    .portrait {
       position: relative;
-      width: clamp(170px, 50vw, 300px);
-      aspect-ratio: 1;
-      margin: 18px;
+      width: min(70vw, 280px);
+      margin: 0;
+      padding: 16px 20px 0 0;
+      isolation: isolate;
     }
-    @media (min-width: 900px) { .avatar-wrap { width: min(100%, 360px); } }
-
-    .avatar-orbit {
+    @media (min-width: 900px) { .portrait { width: min(100%, 370px); } }
+    .portrait::before {
+      content: "";
       position: absolute;
-      inset: -22px;
-      border-radius: 50%;
-      border: 1.5px dashed var(--border-strong);
+      inset: 0 0 50px 26px;
+      z-index: -1;
+      border-radius: 6px 46px 6px 6px;
+      background: var(--primary-soft);
+      rotate: 2.5deg;
     }
-    .avatar-ring {
-      position: absolute;
-      inset: -8px;
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, var(--primary), var(--accent-bright), transparent 45%, var(--primary) 75%, var(--accent-bright));
-      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
-      mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
-      animation: spin 14s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(1turn); } }
-
-    .avatar {
-      position: relative;
-      width: 100%; height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 6px solid var(--surface);
+    .portrait-frame {
+      display: block;
+      overflow: hidden;
+      border-radius: 4px 40px 4px 4px;
       background: var(--surface-2);
       box-shadow: var(--shadow-lg);
+      rotate: -2deg;
+      transform: perspective(900px) rotateY(calc(var(--px, 0) * 10deg)) rotateX(calc(var(--py, 0) * -10deg));
+      transition: transform 0.7s var(--ease);
     }
-
-    .float-tag {
-      position: absolute;
-      display: inline-flex;
+    .portrait-frame img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+    .portrait figcaption {
+      display: flex;
       align-items: center;
-      gap: 0.45rem;
-      padding: 0.38rem 0.75rem;
-      border-radius: 999px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      font-family: var(--mono);
-      font-size: 0.76rem;
-      font-weight: 600;
-      color: var(--text);
-      white-space: nowrap;
-      animation: float 6s ease-in-out infinite;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 1rem;
+      padding-left: 2px;
+      color: var(--text-muted);
+      font-size: 0.82rem;
     }
-    .float-tag::before {
-      content: "";
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--accent-bright);
-      box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.2);
-    }
-    .float-tag.t1 { top: 4%; left: -16%; }
-    .float-tag.t2 { top: 44%; right: -20%; animation-delay: -2s; }
-    .float-tag.t3 { bottom: 2%; left: -6%; animation-delay: -4s; }
-    @keyframes float { 50% { transform: translateY(-7px); } }
-    @media (max-width: 420px) { .float-tag { font-size: 0.68rem; padding: 0.3rem 0.6rem; } }
+    .portrait figcaption .wordmark { font-size: 1.2rem; }
+    .portrait-place { display: inline-flex; align-items: center; gap: 0.35rem; }
+    .portrait-place .icon { width: 1em; height: 1em; color: var(--primary); }
 
     /* =========================================================
        6. KHUNG CHUNG CỦA CÁC PHẦN
@@ -712,86 +696,136 @@
     .section { padding-block: clamp(3.5rem, 7vw, 5.5rem); }
     .section--alt { background: var(--bg-alt); }
 
-    .section-head { max-width: 780px; margin-bottom: clamp(1.5rem, 3.5vw, 2.25rem); }
+    .section-head { max-width: 760px; margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem); }
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      font-family: var(--mono);
-      font-size: 0.8rem;
+      margin: 0;
+      font-size: 0.78rem;
       font-weight: 600;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--primary);
     }
-    .eyebrow::before { content: ""; width: 24px; height: 2px; border-radius: 2px; background: currentColor; }
+    .eyebrow--rose { color: var(--rose); }
+    .eyebrow-num { font-family: var(--mono); font-weight: 500; letter-spacing: 0.02em; color: var(--text-faint); }
     .section-title {
-      margin-top: 0.5rem;
-      font-size: clamp(1.75rem, 3.6vw, 2.4rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
+      margin-top: 0.55rem;
+      font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -0.035em;
     }
-    .section-lead { margin-top: 0.65rem; color: var(--text-muted); font-size: 1.05rem; }
+    .section-lead { margin-top: 0.8rem; max-width: 70ch; color: var(--text-muted); font-size: 1.02rem; line-height: 1.9; }
+    .section-lead strong { color: var(--text); font-weight: 600; }
 
     /* =========================================================
-       7. GIỚI THIỆU
+       7. GIỚI THIỆU (cột bài viết + cột bên kiểu "Theo chủ đề")
        ========================================================= */
-    .about-grid { display: grid; gap: 2rem; }
-    @media (min-width: 960px) { .about-grid { grid-template-columns: 1.45fr 1fr; gap: 3rem; align-items: start; } }
+    .about-layout { display: grid; gap: 2.75rem; }
+    @media (min-width: 980px) {
+      .about-layout { grid-template-columns: minmax(0, 1fr) 300px; gap: clamp(3rem, 6vw, 4.5rem); align-items: start; }
+    }
 
-    .about-text p { font-size: 1.075rem; }
+    .about-text p { color: var(--text-muted); font-size: 1.02rem; line-height: 1.95; }
     .about-text p + p { margin-top: 1rem; }
-    .about-text strong { font-weight: 600; color: var(--text); }
+    .about-text strong { color: var(--text); font-weight: 600; }
 
-    .focus-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.15rem;
-      margin: 2rem 0 0;
-      padding: 0;
-      list-style: none;
-    }
+    .about-sub { margin-top: 2.6rem; }
+    .focus-list { margin: 0.9rem 0 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
     .focus-item {
-      padding: 1.25rem;
-      border-radius: var(--radius);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      transition: transform 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
-    }
-    .focus-item:hover { transform: translateY(-3px); border-color: var(--border-strong); box-shadow: var(--shadow); }
-    .focus-item h3 { margin-top: 0.85rem; font-size: 1.02rem; }
-    .focus-item p { margin-top: 0.3rem; font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; }
-
-    .facts {
-      padding: 1.75rem;
-      border-radius: var(--radius-lg);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-    .facts-title { display: flex; align-items: center; gap: 0.75rem; font-size: 1.08rem; }
-    .facts-title .icon-tile { width: 38px; height: 38px; border-radius: 10px; }
-    .facts dl { margin: 1rem 0 0; }
-    .fact {
       display: grid;
-      grid-template-columns: 112px 1fr;
-      gap: 0.75rem;
-      padding: 0.85rem 0;
-      border-top: 1px dashed var(--border);
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 1.1rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
     }
-    .fact dt { color: var(--text-muted); font-size: 0.9rem; }
-    .fact dd { margin: 0; font-weight: 500; font-size: 0.95rem; line-height: 1.55; }
-    .fact .tags { margin-top: 0.1rem; }
-    .fact .tag { font-size: 0.8rem; padding: 0.22rem 0.6rem; }
+    .focus-item .icon-tile { margin-top: 0.15rem; }
+    .focus-topic { font-size: 0.78rem; font-weight: 600; color: var(--tone, var(--primary)); }
+    .focus-item h4 {
+      margin-top: 0.2rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      transition: color 0.2s;
+    }
+    .focus-item:hover h4 { color: var(--primary); }
+    .focus-item p:not(.focus-topic) { margin-top: 0.5rem; color: var(--text-muted); font-size: 0.98rem; line-height: 1.9; }
+    .focus-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      min-height: 38px;
+      margin-top: 0.45rem;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: var(--text);
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .focus-link:hover { color: var(--primary); }
+    .focus-link .icon { width: 1em; height: 1em; transition: translate 0.2s var(--ease); }
+    .focus-link:hover .icon { translate: 3px 0; }
+
+    /* Cột bên */
+    .about-side { display: grid; gap: 2rem; align-content: start; }
+    @media (min-width: 980px) { .about-side { padding-top: 0.3rem; } }
+    .side-block h3 {
+      margin-bottom: 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rose);
+    }
+    .side-facts { margin: 0; }
+    .side-facts > div {
+      display: grid;
+      grid-template-columns: 104px minmax(0, 1fr);
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 0.93rem;
+      line-height: 1.55;
+    }
+    .side-facts > div:first-child { padding-top: 0; }
+    .side-facts dt { color: var(--text-muted); }
+    .side-facts dd { margin: 0; font-weight: 500; }
+    .side-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.15rem; }
+    .side-link {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      width: 100%;
+      min-height: 40px;
+      padding: 0.4rem 0;
+      border: 0;
+      background: none;
+      color: var(--text);
+      font: inherit;
+      font-size: 0.97rem;
+      font-weight: 500;
+      line-height: 1.5;
+      text-align: left;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .side-link .icon { width: 1em; height: 1em; margin-top: 0.25rem; color: var(--rose); transition: translate 0.2s var(--ease); }
+    .side-link:hover { color: var(--primary); }
+    .side-link:hover .icon { translate: 3px 0; }
 
     /* =========================================================
-       8. TIMELINE HỌC VẤN
+       8. TIMELINE HỌC VẤN (hiện ra sau khi nhập đúng mã PIN)
        ========================================================= */
     .timeline {
       position: relative;
       display: grid;
-      gap: 1.5rem;
-      max-width: 100%;
+      max-width: 940px;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -799,210 +833,86 @@
     .timeline::before {
       content: "";
       position: absolute;
-      left: 21px; top: 10px; bottom: 10px;
-      width: 2px;
-      border-radius: 2px;
-      background: linear-gradient(var(--primary), var(--accent-bright) 55%, var(--border-strong));
-      opacity: 0.65;
+      left: 19px; top: 8px; bottom: 8px;
+      width: 1px;
+      background: var(--border-strong);
     }
-    .tl-item { position: relative; padding-left: 62px; }
+    .tl-item { position: relative; padding: 0 0 2.4rem 62px; }
+    .tl-item:last-child { padding-bottom: 0.5rem; }
     @media (min-width: 640px) { .tl-item { padding-left: 72px; } }
 
     .tl-marker {
       position: absolute;
-      left: 0; top: 20px;
+      left: 0; top: 0;
       display: grid;
       place-items: center;
-      width: 44px; height: 44px;
+      width: 40px; height: 40px;
       border-radius: 50%;
       background: var(--surface);
-      border: 2px solid var(--primary);
+      border: 1px solid var(--border-strong);
       color: var(--primary);
       box-shadow: 0 0 0 6px var(--bg-alt);
-      transition: transform 0.3s var(--ease), background-color 0.3s, color 0.3s, box-shadow 0.3s;
+      transition: background-color 0.3s, border-color 0.3s;
     }
-    .tl-marker .icon { width: 20px; height: 20px; }
+    .tl-marker .icon { width: 18px; height: 18px; }
     .tl-item:hover .tl-marker,
-    .tl-item:focus-within .tl-marker {
-      transform: scale(1.08);
-      background: var(--primary);
-      color: var(--on-primary);
-      box-shadow: 0 0 0 6px var(--bg-alt), 0 0 0 11px var(--primary-soft);
-    }
+    .tl-item:focus-within .tl-marker { background: var(--primary-soft); border-color: var(--primary); }
 
-    .tl-card {
-      padding: 1.35rem 1.2rem;
-      border-radius: var(--radius-lg);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      transition: transform 0.3s var(--ease), box-shadow 0.3s, border-color 0.3s;
-    }
-    @media (min-width: 640px) { .tl-card { padding: 1.6rem 1.85rem; } }
-    .tl-item:hover .tl-card { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--border-strong); }
-
-    .tl-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; }
-    .tl-time {
-      padding: 0.15rem 0.6rem;
-      border-radius: 6px;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      font-weight: 600;
-    }
-    .tl-level { color: var(--primary); font-size: 0.85rem; font-weight: 600; }
-    .tl-card h3 { margin-top: 0.7rem; font-size: clamp(1.1rem, 2.2vw, 1.3rem); }
-    .tl-sub { margin-top: 0.35rem; color: var(--text-muted); font-size: 0.95rem; }
+    .tl-card { padding: 0.2rem 0 0; }
+    .tl-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.75rem; }
+    .tl-time { font-family: var(--mono); font-size: 0.8rem; font-weight: 600; color: var(--primary); }
+    .tl-level { color: var(--text-muted); font-size: 0.85rem; font-weight: 500; }
+    .tl-level::before { content: "·"; margin-right: 0.75rem; color: var(--border-strong); }
+    .tl-card h3 { margin-top: 0.35rem; font-size: clamp(1.1rem, 2vw, 1.28rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.45; }
+    .tl-sub { margin-top: 0.3rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; }
 
     .achievements {
       display: grid;
-      gap: 0.75rem;
-      margin: 1.15rem 0 0;
+      gap: 0.6rem;
+      margin: 1rem 0 0;
       padding: 0;
       list-style: none;
     }
-    @media (min-width: 640px) { .achievements { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); } }
+    @media (min-width: 640px) { .achievements { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
     .ach {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 0.45rem;
       padding: 0.85rem 1rem;
-      border-radius: 12px;
-      background: var(--surface-2);
+      border-radius: var(--radius);
+      background: var(--surface);
       border: 1px solid var(--border);
-      transition: border-color 0.25s, transform 0.25s var(--ease);
+      transition: border-color 0.25s;
     }
-    .ach:hover { border-color: var(--border-strong); transform: translateY(-2px); }
-    .ach p { font-size: 0.93rem; line-height: 1.55; }
-    .ach--highlight { grid-column: 1 / -1; }
-    /* Nền thẻ thành tích theo màu huy chương */
-    .ach--gold   { background: var(--gold-bg);   border-color: var(--gold-border); }
-    .ach--bronze { background: var(--bronze-bg); border-color: var(--bronze-border); }
-    .ach--green  { background: var(--green-bg);  border-color: var(--green-border); }
+    .ach:hover { border-color: var(--border-strong); }
+    .ach p { font-size: 0.93rem; line-height: 1.6; }
+    .ach small { display: block; margin-top: 0.15rem; font-size: 0.85rem; color: var(--text-muted); }
+
     /* =========================================================
-       HUY CHƯƠNG PHÍA BÊN PHẢI THẺ THÀNH TÍCH (.ach--gold/bronze/green)
+       10. DỰ ÁN (thẻ phẳng, viền mảnh; 3 cột trên máy tính)
        ========================================================= */
-    .ach--gold,
-    .ach--bronze,
-    .ach--green {
-      position: relative;
-      padding-right: 4.5rem; /* chừa khoảng trống bên phải cho huy chương */
-    }
-
-    .ach--gold {
-      --m1: #fff6c2; --m2: #f5b800; --m3: #9e6b00;
-      --ribbon: #eab308; --ribbon-dark: #a16207;
-      --medal-glow: rgba(245, 184, 0, 0.28);
-    }
-    .ach--bronze {
-      --m1: #fde0c8; --m2: #cd7f32; --m3: #78390f;
-      --ribbon: #d97706; --ribbon-dark: #78350f;
-      --medal-glow: rgba(205, 127, 50, 0.28);
-    }
-    .ach--green {
-      --m1: #d1fae5; --m2: #22c55e; --m3: #115e2d;
-      --ribbon: #16a34a; --ribbon-dark: #14532d;
-      --medal-glow: rgba(34, 197, 94, 0.28);
-    }
-
-    /* Dải ruy-băng đuôi nheo phía dưới */
-    .ach--gold::before,
-    .ach--bronze::before,
-    .ach--green::before {
-      content: "";
-      position: absolute;
-      right: 1.5rem;
-      top: calc(50% + 3px);
-      width: 22px;
-      height: 19px;
-      background: linear-gradient(90deg, var(--ribbon) 46%, var(--ribbon-dark) 50%, var(--ribbon) 54%);
-      clip-path: polygon(8% 0, 92% 0, 100% 100%, 54% 72%, 46% 72%, 0 100%);
-      opacity: 0.92;
-      pointer-events: none;
-      transition: transform 0.3s var(--ease);
-    }
-
-    /* Mặt huy chương tròn 3D có ngôi sao ở giữa */
-    .ach--gold::after,
-    .ach--bronze::after,
-    .ach--green::after {
-      content: "";
-      position: absolute;
-      right: 1.15rem;
-      top: calc(50% - 5px);
-      transform: translateY(-50%);
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.2-6.2 3.2L7 14.2 2 9.3l6.9-1z'/%3E%3C/svg%3E") center / 15px 15px no-repeat,
-        radial-gradient(circle at 32% 28%, var(--m1), var(--m2) 55%, var(--m3));
-      box-shadow:
-        inset 0 0 0 2px rgba(255, 255, 255, 0.55),
-        inset 0 0 0 4px rgba(0, 0, 0, 0.14),
-        0 4px 12px var(--medal-glow);
-      pointer-events: none;
-      transition: transform 0.3s var(--ease);
-    }
-
-    /* Hiệu ứng nhấc nhẹ huy chương khi rê chuột vào thẻ */
-    .ach--gold:hover::after,
-    .ach--bronze:hover::after,
-    .ach--green:hover::after {
-      transform: translateY(-54%) scale(1.08) rotate(-6deg);
-    }
-    .ach--gold:hover::before,
-    .ach--bronze:hover::before,
-    .ach--green:hover::before {
-      transform: translateY(1px) scale(1.05);
-    }
-    .ach--highlight p { font-weight: 600; font-size: 1rem; }
-    .ach--highlight small { display: block; margin-top: 0.15rem; font-weight: 400; font-size: 0.88rem; color: var(--text-muted); }
-/* Nền & huy hiệu màu xám (cho các vòng thi / hoạt động) */
-
-    .ach--gray {
-      background: rgba(148, 163, 184, 0.14);
-      border-color: rgba(148, 163, 184, 0.38);
-    }
-    .badge--gray {
-      background: rgba(148, 163, 184, 0.22);
-      border-color: rgba(148, 163, 184, 0.45);
-      color: var(--text);
-    }
-    /* =========================================================
-       10. DỰ ÁN (Tận dụng màn hình rộng: 3 cột trên Desktop)
-       ========================================================= */
-    .projects-grid { display: grid; gap: 1.35rem; }
+    .projects-grid { display: grid; gap: 1.25rem; }
     @media (min-width: 720px)  { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1180px) { .projects-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; } }
+    @media (min-width: 1180px) { .projects-grid { grid-template-columns: repeat(3, 1fr); gap: 1.4rem; } }
 
     .project {
       position: relative;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      border-radius: var(--radius-lg);
+      border-radius: 10px;
       background: var(--surface);
       border: 1px solid var(--border);
-      transition: transform 0.35s var(--ease), box-shadow 0.35s, border-color 0.35s;
-    }
-    .project::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      z-index: 1;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--accent-bright));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.45s var(--ease);
+      transition: transform 0.3s var(--ease), box-shadow 0.3s, border-color 0.3s;
     }
     .project:hover,
-    .project:focus-within { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--border-strong); }
-    .project:hover::before,
-    .project:focus-within::before { transform: scaleX(1); }
+    .project:focus-within {
+      transform: translateY(-3px);
+      border-color: var(--border-strong);
+      border-color: color-mix(in srgb, var(--primary) 38%, var(--border));
+      box-shadow: var(--shadow);
+    }
 
     .project-cover {
       container-type: inline-size;
@@ -1014,56 +924,53 @@
       min-height: 170px;
       padding: 1.5rem 1.25rem;
       background:
-        radial-gradient(var(--dot) 1.2px, transparent 1.6px) 0 0 / 16px 16px,
-        linear-gradient(135deg, var(--primary-soft), transparent 75%);
+        radial-gradient(var(--dot) 1.1px, transparent 1.5px) 0 0 / 16px 16px,
+        var(--surface-2);
       border-bottom: 1px solid var(--border);
     }
     .cover-icon {
       display: grid;
       place-items: center;
       width: 64px; height: 64px;
-      border-radius: 18px;
+      border-radius: 14px;
       background: var(--surface);
       border: 1px solid var(--border);
       color: var(--primary);
-      box-shadow: var(--shadow);
-      transition: transform 0.4s var(--ease);
     }
     .cover-icon .icon { width: 30px; height: 30px; }
-    .project:hover .cover-icon { transform: scale(1.06) rotate(-4deg); }
-    .cover-caption { font-family: var(--mono); font-size: 0.76rem; font-weight: 500; color: var(--text-muted); }
+    .cover-caption { font-family: var(--mono); font-size: 0.74rem; font-weight: 500; color: var(--text-faint); }
 
-    /* Thanh lọc dự án */
-    .project-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: -0.5rem 0 1.5rem; }
+    /* Thanh lọc dự án: nhãn màu nhạt theo chủ đề */
+    .project-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: -0.25rem 0 1.75rem; }
     .filter-chip {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      min-height: 42px;
-      padding: 0 0.6rem 0 1.05rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text-muted);
+      min-height: 40px;
+      padding: 0 0.5rem 0 0.85rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      background: var(--tone-soft, var(--surface-2));
+      color: var(--tone, var(--text));
       font-size: 0.9rem;
-      font-weight: 600;
+      font-weight: 500;
       cursor: pointer;
-      transition: color 0.2s, background-color 0.2s, border-color 0.2s, transform 0.2s var(--ease);
+      transition: color 0.2s, background-color 0.2s, border-color 0.2s;
     }
-    .filter-chip:hover { color: var(--text); border-color: var(--border-strong); transform: translateY(-1px); }
-    .filter-chip[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+    .filter-chip:hover { border-color: var(--border-strong); border-color: color-mix(in srgb, var(--tone, var(--text)) 40%, transparent); }
+    .filter-chip[aria-pressed="true"] { background: var(--tone, var(--text)); color: var(--surface); font-weight: 600; }
     .filter-count {
-      min-width: 1.6rem;
-      padding: 0 0.4rem;
-      border-radius: 999px;
-      background: var(--surface-2);
-      color: var(--text-muted);
+      min-width: 1.5rem;
+      padding: 0 0.35rem;
+      border-radius: 4px;
+      background: var(--surface);
+      color: inherit;
       font-family: var(--mono);
       font-size: 0.72rem;
-      line-height: 1.6rem;
+      line-height: 1.5rem;
       text-align: center;
     }
-    .filter-chip[aria-pressed="true"] .filter-count { background: var(--on-primary); color: var(--primary); }
+    .filter-chip[aria-pressed="true"] .filter-count { background: rgba(255, 255, 255, 0.22); }
     .projects-empty { margin-top: 1rem; color: var(--text-muted); }
 
     /* Hiệu ứng khi lọc */
@@ -1137,53 +1044,81 @@
     }
     .project--wide .mf-wire { max-width: 84px; }
 
-    /* Mô tả ở thẻ thường: tối đa 3 dòng */
-    .project:not(.project--featured):not(.project--wide) .project-desc {
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+    .project-body { display: flex; flex-direction: column; gap: 0.7rem; flex: 1; padding: 1.35rem 1.4rem 1.2rem; }
+    /* Dòng phụ: chủ đề (màu) · loại đồ án · thời gian */
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.25rem 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      line-height: 1.5;
     }
-
-    .project-body { display: flex; flex-direction: column; gap: 0.85rem; flex: 1; padding: 1.4rem 1.45rem 1.55rem; }
-    .project-body > .badge { align-self: flex-start; white-space: normal; }
-    .project-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .project-badges .badge { white-space: normal; }
-    .badge--new { background: var(--green-bg); border-color: var(--green-border); color: var(--success-text); }
-    .project-title { font-size: 1.18rem; }
-    .project-desc { color: var(--text-muted); font-size: 0.95rem; }
-    .tech { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .project-cat { color: var(--tone, var(--primary)); font-weight: 600; }
+    .meta-sep { color: var(--border-strong); }
+    .project-status {
+      padding: 0 0.45rem;
+      border-radius: 4px;
+      background: var(--teal-soft);
+      color: var(--teal);
+      font-size: 0.72rem;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+    .hero-title, .section-title, .project-title, .focus-item h4 { text-wrap: balance; }
+    .project-title { font-size: 1.2rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.42; }
+    .project-desc { color: var(--text-muted); font-size: 0.96rem; line-height: 1.85; }
+    .project-advisor { color: var(--text-faint); font-size: 0.85rem; }
+    .tech { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
     .tech li {
-      padding: 0.22rem 0.6rem;
-      border-radius: 6px;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
       background: var(--surface-2);
-      border: 1px solid var(--border);
+      color: var(--text-muted);
       font-family: var(--mono);
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       font-weight: 500;
     }
-    .project-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; margin-top: auto; padding-top: 0.4rem; }
+    .project-foot {
+      display: flex;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 0.8rem;
+      border-top: 1px dashed var(--border);
+    }
+    /* Nút "Xem chi tiết" trên thẻ: dạng chữ xanh, mũi tên ở bên phải */
+    .project-foot .btn {
+      width: 100%;
+      min-height: 36px;
+      justify-content: space-between;
+      padding: 0;
+      border-radius: 0;
+      background: none;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .project-foot .btn:hover { background: none; color: var(--primary-hover); }
 
     /* Dự án nổi bật (thẻ lớn) */
     @media (min-width: 720px) {
       .project--featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1.05fr; }
       .project--featured .project-cover { border-bottom: 0; border-right: 1px solid var(--border); min-height: 290px; padding: 2rem; }
-      .project--featured .project-body { padding: 2rem 2.25rem; justify-content: center; }
-      .project--featured .project-title { font-size: 1.48rem; }
+      .project--featured .project-body { padding: 2rem 2.25rem 1.6rem; justify-content: center; }
+      .project--featured .project-title { font-size: 1.5rem; }
     }
 
-    /* Thẻ rộng "featured-lite" (trường wide: true): chiếm cả hàng */
+    /* Thẻ rộng (trường wide: true): chiếm cả hàng */
     .project--wide .project-cover {
       background:
-        radial-gradient(var(--dot) 1.2px, transparent 1.6px) 0 0 / 16px 16px,
-        linear-gradient(135deg, var(--accent-soft), var(--primary-soft) 60%, transparent);
+        radial-gradient(var(--dot) 1.1px, transparent 1.5px) 0 0 / 16px 16px,
+        linear-gradient(135deg, var(--sky-soft), var(--surface-2) 70%);
     }
     @media (min-width: 720px) {
       .project--wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1.05fr; }
       .project--wide .project-cover { border-bottom: 0; border-right: 1px solid var(--border); min-height: 260px; padding: 2rem; }
-      .project--wide .project-body { padding: 1.85rem 2.25rem; justify-content: center; }
-      .project--wide .project-title { font-size: 1.38rem; }
+      .project--wide .project-body { padding: 1.85rem 2.25rem 1.5rem; justify-content: center; }
+      .project--wide .project-title { font-size: 1.4rem; }
     }
 
     /* Sơ đồ nhiều luồng (flow.rows) + dòng ghi chú (flow.note) */
@@ -1473,63 +1408,73 @@
     /* =========================================================
        12. LIÊN HỆ
        ========================================================= */
-    .contact-card {
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-      display: grid;
-      gap: 2rem;
-      padding: clamp(1.75rem, 5vw, 3.25rem);
-      border-radius: 28px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
+    .contact-layout { display: grid; gap: 2.5rem; }
+    @media (min-width: 900px) {
+      .contact-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(3rem, 7vw, 5.5rem); align-items: start; }
     }
-    @media (min-width: 900px) { .contact-card { grid-template-columns: 1.15fr 1fr; align-items: center; gap: 3.5rem; } }
-    .contact-card::before {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      inset: 0;
-      background:
-        radial-gradient(var(--dot) 1.2px, transparent 1.6px) 0 0 / 18px 18px;
-      -webkit-mask-image: radial-gradient(circle at 0% 0%, #000, transparent 60%);
-      mask-image: radial-gradient(circle at 0% 0%, #000, transparent 60%);
-    }
-    .contact-card::after {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      width: 420px; height: 420px;
-      right: -160px; bottom: -200px;
-      background: radial-gradient(circle, var(--primary-soft), transparent 65%);
-    }
-    .contact-intro .section-title { margin-top: 0.6rem; }
-    .contact-intro p { margin-top: 0.9rem; color: var(--text-muted); font-size: 1.05rem; max-width: 50ch; }
+    .contact-intro p:not(.eyebrow) { margin-top: 1rem; max-width: 58ch; color: var(--text-muted); font-size: 1.02rem; line-height: 1.95; }
     .contact-intro .hero-actions { margin-top: 1.6rem; }
 
-    .contact-list { display: grid; gap: 0.85rem; margin: 0; padding: 0; list-style: none; }
+    .contact-list { display: grid; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--border); }
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 0.9rem;
-      padding: 0.9rem 1rem;
-      border-radius: var(--radius);
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      transition: border-color 0.25s, transform 0.25s var(--ease);
+      gap: 1rem;
+      padding: 1.15rem 0.25rem;
+      border-bottom: 1px solid var(--border);
+      transition: background-color 0.25s;
     }
-    .contact-item:hover { border-color: var(--border-strong); transform: translateX(3px); }
     .contact-text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
     .contact-label { color: var(--text-muted); font-size: 0.8rem; }
     .contact-value {
       color: var(--text);
       font-weight: 600;
-      font-size: 0.97rem;
+      font-size: 1rem;
       text-decoration: none;
       overflow-wrap: break-word;   /* ưu tiên xuống dòng tại <wbr> (sau @, sau github.com/) */
     }
     a.contact-value:hover { color: var(--primary); text-decoration: underline; }
+    .contact-note { margin-top: 1.1rem; color: var(--text-muted); font-size: 0.92rem; line-height: 1.8; }
+
+    /* =========================================================
+       12b. CHÂN TRANG (sóng xanh giống trang mẫu)
+       ========================================================= */
+    .site-footer { position: relative; background: var(--wave-1); color: var(--text); }
+    .footer-waves { position: relative; height: 90px; overflow: hidden; background: var(--bg-alt); }
+    .wave--f1 { --w: 1300px; --c: var(--wave-2); --t: 30s; --m: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1300 90' preserveAspectRatio='none'%3E%3Cpath d='M0 34C217 20 433 20 650 34S1083 48 1300 34V90H0Z'/%3E%3C/svg%3E"); }
+    .wave--f2 { --w: 1600px; --c: var(--wave-1); --t: 42s; --m: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 90' preserveAspectRatio='none'%3E%3Cpath d='M0 56C267 42 533 42 800 56S1333 70 1600 56V90H0Z'/%3E%3C/svg%3E"); animation-direction: reverse; }
+    .footer-main {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem 2rem;
+      padding-block: 0.75rem 1.5rem;
+    }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; margin: 0; padding: 0; list-style: none; }
+    .footer-nav a { color: inherit; font-size: 0.93rem; font-weight: 500; text-decoration: none; text-underline-offset: 4px; }
+    .footer-nav a:hover { text-decoration: underline; }
+    .footer-icons { display: flex; gap: 0.15rem; }
+    .site-footer .icon-btn { color: inherit; }
+    .site-footer .icon-btn:hover { color: inherit; background: rgba(255, 255, 255, 0.35); }
+    :root[data-theme="dark"] .site-footer .icon-btn:hover { background: rgba(255, 255, 255, 0.08); }
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem 1.5rem;
+      padding-block: 0.9rem 1.2rem;
+      border-top: 1px solid rgba(23, 35, 48, 0.14);
+      font-size: 0.84rem;
+    }
+    :root[data-theme="dark"] .footer-bottom { border-top-color: rgba(255, 255, 255, 0.12); }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .footer-bottom { border-top-color: rgba(255, 255, 255, 0.12); }
+      :root:not([data-theme="light"]) .site-footer .icon-btn:hover { background: rgba(255, 255, 255, 0.08); }
+    }
+    .footer-bottom p { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+    @media (max-width: 599px) { .footer-bottom .icon-btn { display: none; } }   /* điện thoại đã có nút lên đầu trang nổi */
 
     /* =========================================================
        13. THÔNG BÁO NHỎ
@@ -1571,73 +1516,34 @@
        (dùng các thuộc tính translate / scale riêng để không đè lên transform của hover)
        ========================================================= */
 
-    /* Ánh màu trên tên */
-    @keyframes grad-shift { to { background-position: 100% 50%; } }
-
     /* Thanh tiến trình cuộn dưới thanh điều hướng */
     .scroll-progress {
       position: absolute;
       left: 0; right: 0; bottom: -1px;
       height: 2px;
-      background: linear-gradient(90deg, var(--primary), var(--accent-bright));
+      background: var(--primary);
       transform: scaleX(0);
       transform-origin: left;
       pointer-events: none;
     }
 
-    /* Nền trượt của tab đang chọn */
-    .nav-menu { position: relative; }
-    .nav-link { position: relative; z-index: 1; }
-    .nav-indicator {
-      position: absolute;
-      top: 4px; bottom: 4px; left: 0;
-      width: 0;
-      border-radius: 999px;
-      background: var(--tab-active);
-      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08), 0 2px 8px -2px rgba(15, 23, 42, 0.14);
-      transition: transform 0.5s var(--ease), width 0.5s var(--ease);
-      pointer-events: none;
-    }
-    .nav-indicator.no-anim { transition: none; }
-    .nav-menu.has-indicator .nav-link.is-active { background: transparent; box-shadow: none; }
-
-    /* Hero: các dòng chữ hiện lần lượt khi mở trang / mở lại tab Trang chủ */
+    /* Hero: các dòng chữ hiện lần lượt khi mở trang */
     .js .hero.is-entered .hero-content > * { animation: hero-in 0.85s var(--ease) both; }
-    .js .hero.is-entered .hero-content > :nth-child(2) { animation-delay: 0.1s; }
-    .js .hero.is-entered .hero-content > :nth-child(3) { animation-delay: 0.2s; }
-    .js .hero.is-entered .hero-content > :nth-child(4) { animation-delay: 0.3s; }
-    .js .hero.is-entered .hero-content > :nth-child(5) { animation-delay: 0.4s; }
-    .js .hero.is-entered .hero-content > :nth-child(6) { animation-delay: 0.5s; }
-    .js .hero.is-entered .hero-content > :nth-child(7) { animation-delay: 0.6s; }
-    .js .hero.is-entered .avatar-wrap { animation: avatar-in 1.1s var(--ease) 0.15s both; }
+    .js .hero.is-entered .hero-content > :nth-child(2) { animation-delay: 0.08s; }
+    .js .hero.is-entered .hero-content > :nth-child(3) { animation-delay: 0.16s; }
+    .js .hero.is-entered .hero-content > :nth-child(4) { animation-delay: 0.24s; }
+    .js .hero.is-entered .hero-content > :nth-child(5) { animation-delay: 0.32s; }
+    .js .hero.is-entered .hero-content > :nth-child(6) { animation-delay: 0.4s; }
+    .js .hero.is-entered .hero-content > :nth-child(7) { animation-delay: 0.48s; }
+    .js .hero.is-entered .portrait { animation: avatar-in 1.1s var(--ease) 0.15s both; }
     @keyframes hero-in {
-      from { opacity: 0; translate: 0 18px; filter: blur(6px); }
+      from { opacity: 0; translate: 0 16px; filter: blur(5px); }
       to { opacity: 1; translate: 0 0; filter: none; }
     }
     @keyframes avatar-in {
-      from { opacity: 0; scale: 0.86; }
+      from { opacity: 0; scale: 0.92; }
       to { opacity: 1; scale: 1; }
     }
-
-    /* Hero theo chuột: nghiêng 3D ảnh, nền & nhãn dịch nhẹ, vầng sáng theo con trỏ
-       (--px, --py, --hx, --hy do JS cập nhật) */
-    .hero-bg { translate: calc(var(--px, 0) * -18px) calc(var(--py, 0) * -18px); transition: translate 0.7s var(--ease); }
-    .avatar-wrap {
-      transform: perspective(900px) rotateY(calc(var(--px, 0) * 14deg)) rotateX(calc(var(--py, 0) * -14deg));
-      transition: transform 0.7s var(--ease);
-    }
-    .float-tag { translate: calc(var(--px, 0) * 26px) calc(var(--py, 0) * 26px); transition: translate 0.7s var(--ease); }
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background: radial-gradient(520px circle at var(--hx, 70%) var(--hy, 40%), var(--primary-glow), transparent 65%);
-      opacity: 0;
-      transition: opacity 0.6s;
-      pointer-events: none;
-    }
-    .hero.is-pointer::after { opacity: 0.3; }
 
     /* Vầng sáng đi theo con trỏ trên thẻ (--mx, --my do JS cập nhật) */
     .spotlight { position: relative; isolation: isolate; }
@@ -1661,7 +1567,7 @@
       position: absolute;
       inset: 0;
       z-index: -1;
-      background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.35) 50%, transparent 65%);
+      background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.3) 50%, transparent 65%);
       translate: -100% 0;
       transition: translate 0.7s var(--ease);
       pointer-events: none;
@@ -1674,37 +1580,36 @@
 
     /* Học vấn khóa bằng mã PIN */
     .edu-lock {
-      max-width: 440px;
+      max-width: 460px;
       margin: 0.5rem auto 0;
-      padding: 2rem 1.5rem 1.6rem;
+      padding: 2rem 1.6rem 1.5rem;
       text-align: center;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      box-shadow: var(--shadow);
+      border-radius: var(--radius-lg);
     }
     .edu-lock-icon {
       display: inline-grid;
       place-items: center;
-      width: 56px; height: 56px;
+      width: 52px; height: 52px;
       margin-bottom: 0.9rem;
       border-radius: 50%;
       background: var(--primary-soft);
       color: var(--primary);
     }
-    .edu-lock-icon .icon { width: 26px; height: 26px; }
-    .edu-lock-title { margin: 0 0 0.35rem; font-size: 1.15rem; }
-    .edu-lock-text { margin: 0 0 1.1rem; color: var(--text-muted); font-size: 0.95rem; }
+    .edu-lock-icon .icon { width: 24px; height: 24px; }
+    .edu-lock-title { margin: 0 0 0.35rem; font-size: 1.15rem; font-weight: 600; letter-spacing: -0.02em; }
+    .edu-lock-text { margin: 0 0 1.15rem; color: var(--text-muted); font-size: 0.95rem; line-height: 1.75; }
     .edu-lock-form { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; }
     .edu-pin {
       width: 11rem;
-      padding: 0.7rem 0.9rem;
-      border-radius: 12px;
+      padding: 0.65rem 0.9rem;
+      border-radius: var(--radius-sm);
       border: 1px solid var(--border-strong);
       background: var(--bg);
       color: var(--text);
       font-family: var(--mono);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       letter-spacing: 0.4em;
       text-align: center;
     }
@@ -1732,7 +1637,10 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      margin-bottom: 1.25rem;
+      max-width: 940px;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid var(--border);
     }
     .edu-unlocked-badge {
       display: inline-flex;
@@ -1747,8 +1655,8 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-sm);
       border: 1px solid var(--border);
       background: var(--surface);
       color: var(--text);
@@ -1765,29 +1673,17 @@
     }
 
     /* Dải tiêu đề năm trong mục Dự án (nhóm theo thời gian) */
-    .year-divider { grid-column: 1 / -1; display: flex; align-items: center; gap: 0.9rem; margin-top: 0.9rem; }
+    .year-divider { grid-column: 1 / -1; display: flex; align-items: center; gap: 1rem; margin-top: 1rem; }
     .projects-grid > .year-divider:first-child { margin-top: 0; }
     .year-num {
       font-family: var(--mono);
-      font-size: clamp(1.35rem, 3vw, 1.75rem);
-      font-weight: 700;
+      font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+      font-weight: 600;
       line-height: 1.2;
-      background: linear-gradient(100deg, var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: var(--text);
     }
-    @media (forced-colors: active) { .year-num { background: none; color: CanvasText; } }
-    .year-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--border-strong), transparent); }
-    .year-count {
-      padding: 0.15rem 0.65rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text-muted);
-      font-family: var(--mono);
-      font-size: 0.75rem;
-    }
+    .year-line { flex: 1; height: 1px; background: var(--border); }
+    .year-count { color: var(--text-muted); font-size: 0.82rem; }
     .js .projects-grid .year-divider.is-entering { animation: filter-in 0.4s var(--ease) both; }
 
     /* Nút "lên đầu trang": hiện ra khi đã cuộn xuống */
@@ -1797,7 +1693,7 @@
       z-index: 60;
       display: grid;
       place-items: center;
-      width: 46px; height: 46px;
+      width: 44px; height: 44px;
       border-radius: 50%;
       background: var(--surface);
       border: 1px solid var(--border);
@@ -1815,7 +1711,7 @@
       transition: opacity 0.3s, translate 0.3s var(--ease), visibility 0s, background-color 0.2s, color 0.2s, border-color 0.2s;
     }
     .to-top:hover { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
-    .to-top .icon { width: 20px; height: 20px; }
+    .to-top .icon { width: 19px; height: 19px; }
 
     /* Mấy chú Barbarian chạy qua lại ở mép dưới phần đầu trang (chỉ để trang trí)
        SỬA: thêm/bớt chú nào thì thêm/bớt thẻ .barb trong HTML;
@@ -2968,8 +2864,8 @@
       }
       .js .reveal { opacity: 1; }
       .js .timeline::before { scale: 1 1; }
-      .hero-bg, .avatar-wrap, .float-tag { translate: none; transform: none; }
-      .grad { animation: none; }
+      .portrait-frame { transform: none; }
+      .wave { animation: none; }
       .pulse, .pl-wire::after, .mf-wire::after, .ms-pulse { display: none; }
     }
   </style>
@@ -3016,13 +2912,11 @@
   <header class="site-header">
     <nav class="nav container" aria-label="Điều hướng chính">
       <a class="brand" href="#trang-chu" aria-label="Nguyễn Bá Thiện – về đầu trang">
-        <span class="brand-mark" aria-hidden="true"><svg class="icon"><use href="#i-chip"/></svg></span>
-        <span>Bá Thiện</span>
+        <span class="wordmark" aria-hidden="true">thiện<span class="wordmark-dot">.</span></span>
       </a>
 
       <!-- Menu: href trùng với id của từng <section>; bấm để cuộn mượt tới mục đó -->
       <ul class="nav-menu" id="nav-menu">
-        <li class="nav-indicator" role="presentation" aria-hidden="true"></li>
         <li><a class="nav-link" href="#trang-chu">Trang chủ</a></li>
         <li><a class="nav-link" href="#gioi-thieu">Giới thiệu</a></li>
         <li><a class="nav-link" href="#hoc-van">Học vấn</a></li>
@@ -3031,6 +2925,12 @@
       </ul>
 
       <div class="nav-actions">
+        <a class="icon-btn" href="https://github.com/NGUYENBATHIEN12A1" target="_blank" rel="noopener noreferrer" aria-label="GitHub (mở tab mới)" title="GitHub">
+          <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+        </a>
+        <a class="icon-btn" href="mailto:thiennb.23ce@vku.udn.vn" aria-label="Gửi email" title="Gửi email">
+          <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+        </a>
         <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="Đổi chế độ sáng/tối">
           <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
           <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
@@ -3044,86 +2944,71 @@
 
     <!-- ===================== HERO ===================== -->
     <section class="hero" id="trang-chu" tabindex="-1" aria-labelledby="hero-title">
-      <!-- Họa tiết mạch điện trang trí -->
-      <div class="hero-bg" aria-hidden="true">
-        <svg class="circuit" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="circuit-tile" width="180" height="180" patternUnits="userSpaceOnUse">
-              <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M0 36H48L66 54H100V84H122"/>
-                <path d="M140 0V14L162 36H180"/>
-                <path d="M0 126H38L56 108H84"/>
-                <path d="M140 180V150L164 126H180"/>
-                <path d="M30 180V162L48 144H72"/>
-                <path d="M30 0V16"/>
-                <rect x="122" y="74" width="22" height="20" rx="3"/>
-                <path d="M144 79h6M144 89h6M128 94v6M138 94v6"/>
-              </g>
-              <circle class="pad" cx="84" cy="108" r="3.5"/>
-              <circle class="pad" cx="72" cy="144" r="3.5"/>
-              <circle class="pad" cx="30" cy="16" r="3.5"/>
-              <circle class="pad" cx="60" cy="80" r="2.5"/>
-              <circle class="pad" cx="160" cy="62" r="2.5"/>
-              <circle class="pad" cx="108" cy="160" r="2.5"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#circuit-tile)"/>
-        </svg>
-        <svg viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <path class="trace" d="M-10 180H360L420 240H700"/>
-          <path class="trace" d="M1450 560H1080L1020 500H820"/>
-          <path class="trace" d="M1180 -10V140L1240 200H1450"/>
-          <path class="trace" d="M900 810V690L960 630H1120"/>
-          <path class="pulse" d="M-10 180H360L420 240H700"/>
-          <path class="pulse" style="animation-delay:-2.4s" d="M1450 560H1080L1020 500H820"/>
-          <path class="pulse" style="animation-delay:-4.6s" d="M1180 -10V140L1240 200H1450"/>
-          <path class="pulse" style="animation-delay:-1.2s" d="M900 810V690L960 630H1120"/>
-        </svg>
+      <!-- Dải sóng trang trí ở đầu trang (3 lớp trôi chậm, màu đổi theo chế độ sáng/tối) -->
+      <div class="hero-waves" aria-hidden="true">
+        <span class="wave wave--1"></span>
+        <span class="wave wave--2"></span>
+        <span class="wave wave--3"></span>
       </div>
 
       <div class="container hero-grid">
         <div class="hero-content">
-          <!-- Chữ trong .typed được JS gõ lại từng ký tự; bản .sr-only dành cho trình đọc màn hình -->
-          <p class="hero-hello"><span class="sr-only">Xin chào, mình là</span><span class="typed" aria-hidden="true">Xin chào, mình là</span></p>
-          <h1 class="hero-title" id="hero-title">Nguyễn <span class="grad">Bá Thiện</span></h1>
+          <p class="hero-kicker">Portfolio cá nhân · Thiết kế vi mạch bán dẫn</p>
+          <h1 class="hero-title" id="hero-title">Mình là <span class="hero-name">Nguyễn Bá Thiện.</span></h1>
 
           <!-- SỬA: tagline (câu khẩu hiệu ngắn) -->
-          <p class="hero-tagline">Người theo đuổi ước mơ.</p>
+          <p class="hero-lede">Người theo đuổi ước mơ — trở thành kỹ sư thiết kế vi mạch và hệ thống nhúng.</p>
 
-          <p class="hero-lead">
-            Sinh viên ngành Công nghệ Kỹ thuật máy tính, chuyên ngành Thiết kế vi mạch bán dẫn tại VKU.
-          </p>
+          <div class="hero-bio">
+            <p>
+              Sinh viên lớp 23IC ngành Công nghệ Kỹ thuật máy tính tại VKU – Đại học Đà Nẵng,
+              chuyên ngành Thiết kế vi mạch bán dẫn.
+            </p>
+            <p>
+              Trang này ghi lại những gì mình đã làm qua các học phần và đồ án: từ mạch điện tử chỉ dùng IC số rời,
+              vi điều khiển ESP32 và Arduino, cho tới CPU RISC-V viết bằng Verilog và SoC được đưa qua luồng OpenLane đến layout.
+            </p>
+          </div>
+
+          <hr class="hero-rule">
+
+          <div class="hero-interests">
+            <h2>Những điều mình quan tâm</h2>
+            <ul class="chip-list">
+              <li class="chip chip--line tone-blue">Thiết kế vi mạch số</li>
+              <li class="chip chip--line tone-teal">RISC-V</li>
+              <li class="chip chip--line tone-rose">FPGA</li>
+              <li class="chip chip--line tone-blue">AI trên phần cứng</li>
+              <li class="chip chip--line tone-teal">Hệ thống nhúng</li>
+            </ul>
+            <p>Mỗi chủ đề ở trên đều có dự án đi kèm — xem ở mục Dự án bên dưới.</p>
+          </div>
 
           <div class="hero-actions">
             <a class="btn btn--primary" href="#du-an" data-magnetic>
               Xem dự án
               <svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
             </a>
-            <a class="btn btn--outline" href="#lien-he" data-magnetic>
-              <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
-              Liên hệ
+            <a class="text-link" href="https://github.com/NGUYENBATHIEN12A1" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>GitHub<svg class="icon icon-ext" aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only"> (mở tab mới)</span>
+            </a>
+            <a class="text-link" href="#lien-he">
+              <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Liên hệ với mình
             </a>
           </div>
-
-          <ul class="hero-meta">
-            <li><svg class="icon" aria-hidden="true"><use href="#i-cap"/></svg>VKU · Lớp 23IC</li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Đà Nẵng, Việt Nam</li>
-          </ul>
         </div>
 
         <div class="hero-visual">
-          <div class="avatar-wrap">
-            <span class="avatar-orbit" aria-hidden="true"></span>
-            <span class="avatar-ring" aria-hidden="true"></span>
-            <!-- SỬA ẢNH ĐẠI DIỆN: thay file images/avatar.png (nên dùng ảnh vuông) -->
-            <img class="avatar"
-                 src="images/avatar.png"
-                 alt="Ảnh đại diện của Nguyễn Bá Thiện"
-                 width="500" height="500">
-            <span class="float-tag t1" aria-hidden="true">FPGA</span>
-            <span class="float-tag t2" aria-hidden="true">ESP32</span>
-            <span class="float-tag t3" aria-hidden="true">RISC-V</span>
-          </div>
+          <figure class="portrait">
+            <span class="portrait-frame">
+              <!-- SỬA ẢNH ĐẠI DIỆN: thay file images/avatar.png (nên dùng ảnh vuông) -->
+              <img src="images/avatar.png" alt="Ảnh đại diện của Nguyễn Bá Thiện" width="500" height="500">
+            </span>
+            <figcaption>
+              <span class="wordmark" aria-hidden="true">thiện<span class="wordmark-dot">.</span></span>
+              <span class="portrait-place"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>VKU · Đà Nẵng</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
 
@@ -3169,67 +3054,149 @@
     <section class="section" id="gioi-thieu" tabindex="-1" aria-labelledby="about-title">
       <div class="container">
         <header class="section-head reveal">
-          <p class="eyebrow">01 · Giới thiệu</p>
+          <p class="eyebrow"><span class="eyebrow-num">01</span>Giới thiệu</p>
           <h2 class="section-title" id="about-title">Một chút về mình</h2>
+          <p class="section-lead">Mình đang học gì, đã làm những gì và muốn đi tiếp theo hướng nào.</p>
         </header>
 
-        <div class="about-grid">
-          <div class="about-text reveal">
-            <!-- SỬA: đoạn giới thiệu bản thân (2–3 câu về đam mê, định hướng nghề nghiệp) -->
-            <p>
-              Mình là <strong>Nguyễn Bá Thiện</strong>, sinh viên lớp 23IC ngành Công nghệ Kỹ thuật máy tính
-              tại VKU, chuyên ngành <strong>Thiết kế vi mạch bán dẫn</strong>.
-            </p>
-            <p>
-              Mình đam mê hệ thống nhúng và phần cứng số — nơi những dòng code chạy trực tiếp trên vi điều khiển, FPGA
-              và tạo ra sản phẩm giải quyết vấn đề thật. Định hướng của mình là <strong>làm đúng chuyên ngành</strong>:
-              trở thành kỹ sư thiết kế vi mạch và hệ thống nhúng.
-            </p>
+        <div class="about-layout">
+          <div class="about-main">
+            <div class="about-text reveal">
+              <!-- SỬA: đoạn giới thiệu bản thân -->
+              <p>
+                Mình là <strong>Nguyễn Bá Thiện</strong>, sinh viên lớp 23IC ngành Công nghệ Kỹ thuật máy tính tại
+                Trường Đại học Công nghệ Thông tin và Truyền thông Việt – Hàn (VKU), Đại học Đà Nẵng, theo chuyên ngành
+                <strong>Thiết kế vi mạch bán dẫn</strong>.
+              </p>
+              <p>
+                Mình đam mê hệ thống nhúng và phần cứng số — nơi những dòng code chạy trực tiếp trên vi điều khiển, FPGA
+                và tạo ra sản phẩm giải quyết vấn đề thật. Định hướng của mình là <strong>làm đúng chuyên ngành</strong>:
+                trở thành kỹ sư thiết kế vi mạch và hệ thống nhúng.
+              </p>
+              <p>
+                Các đồ án mình đã tham gia trải dài theo đúng hướng đó. Ở mức mạch rời là đồng hồ số với chuỗi bộ đếm BCD,
+                đèn giao thông đếm lùi dùng IC 555 trên PCB tự làm, mạch cảm biến mức nước bằng IC logic. Ở mức vi điều khiển
+                là hệ thống thu thập dữ liệu môi trường với ESP32, bãi đỗ xe nhận diện thẻ RFID và hai mô hình Robocar.
+                Ở mức thiết kế số là CPU RISC-V RV32I pipeline 5 tầng viết bằng Verilog, và SoC có cầu nối TileLink ↔ UART
+                được tổng hợp, đặt – đi dây trên công nghệ SKY130 bằng OpenLane.
+              </p>
+              <p>
+                Khi đồ án cần, mình cũng viết phần mềm — ví dụ ứng dụng chat thời gian thực bằng Java/JavaFX truyền dữ liệu
+                qua TCP Socket. Ngoài giờ học, mình thích cờ vua, bóng đá, Toán học, và chơi Liên Quân, Free Fire.
+              </p>
+            </div>
 
-            <ul class="focus-list">
-              <li class="focus-item spotlight">
+            <h3 class="eyebrow eyebrow--rose about-sub reveal">Những hướng mình đang theo</h3>
+            <ol class="focus-list">
+              <li class="focus-item reveal tone-blue">
                 <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-chip"/></svg></span>
-                <h3>Thiết kế vi mạch số</h3>
-                <p>Thiết kế RTL bằng Verilog (CPU RISC-V, bus TileLink), mô phỏng và chạy luồng OpenLane trên SKY130.</p>
+                <div>
+                  <p class="focus-topic">IC &amp; Vi xử lý</p>
+                  <h4>Thiết kế vi mạch số</h4>
+                  <p>
+                    Thiết kế RTL bằng Verilog/SystemVerilog: CPU RISC-V RV32I pipeline 5 tầng có Forwarding Unit xử lý data hazard,
+                    và SoC gồm lõi RISC-V, bus TileLink-UL cùng ngoại vi UART giao tiếp qua MMIO. Mô phỏng và đọc waveform trên ModelSim,
+                    sau đó chạy luồng OpenLane trên SKY130 — tổng hợp, đặt – đi dây, phân tích timing, kiểm tra DRC/LVS — và kiểm chứng
+                    thêm trên FPGA Cyclone II.
+                  </p>
+                  <button class="focus-link" type="button" data-jump-filter="cpu">
+                    <span>Xem <span data-filter-count="cpu">2</span> dự án liên quan</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                  </button>
+                </div>
               </li>
-              <li class="focus-item spotlight">
+              <li class="focus-item reveal tone-rose">
                 <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-grid"/></svg></span>
-                <h3>AI trên phần cứng</h3>
-                <p>Lượng tử hóa mô hình INT8 và triển khai 1D-CNN trên FPGA.</p>
+                <div>
+                  <p class="focus-topic">FPGA/AI</p>
+                  <h4>AI trên phần cứng</h4>
+                  <p>
+                    Lượng tử hóa mô hình INT8 và triển khai 1D-CNN trên FPGA Gowin. Trong thiết bị đeo ngực phát hiện té ngã,
+                    cảm biến MPU6050 đo chuyển động của người đeo, MCU SONiX thu thập và điều phối dữ liệu, FPGA chạy mô hình
+                    nhận diện, còn ESP32 phụ trách kết nối không dây để gửi cảnh báo.
+                  </p>
+                  <button class="focus-link" type="button" data-jump-filter="fpga">
+                    <span>Xem <span data-filter-count="fpga">1</span> dự án liên quan</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                  </button>
+                </div>
               </li>
-              <li class="focus-item spotlight">
+              <li class="focus-item reveal tone-teal">
                 <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-board"/></svg></span>
-                <h3>Hệ thống nhúng</h3>
-                <p>Lập trình ESP32, Arduino và vi điều khiển, giao tiếp cảm biến và ngoại vi.</p>
+                <div>
+                  <p class="focus-topic">Nhúng</p>
+                  <h4>Hệ thống nhúng</h4>
+                  <p>
+                    Lập trình ESP32, Arduino và vi điều khiển; giao tiếp cảm biến và ngoại vi qua I2C, UART, PWM. Các đồ án gồm hệ thống
+                    thu thập dữ liệu môi trường (nhiệt độ, độ ẩm, áp suất, ánh sáng, thời gian thực, truyền qua Bluetooth), bãi đỗ xe
+                    nhận diện thẻ RFID, và hai mô hình Robocar: xe điều khiển không dây có tay gắp, xe tự hành dò line và tránh vật cản.
+                  </p>
+                  <button class="focus-link" type="button" data-jump-filter="embedded">
+                    <span>Xem <span data-filter-count="embedded">3</span> dự án liên quan</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                  </button>
+                </div>
               </li>
-            </ul>
+              <li class="focus-item reveal tone-amber">
+                <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-activity"/></svg></span>
+                <div>
+                  <p class="focus-topic">Điện tử</p>
+                  <h4>Điện tử số &amp; mạch rời</h4>
+                  <p>
+                    Thiết kế mạch chỉ bằng IC logic, không dùng vi điều khiển: tạo xung bằng IC 555, đếm bằng 7490 / 74LS192,
+                    giải mã ra LED 7 đoạn. Quy trình đi từ lý thuyết, mô phỏng trên Proteus, lắp thử trên breadboard đến tự làm PCB.
+                  </p>
+                  <button class="focus-link" type="button" data-jump-filter="electronics">
+                    <span>Xem <span data-filter-count="electronics">3</span> dự án liên quan</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                  </button>
+                </div>
+              </li>
+            </ol>
           </div>
 
-          <aside class="facts reveal" style="--d:1" aria-labelledby="facts-title">
-            <h3 class="facts-title" id="facts-title">
-              <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-user"/></svg></span>
-              Thông tin nhanh
-            </h3>
-            <dl>
-              <div class="fact"><dt>Trường</dt><dd>VKU – Đại học Đà Nẵng</dd></div>
-              <div class="fact"><dt>Ngành</dt><dd>Công nghệ Kỹ thuật máy tính</dd></div>
-              <div class="fact"><dt>Chuyên ngành</dt><dd>Thiết kế vi mạch bán dẫn</dd></div>
-              <div class="fact"><dt>Lớp</dt><dd>23IC</dd></div>
-              
-              <div class="fact">
-                <dt>Sở thích</dt>
-                <dd>
-                  <!-- SỬA: thay bằng sở thích thật của bạn -->
-                  <ul class="tags">
-                    <li class="tag">Cờ vua</li>
-                    <li class="tag">Liên Quân</li>
-                    <li class="tag">Free Fire</li>
-                    <li class="tag">Bóng đá</li>
-                    <li class="tag">Toán học</li>
-                  </ul>
-                </dd>
-              </div>
-            </dl>
+          <aside class="about-side reveal" style="--d:1" aria-label="Thông tin thêm">
+            <div class="side-block">
+              <h3>Thông tin nhanh</h3>
+              <dl class="side-facts">
+                <div><dt>Trường</dt><dd>VKU – Đại học Đà Nẵng</dd></div>
+                <div><dt>Ngành</dt><dd>Công nghệ Kỹ thuật máy tính</dd></div>
+                <div><dt>Chuyên ngành</dt><dd>Thiết kế vi mạch bán dẫn</dd></div>
+                <div><dt>Lớp</dt><dd>23IC</dd></div>
+                <div><dt>Nơi học</dt><dd>Đà Nẵng, Việt Nam</dd></div>
+              </dl>
+            </div>
+
+            <div class="side-block">
+              <h3>Công cụ đã dùng</h3>
+              <ul class="chip-list">
+                <li class="chip tone-blue">Verilog / SystemVerilog</li>
+                <li class="chip tone-blue">ModelSim</li>
+                <li class="chip tone-blue">OpenLane · SKY130</li>
+                <li class="chip tone-rose">Quartus II</li>
+                <li class="chip tone-teal">ESP32</li>
+                <li class="chip tone-teal">Arduino</li>
+                <li class="chip tone-amber">Proteus</li>
+                <li class="chip tone-violet">Java · JavaFX</li>
+              </ul>
+            </div>
+
+            <div class="side-block">
+              <h3>Sở thích</h3>
+              <!-- SỬA: thay bằng sở thích thật của bạn -->
+              <ul class="chip-list">
+                <li class="chip tone-blue">Cờ vua</li>
+                <li class="chip tone-teal">Liên Quân</li>
+                <li class="chip tone-rose">Free Fire</li>
+                <li class="chip tone-sky">Bóng đá</li>
+                <li class="chip tone-amber">Toán học</li>
+              </ul>
+            </div>
+
+            <div class="side-block">
+              <h3>Bắt đầu từ đây</h3>
+              <ul class="side-links">
+                <li><button class="side-link" type="button" data-open-project="fall"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Thiết bị đeo ngực phát hiện té ngã</button></li>
+                <li><button class="side-link" type="button" data-open-project="tilelink"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Cầu nối TileLink ↔ UART trong SoC RISC-V</button></li>
+                <li><button class="side-link" type="button" data-open-project="riscv"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>CPU RISC-V RV32I pipeline 5 tầng</button></li>
+              </ul>
+            </div>
           </aside>
         </div>
       </div>
@@ -3239,9 +3206,12 @@
     <section class="section section--alt" id="hoc-van" tabindex="-1" aria-labelledby="edu-title">
       <div class="container">
         <header class="section-head reveal">
-          <p class="eyebrow">02 · Học vấn</p>
+          <p class="eyebrow"><span class="eyebrow-num">02</span>Học vấn</p>
           <h2 class="section-title" id="edu-title">Học vấn &amp; thành tích</h2>
-          <p class="section-lead">Hành trình học tập của mình — mốc gần nhất ở trên cùng.</p>
+          <p class="section-lead">
+            Hành trình học tập của mình từ tiểu học đến đại học, kèm các giấy khen và kết quả trong từng giai đoạn —
+            mốc gần nhất ở trên cùng. Phần này được khóa bằng mã PIN.
+          </p>
         </header>
 
         <!-- HOC-VAN-LOCK:BEGIN (phần này do tools/khoa-hoc-van.mjs tạo, đừng sửa tay) -->
@@ -3267,9 +3237,13 @@
     <section class="section" id="du-an" tabindex="-1" aria-labelledby="projects-title">
       <div class="container">
         <header class="section-head reveal">
-          <p class="eyebrow">03 · Dự án</p>
-          <h2 class="section-title" id="projects-title">Dự án</h2>
-          <p class="section-lead">Các dự án và đồ án mình đã thực hiện, nhóm theo năm — mới nhất ở trên cùng.</p>
+          <p class="eyebrow"><span class="eyebrow-num">03</span>Dự án</p>
+          <h2 class="section-title" id="projects-title">Những thứ mình đã làm</h2>
+          <p class="section-lead">
+            <span data-project-total>10</span> dự án và đồ án qua các học phần, từ mạch điện tử rời đến thiết kế SoC —
+            nhóm theo năm, mới nhất ở trên cùng. Mỗi thẻ có một sơ đồ khối tóm tắt; bấm <strong>Xem chi tiết</strong>
+            để đọc mục tiêu, cách thực hiện, linh kiện, kết quả và hướng phát triển của từng dự án.
+          </p>
         </header>
 
         <!-- Bộ lọc: các nút được tạo tự động từ PROJECT_FILTERS trong phần JS -->
@@ -3281,7 +3255,7 @@
         <div class="projects-grid" id="projects-grid">
 
           <!-- Dự án 1 (nổi bật) — data-category: nhóm lọc, cách nhau bằng dấu cách -->
-          <article class="project project--featured reveal spotlight" data-category="fpga" data-year="2026">
+          <article class="project project--featured reveal spotlight" data-project-id="fall" data-category="fpga" data-year="2026">
             <div class="project-cover" aria-hidden="true">
               <span class="cover-caption">// luồng xử lý</span>
               <!-- SỬA: kiểm tra lại vai trò của từng khối cho đúng thiết kế -->
@@ -3308,11 +3282,14 @@
               </div>
             </div>
             <div class="project-body">
+              <p class="project-meta"><span class="project-cat tone-rose">FPGA/AI</span><span class="meta-sep" aria-hidden="true">·</span><span>Cuộc thi MCU &amp; FPGA mở rộng miền Trung</span><span class="meta-sep" aria-hidden="true">·</span><span>2026</span></p>
               <h3 class="project-title" id="p1-title">Thiết bị đeo ngực phát hiện té ngã</h3>
               <p class="project-desc">
-                Mô hình 1D-CNN lượng tử hóa INT8 chạy trên FPGA Gowin, kết hợp MCU SONiX và ESP32.
-                Đề tài của đội VKU-NewBie tại cuộc thi MCU &amp; FPGA mở rộng miền Trung 2026.
+                Thiết bị nhỏ gọn đeo trước ngực, phát hiện té ngã và gửi cảnh báo kịp thời cho người thân — hướng tới
+                người cao tuổi và người cần được chăm sóc. Mô hình 1D-CNN lượng tử hóa INT8 chạy trên FPGA Gowin,
+                kết hợp cảm biến MPU6050, MCU SONiX và ESP32.
               </p>
+              <p class="project-advisor">Đề tài của đội VKU-NewBie tại cuộc thi MCU &amp; FPGA mở rộng miền Trung 2026.</p>
               <ul class="tech" aria-label="Công nghệ sử dụng">
                 <li>MPU6050</li><li>FPGA Gowin</li><li>1D-CNN</li><li>INT8</li><li>MCU SONiX</li><li>ESP32</li>
               </ul>
@@ -3358,56 +3335,96 @@
 
     <!-- ===================== LIÊN HỆ ===================== -->
     <section class="section section--alt" id="lien-he" tabindex="-1" aria-labelledby="contact-title">
-      <div class="container">
-        <div class="contact-card reveal">
-          <div class="contact-intro">
-            <p class="eyebrow">04 · Liên hệ</p>
-            <h2 class="section-title" id="contact-title">Cùng kết nối nhé!</h2>
-            <!-- SỬA: lời nhắn ở phần liên hệ -->
-            <p>
-              Mình luôn sẵn lòng trao đổi về thiết kế vi mạch, FPGA, hệ thống nhúng hay các cơ hội học hỏi và hợp tác.
-              Đừng ngại gửi email cho mình nhé!
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn--primary" href="mailto:thiennb.23ce@vku.udn.vn" data-magnetic>
-                <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
-                Gửi email cho mình
-              </a>
-            </div>
+      <div class="container contact-layout">
+        <div class="contact-intro reveal">
+          <p class="eyebrow eyebrow--rose"><span class="eyebrow-num">04</span>Liên hệ</p>
+          <h2 class="section-title" id="contact-title">Cùng kết nối nhé!</h2>
+          <!-- SỬA: lời nhắn ở phần liên hệ -->
+          <p>
+            Mình luôn sẵn lòng trao đổi về thiết kế vi mạch, FPGA, hệ thống nhúng hay các cơ hội học hỏi và hợp tác.
+            Đừng ngại gửi email cho mình nhé!
+          </p>
+          <p>
+            Nếu bạn muốn hỏi về một dự án cụ thể — sơ đồ khối, cách mô phỏng hay kết quả tổng hợp — hãy ghi tên dự án
+            trong tiêu đề email để mình trả lời đúng chỗ.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn--primary" href="mailto:thiennb.23ce@vku.udn.vn" data-magnetic>
+              <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+              Gửi email cho mình
+            </a>
+            <a class="text-link" href="https://github.com/NGUYENBATHIEN12A1" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>Xem GitHub<svg class="icon icon-ext" aria-hidden="true"><use href="#i-external"/></svg><span class="sr-only"> (mở tab mới)</span>
+            </a>
           </div>
-
-          <ul class="contact-list">
-            <li class="contact-item">
-              <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-mail"/></svg></span>
-              <span class="contact-text">
-                <span class="contact-label">Email</span>
-                <a class="contact-value" href="mailto:thiennb.23ce@vku.udn.vn">thiennb.23ce@<wbr>vku.udn.vn</a>
-              </span>
-              <button class="icon-btn" type="button" data-copy="thiennb.23ce@vku.udn.vn" data-copy-msg="Đã sao chép email!" aria-label="Sao chép địa chỉ email" title="Sao chép email">
-                <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>
-              </button>
-            </li>
-            <li class="contact-item">
-              <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-github"/></svg></span>
-              <span class="contact-text">
-                <span class="contact-label">GitHub</span>
-                <a class="contact-value" href="https://github.com/NGUYENBATHIEN12A1" target="_blank" rel="noopener noreferrer">
-                  github.com/<wbr>NGUYENBATHIEN12A1<span class="sr-only"> (mở tab mới)</span>
-                </a>
-              </span>
-            </li>
-            <li class="contact-item">
-              <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-pin"/></svg></span>
-              <span class="contact-text">
-                <span class="contact-label">Nơi học tập</span>
-                <span class="contact-value">VKU · Đà Nẵng, Việt Nam</span>
-              </span>
-            </li>
-          </ul>
         </div>
+
+        <ul class="contact-list reveal" style="--d:1">
+          <li class="contact-item">
+            <span class="icon-tile" aria-hidden="true"><svg class="icon"><use href="#i-mail"/></svg></span>
+            <span class="contact-text">
+              <span class="contact-label">Email</span>
+              <a class="contact-value" href="mailto:thiennb.23ce@vku.udn.vn">thiennb.23ce@<wbr>vku.udn.vn</a>
+            </span>
+            <button class="icon-btn" type="button" data-copy="thiennb.23ce@vku.udn.vn" data-copy-msg="Đã sao chép email!" aria-label="Sao chép địa chỉ email" title="Sao chép email">
+              <svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>
+            </button>
+          </li>
+          <li class="contact-item">
+            <span class="icon-tile tone-slate" aria-hidden="true"><svg class="icon"><use href="#i-github"/></svg></span>
+            <span class="contact-text">
+              <span class="contact-label">GitHub</span>
+              <a class="contact-value" href="https://github.com/NGUYENBATHIEN12A1" target="_blank" rel="noopener noreferrer">
+                github.com/<wbr>NGUYENBATHIEN12A1<span class="sr-only"> (mở tab mới)</span>
+              </a>
+            </span>
+          </li>
+          <li class="contact-item">
+            <span class="icon-tile tone-rose" aria-hidden="true"><svg class="icon"><use href="#i-pin"/></svg></span>
+            <span class="contact-text">
+              <span class="contact-label">Nơi học tập</span>
+              <span class="contact-value">VKU · Đà Nẵng, Việt Nam</span>
+            </span>
+          </li>
+        </ul>
       </div>
     </section>
   </main>
+
+  <!-- ===================== CHÂN TRANG ===================== -->
+  <footer class="site-footer">
+    <div class="footer-waves" aria-hidden="true">
+      <span class="wave wave--f1"></span>
+      <span class="wave wave--f2"></span>
+    </div>
+    <div class="container footer-main">
+      <a class="brand" href="#trang-chu" aria-label="Về đầu trang">
+        <span class="wordmark" aria-hidden="true">thiện<span class="wordmark-dot">.</span></span>
+      </a>
+      <nav aria-label="Liên kết chân trang">
+        <ul class="footer-nav">
+          <li><a href="#gioi-thieu">Giới thiệu</a></li>
+          <li><a href="#hoc-van">Học vấn</a></li>
+          <li><a href="#du-an">Dự án</a></li>
+          <li><a href="#lien-he">Liên hệ</a></li>
+        </ul>
+      </nav>
+      <div class="footer-icons">
+        <a class="icon-btn" href="https://github.com/NGUYENBATHIEN12A1" target="_blank" rel="noopener noreferrer" aria-label="GitHub (mở tab mới)" title="GitHub">
+          <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+        </a>
+        <a class="icon-btn" href="mailto:thiennb.23ce@vku.udn.vn" aria-label="Gửi email" title="Gửi email">
+          <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p><span>© 2026 Nguyễn Bá Thiện.</span><span>Người theo đuổi ước mơ.</span></p>
+      <a class="icon-btn" href="#trang-chu" aria-label="Lên đầu trang" title="Lên đầu trang">
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+      </a>
+    </div>
+  </footer>
 
   <!-- Hộp thoại chi tiết dự án (nội dung được điền tự động) -->
   <dialog class="modal" id="project-dialog" aria-labelledby="dialog-title" aria-modal="true">
@@ -3552,19 +3569,8 @@
       }, { passive: true });
       onScroll();
 
-      /* ---------- Hero: các dòng chữ hiện lần lượt + chữ tự gõ ---------- */
-      var typed = document.querySelector('.hero-hello .typed');
-      function typeHello() {
-        if (!typed || reduceMotion) return;
-        var chars = Array.from(typed.textContent);
-        var i = 0;
-        (function step() {
-          typed.textContent = chars.slice(0, i).join('');
-          if (i++ < chars.length) setTimeout(step, i === 1 ? 450 : 55);
-        })();
-      }
+      /* ---------- Hero: các dòng chữ hiện lần lượt ---------- */
       if (!reduceMotion) document.getElementById('trang-chu').classList.add('is-entered');
-      typeHello();
 
       /* ---------- Timeline học vấn: đường dọc tự vẽ khi cuộn tới ---------- */
       var timelines = Array.prototype.slice.call(document.querySelectorAll('.timeline'));
@@ -3675,13 +3681,17 @@
          ========================================================= */
 
       var PROJECT_FILTERS = [
-        { id: 'all',         label: 'Tất cả' },
-        { id: 'fpga',        label: 'FPGA/AI' },
-        { id: 'cpu',         label: 'IC & Vi xử lý' },
-        { id: 'embedded',    label: 'Nhúng' },
-        { id: 'electronics', label: 'Điện tử' },
-        { id: 'software',    label: 'Phần mềm & Mạng' }
+        { id: 'all',         label: 'Tất cả',          tone: 'tone-slate' },
+        { id: 'fpga',        label: 'FPGA/AI',         tone: 'tone-rose' },
+        { id: 'cpu',         label: 'IC & Vi xử lý',   tone: 'tone-blue' },
+        { id: 'embedded',    label: 'Nhúng',           tone: 'tone-teal' },
+        { id: 'electronics', label: 'Điện tử',         tone: 'tone-amber' },
+        { id: 'software',    label: 'Phần mềm & Mạng', tone: 'tone-violet' }
       ];
+      function filterById(id) {
+        for (var i = 0; i < PROJECT_FILTERS.length; i++) if (PROJECT_FILTERS[i].id === id) return PROJECT_FILTERS[i];
+        return null;
+      }
 
       // Số dự án hiển thị mặc định (1 card nổi bật + 1 card rộng + 3 card trên 1 hàng = 5)
       var PROJECT_LIMIT = 5;
@@ -4175,26 +4185,24 @@
         if (p.flow) cover.appendChild(renderFlow(p.flow));
 
         var body = el('div', 'project-body');
-        var badges = el('div', 'project-badges');
 
-        if (p.badge) {
-          var newBadge = el('span', 'badge badge--new');
-          newBadge.appendChild(svgIcon('i-star'));
-          newBadge.appendChild(document.createTextNode(p.badge));
-          badges.appendChild(newBadge);
-        }
-
-        var honorBadge = el('span', 'badge badge--honor');
-        honorBadge.appendChild(svgIcon('i-book'));
-        honorBadge.appendChild(document.createTextNode(p.kind + ' · ' + p.time));
-        badges.appendChild(honorBadge);
-        body.appendChild(badges);
+        // Dòng phụ: chủ đề (màu) · loại đồ án · thời gian (+ nhãn "Mới nhất" nếu có)
+        var meta = el('p', 'project-meta');
+        var sep = function () { var d = el('span', 'meta-sep', '·'); d.setAttribute('aria-hidden', 'true'); return d; };
+        var cat = filterById(p.category[0]);
+        if (cat) { meta.appendChild(el('span', 'project-cat ' + (cat.tone || ''), cat.label)); meta.appendChild(sep()); }
+        meta.appendChild(el('span', null, p.kind));
+        meta.appendChild(sep());
+        meta.appendChild(el('span', null, p.time));
+        if (p.badge) meta.appendChild(el('span', 'project-status', p.badge));
+        body.appendChild(meta);
 
         var titleId = 'p-' + p.id + '-title';
         var title = el('h3', 'project-title', p.title);
         title.id = titleId;
         body.appendChild(title);
         body.appendChild(el('p', 'project-desc', p.desc));
+        if (p.advisor) body.appendChild(el('p', 'project-advisor', 'GVHD: ' + p.advisor));
         body.appendChild(renderTech(p.tags));
 
         var foot = el('div', 'project-foot');
@@ -4427,7 +4435,7 @@
 
       PROJECT_FILTERS.forEach(function (f, i) {
         var count = projectCards.filter(function (c) { return inFilter(c, f.id); }).length;
-        var chip = el('button', 'filter-chip', f.label);
+        var chip = el('button', 'filter-chip ' + (f.tone || ''), f.label);
         chip.type = 'button';
         chip.dataset.filter = f.id;
         chip.setAttribute('aria-pressed', String(i === 0));
@@ -4503,6 +4511,25 @@
 
       // Khởi tạo trạng thái ban đầu (hiện 5 dự án đầu + nút Xem thêm)
       updateProjectsView(false);
+
+      // Mục Giới thiệu: điền số dự án theo lĩnh vực; bấm "Xem … dự án liên quan" để lọc sẵn rồi cuộn tới mục Dự án
+      Array.prototype.forEach.call(document.querySelectorAll('[data-filter-count]'), function (n) {
+        var id = n.getAttribute('data-filter-count');
+        n.textContent = projectCards.filter(function (c) { return inFilter(c, id); }).length;
+      });
+      Array.prototype.forEach.call(document.querySelectorAll('[data-project-total]'), function (n) {
+        n.textContent = projectCards.length;
+      });
+      document.addEventListener('click', function (e) {
+        var jump = e.target.closest ? e.target.closest('[data-jump-filter]') : null;
+        if (!jump) return;
+        activeFilter = jump.getAttribute('data-jump-filter');
+        isExpanded = false;
+        updateProjectsView(true);
+        setActive('du-an');
+        spyLockUntil = Date.now() + 900;
+        document.getElementById('du-an').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      });
 
       /* ---------- Hiệu ứng hiện dần khi cuộn ---------- */
       var revealEls = document.querySelectorAll('.reveal');
@@ -4607,6 +4634,12 @@
       document.addEventListener('click', function (e) {
         var btn = e.target.closest('[data-open-detail]');
         if (btn) openProject(btn.closest('.project'), btn);
+      });
+      // Liên kết "Bắt đầu từ đây" ở mục Giới thiệu: mở thẳng chi tiết một dự án
+      document.addEventListener('click', function (e) {
+        var link = e.target.closest ? e.target.closest('[data-open-project]') : null;
+        if (!link) return;
+        openProject(projectsGrid.querySelector('.project[data-project-id="' + link.getAttribute('data-open-project') + '"]'), link);
       });
       dialog.querySelector('[data-close-dialog]').addEventListener('click', function () { dialog.close(); });
       dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
