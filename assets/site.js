@@ -1296,7 +1296,9 @@
       dragon: { speed: [45, 65],   run: [3000, 6000], attack: 1200, jump: 950, roam: 0.35, dust: 0,
                 cries: ['Grào!!', 'Phun lửa!', 'Khè khè~', 'Rồng tới!'] },
       bowler: { speed: [45, 60],   run: [3000, 6000], attack: 900, jump: 950,  roam: 0.25, dust: 380,
-                cries: ['Bowling!!', 'Lăn nè!', 'Hự!', 'Strike!'] }
+                cries: ['Bowling!!', 'Lăn nè!', 'Hự!', 'Strike!'] },
+      druid:  { speed: [26, 38],   run: [2500, 5000], attack: 1000, jump: 1000, roam: 0.2, dust: 420,
+                cries: ['Hồi máu nè!', 'Cố lên nào!', 'Thiên nhiên chữa lành~', 'Druid đây!'] }
     };
     // Quân bay: độ cao [máy tính, điện thoại] và biên độ lượn; ở mục đầu trang bay thấp hơn cho khỏi che chữ
     var FLY = { minion: { base: [48, 34], amp: 12, period: 620 }, balloon: { base: [52, 30], amp: 7, period: 1400 },
@@ -1335,7 +1337,8 @@
                : el.classList.contains('barb--wb') ? 'wb'
                : el.classList.contains('barb--balloon') ? 'balloon'
                : el.classList.contains('barb--dragon') ? 'dragon'
-               : el.classList.contains('barb--bowler') ? 'bowler' : 'barb';
+               : el.classList.contains('barb--bowler') ? 'bowler'
+               : el.classList.contains('barb--druid') ? 'druid' : 'barb';
       return { el: el, bubble: el.querySelector('.barb-bubble'), kind: kind, k: KIND[kind],
                lane: heroLane, dir: i % 2 ? -1 : 1,
                base: Number(el.getAttribute('data-face')) || 1,   // hướng nhìn của ảnh gốc
@@ -1393,6 +1396,7 @@
         if (u.kind === 'balloon') setTimeout(function () { if (u.mode === 'attack') dropBomb(u); }, 300);
         if (u.kind === 'dragon') setTimeout(function () { if (u.mode === 'attack') breathFire(u); }, 380);   // lúc chúi đầu xuống
         if (u.kind === 'bowler') setTimeout(function () { if (u.mode === 'attack') throwBoulder(u); }, 450); // lúc vung tay tới
+        if (u.kind === 'druid') setTimeout(function () { if (u.mode === 'attack') druidHeal(u); }, 450);    // lúc giơ gậy cao nhất
         if (u.kind === 'wb') {                                 // Wall Breaker: đếm ngược 3-2-1 rồi nổ
           say(u, '3');
           setTimeout(function () { if (u.mode === 'attack') say(u, '2'); }, 430);
@@ -1410,6 +1414,12 @@
     function nextMode(u, now) {
       if (u.mode === 'gone') { respawnWB(u, now); return; }
       var r = Math.random();
+      if (u.mode === 'run' && u.kind === 'druid') {          // Druid ưu tiên hồi máu cho đồng đội
+        if (r < 0.6) { setMode(u, 'attack', now); if (Math.random() < 0.35) say(u, pick(u.k.cries)); }
+        else if (r < 0.85) setMode(u, 'idle', now);
+        else { u.dir *= -1; face(u); setMode(u, 'run', now); }
+        return;
+      }
       if (u.mode === 'run') {
         if (r < 0.4) setMode(u, 'idle', now);
         else if (r < 0.75) { setMode(u, 'attack', now); if (Math.random() < 0.35) say(u, pick(u.k.cries)); }
@@ -1890,6 +1900,50 @@
         else { ball.remove(); explode(lane, x, u); }
       })(t0);
     }
+    // ----- Druid: tia hồi máu từ quả cầu trên gậy tới đồng đội gần nhất; bấm vào Druid thì hồi máu cả vùng -----
+    function healFx(t) {
+      var lane = t.lane;
+      if (!lane._vis) return;
+      var cx = t.x + t.w / 2, base = t.alt || 0;
+      spawn(lane, 'heal-ring', cx, base);
+      for (var k = 0; k < 5; k++) {
+        var p = spawn(lane, 'heal-plus', cx + rand(-t.w * 0.35, t.w * 0.35), base + t.h * rand(0.25, 0.7));
+        p.style.animationDelay = (k * 0.08).toFixed(2) + 's';
+      }
+      t.el.classList.remove('is-healed');
+      void t.el.offsetWidth;
+      t.el.classList.add('is-healed');                       // sáng viền xanh lá một lúc
+      clearTimeout(t.healTimer);
+      t.healTimer = setTimeout(function () { t.el.classList.remove('is-healed'); }, 1100);
+    }
+    function druidHeal(u) {
+      var lane = u.lane, dir = u.dir;
+      var ox = u.x + u.w * (dir > 0 ? 0.15 : 0.85), oy = u.h * 0.8;   // vị trí quả cầu trên gậy
+      var alive = function (o) { return o.lane === lane && !o.dead && o.mode !== 'gone' && o.w; };
+      if (u.areaHeal) {                                      // bấm vào Druid: hồi máu mọi quân quanh mình
+        u.areaHeal = false;
+        if (lane._vis) spawn(lane, 'heal-aura', u.x + u.w / 2, 0);
+        units.forEach(function (o) {
+          if (alive(o) && Math.abs((o.x + o.w / 2) - (u.x + u.w / 2)) < 240) healFx(o);
+        });
+        return;
+      }
+      var best = null, bestD = 1e9;
+      units.forEach(function (o) {
+        if (o === u || !alive(o)) return;
+        var d = Math.abs((o.x + o.w / 2) - ox);
+        if (d < bestD) { bestD = d; best = o; }
+      });
+      var t = best && bestD < 420 ? best : u;                // không có ai ở gần thì tự hồi cho mình
+      if (lane._vis && t !== u) {
+        var tx = t.x + t.w / 2, ty = (t.alt || 0) + t.h * 0.5;
+        var dx = tx - ox, dy = ty - oy;
+        var beam = spawn(lane, 'heal-beam', ox, oy);
+        beam.style.width = Math.sqrt(dx * dx + dy * dy).toFixed(0) + 'px';
+        beam.style.rotate = (Math.atan2(-dy, dx) * 180 / Math.PI).toFixed(1) + 'deg';
+      }
+      setTimeout(function () { healFx(t); }, t === u ? 0 : 180);
+    }
     function explode(lane, x, caster) {
       spawn(lane, 'fire-burst', x, 10);
       quake(lane, 'sm');
@@ -1988,6 +2042,13 @@
           setMode(u, 'jump', now);
           setTimeout(function () { spit(u); }, 420);
           say(u, pick(u.k.cries));
+          return;
+        }
+        if (u.kind === 'druid') {                          // hồi máu cả vùng ngay
+          if (u.mode === 'attack') return;
+          u.areaHeal = true;
+          setMode(u, 'attack', now);
+          say(u, 'Hồi phục toàn đội!');
           return;
         }
         if (u.kind === 'wizard' || u.kind === 'pekka') {   // Wizard bắn cầu lửa / P.E.K.K.A chém ngay

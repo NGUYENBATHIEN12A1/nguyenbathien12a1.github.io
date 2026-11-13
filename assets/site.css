@@ -3107,6 +3107,105 @@ main.shake-lg { animation: screen-shake-lg 0.65s linear; }
   transition: opacity 0.3s;
 }
 
+/* ----- Druid: chống gậy đi chậm, quả cầu vàng trên gậy phát sáng, bắn tia hồi máu cho đồng đội ----- */
+.barb--druid { width: calc(92px * var(--s, 1)); }
+.barb--druid::after { left: 26%; right: 12%; height: 9px; bottom: -4px; }   /* bóng lệch phải vì gậy ở bên trái */
+.barb--druid.is-run .barb-sprite    { animation: druid-walk 0.9s infinite; }
+.barb--druid.is-run::after          { animation: giant-shadow 0.45s infinite; }
+.barb--druid.is-idle .barb-sprite   { animation-duration: 2.2s; }
+.barb--druid.is-attack .barb-sprite { animation: druid-cast 1s var(--ease) both; }
+.barb--druid .barb-slash {             /* quầng sáng của quả cầu, nhịp nhẹ liên tục */
+  left: -2%; top: 3%;
+  width: 34%;
+  border: 0;
+  background: radial-gradient(circle, rgb(255 251 200 / 0.95) 0 12%, rgb(250 204 21 / 0.6) 34%, rgb(234 179 8 / 0.22) 55%, transparent 72%);
+  filter: blur(2px);
+  mix-blend-mode: screen;
+  opacity: 0.45;
+  animation: druid-orb 1.8s ease-in-out infinite alternate;
+}
+.barb--druid.is-attack .barb-slash { animation: druid-orb-flash 1s ease-out both; }
+@keyframes druid-walk {               /* bước nặng nề, lắc người theo nhịp gậy */
+  0%, 100% { translate: 0 0;    rotate: -2deg; scale: 1.02 0.98; }
+  25%      { translate: 0 -4px; rotate: 0deg;  scale: 0.99 1.01; }
+  50%      { translate: 0 0;    rotate: 2deg;  scale: 1.02 0.98; }
+  75%      { translate: 0 -4px; rotate: 0deg;  scale: 0.99 1.01; }
+}
+@keyframes druid-cast {               /* giơ gậy lên → chống xuống, quả cầu bừng sáng */
+  0%   { translate: 0 0;      rotate: 0deg;  scale: 1 1; }
+  35%  { translate: -3px -9px; rotate: -6deg; scale: 0.98 1.04; }
+  55%  { translate: 2px -2px; rotate: 3deg;  scale: 1.04 0.97; }
+  100% { translate: 0 0;      rotate: 0deg;  scale: 1 1; }
+}
+@keyframes druid-orb { from { opacity: 0.3; scale: 0.9; } to { opacity: 0.65; scale: 1.1; } }
+@keyframes druid-orb-flash {
+  0%   { opacity: 0.45; scale: 1; }
+  40%  { opacity: 1;    scale: 1.9; }
+  100% { opacity: 0.45; scale: 1; }
+}
+/* Quân được hồi máu: viền sáng xanh lá */
+.barb.is-healed .barb-sprite img { filter: drop-shadow(0 0 7px rgb(74 222 128 / 0.95)) drop-shadow(0 6px 8px rgb(0 0 0 / 0.2)); }
+/* Tia hồi máu (JS đặt độ dài + góc xoay), vòng sáng dưới chân, dấu + bay lên, hào quang khi hồi cả vùng */
+.heal-beam {
+  position: absolute;
+  height: 6px;
+  margin-bottom: -3px;
+  border-radius: 6px;
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, rgb(253 224 71 / 0.95), rgb(134 239 172 / 0.9) 60%, rgb(74 222 128 / 0.25));
+  box-shadow: 0 0 10px rgb(250 204 21 / 0.8), 0 0 18px rgb(74 222 128 / 0.6);
+  pointer-events: none;
+  animation: heal-beam 0.55s ease-out forwards;
+}
+@keyframes heal-beam {
+  0%   { opacity: 0; scale: 0 1; }
+  30%  { opacity: 1; scale: 1 1; }
+  100% { opacity: 0; scale: 1 0.3; }
+}
+.heal-ring {
+  position: absolute;
+  width: 56px; height: 14px;
+  margin: 0 0 -5px -28px;
+  border-radius: 50%;
+  border: 2px solid #4ade80;
+  background: radial-gradient(ellipse, rgb(134 239 172 / 0.45), transparent 70%);
+  box-shadow: 0 0 12px #22c55e;
+  pointer-events: none;
+  animation: summon-ring 0.9s ease-out forwards;
+}
+.heal-plus {
+  position: absolute;
+  width: 12px; height: 12px;
+  margin-left: -6px;
+  color: #16a34a;
+  font: 800 15px/12px var(--font);
+  text-shadow: 0 0 6px rgb(74 222 128 / 0.9);
+  pointer-events: none;
+  animation: heal-plus 0.9s ease-out both;
+}
+.heal-plus::before { content: "+"; }
+@keyframes heal-plus {
+  0%   { opacity: 0; translate: 0 4px;   scale: 0.6; }
+  25%  { opacity: 1;                     scale: 1.15; }
+  100% { opacity: 0; translate: 0 -34px; scale: 0.9; }
+}
+.heal-aura {
+  position: absolute;
+  width: 120px; height: 30px;
+  margin: 0 0 -10px -60px;
+  border-radius: 50%;
+  border: 3px solid #facc15;
+  background: radial-gradient(ellipse, rgb(253 224 71 / 0.35), rgb(74 222 128 / 0.15) 55%, transparent 72%);
+  box-shadow: 0 0 18px #facc15, inset 0 0 14px #4ade80;
+  pointer-events: none;
+  animation: heal-aura 1.1s ease-out forwards;
+}
+@keyframes heal-aura {
+  0%   { scale: 0.2;     opacity: 0; }
+  25%  { scale: 1;       opacity: 1; }
+  100% { scale: 3.2 2.4; opacity: 0; }
+}
+
 /* ----- Đường chạy ở đáy các mục khác (JS tạo) ----- */
 .section.has-lane {
   position: relative;
@@ -3138,6 +3237,7 @@ main.shake-lg { animation: screen-shake-lg 0.65s linear; }
   .barb--balloon { width: calc(44px * var(--s, 1)); }
   .barb--dragon { width: calc(64px * var(--s, 1)); }
   .barb--bowler { width: calc(62px * var(--s, 1)); }
+  .barb--druid { width: calc(70px * var(--s, 1)); }
   .section.has-lane { padding-bottom: calc(clamp(3.5rem, 7vw, 5.5rem) + 76px); }
   .barb-lane.barb-lane--section { height: 200px; }
 }
