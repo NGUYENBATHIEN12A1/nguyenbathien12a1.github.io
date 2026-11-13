@@ -193,10 +193,40 @@
     return null;
   }
 
-  // Số dự án hiển thị mặc định (1 card nổi bật + 1 card rộng + 3 card trên 1 hàng = 5)
-  var PROJECT_LIMIT = 5;
+  // Số dự án hiển thị mặc định (2026: 1 card rộng + 1 card nổi bật + 1 card rộng; 2025: 3 card trên 1 hàng = 6)
+  var PROJECT_LIMIT = 6;
 
   var projects = [
+    {
+      id: 'doorbell',
+      date: '2026', time: '2026',
+      kind: 'Đồ án cơ sở 1',
+      category: ['electronics'],
+      pinned: true,   // đặt lên đầu nhóm năm mới nhất (trước cả dự án nổi bật)
+      wide: true,
+      title: 'Mạch báo chuông cửa dùng LDR',
+      desc: 'Mạch cảm biến ánh sáng dùng LDR và IC LM358 để phát hiện khi cửa được mở (ánh sáng thay đổi), kích LED và còi buzzer báo chuông.',
+      tags: ['LDR', 'LM358', 'LED', 'Buzzer', 'Điện trở'],
+      flow: { caption: '// cảm biến → so sánh → cảnh báo → còi', cols: [['LDR'], ['LM358'], ['LED'], ['Buzzer']], main: 1 },
+      overview: 'Đồ án cơ sở 1 tại VKU, năm 2026: mạch báo chuông cửa dựa trên sự thay đổi ánh sáng khi cửa được mở.',
+      goal: 'Thiết kế mạch báo chuông cửa dùng cảm biến ánh sáng LDR và IC LM358: khi cửa được mở làm ánh sáng thay đổi, mạch bật LED và còi buzzer để báo.',
+      blocks: [
+        'Cảm biến LDR: cùng điện trở tạo cầu phân áp, điện áp ra thay đổi theo cường độ ánh sáng.',
+        'So sánh LM358: so điện áp từ cầu phân áp LDR với mức ngưỡng đặt sẵn.',
+        'Cảnh báo LED: sáng khi ngõ ra LM358 đổi trạng thái.',
+        'Còi buzzer: kêu cùng lúc với LED để báo chuông.'
+      ],
+      content: [
+        'LDR cùng điện trở tạo cầu phân áp, đưa điện áp thay đổi theo ánh sáng vào một ngõ vào của LM358.',
+        'Ngõ vào còn lại của LM358 được đặt mức ngưỡng bằng một cầu phân áp cố định.',
+        'LM358 làm bộ so sánh: khi ánh sáng thay đổi vượt ngưỡng (cửa được mở), ngõ ra LM358 đổi trạng thái.',
+        'Ngõ ra LM358 kích LED sáng và còi buzzer kêu để báo chuông.'
+      ],
+      tech: ['Quang trở LDR', 'IC LM358 (dùng làm bộ so sánh)', 'LED', 'Còi buzzer', 'Điện trở (cầu phân áp)'],
+      // SỬA: điền kết quả, hạn chế, hướng phát triển thực tế (để null thì trang chi tiết hiện "Đang cập nhật")
+      results: null, limits: null, future: null,
+      images: []
+    },
     {
       id: 'tilelink',
       date: '2026-05', time: '05/2026',
@@ -898,7 +928,10 @@
     desc: 'Thiết bị nhỏ gọn đeo trước ngực, phát hiện té ngã và gửi cảnh báo kịp thời cho người thân. Mô hình 1D-CNN lượng tử hóa INT8 chạy trên FPGA Gowin, kết hợp cảm biến MPU6050, MCU SONiX và ESP32.'
   }];
   var RECENT_LIMIT = 4;   // SỬA: số dự án hiện ở mục "Dự án gần đây" của Trang chủ
-  var catalog = FEATURED.concat(projects.slice().sort(function (a, b) { return b.date.localeCompare(a.date); }));
+  // Dự án có pinned: true đứng đầu (trước cả dự án nổi bật), còn lại xếp mới → cũ
+  var sortedProjects = projects.slice().sort(function (a, b) { return b.date.localeCompare(a.date); });
+  var catalog = sortedProjects.filter(function (p) { return p.pinned; })
+    .concat(FEATURED, sortedProjects.filter(function (p) { return !p.pinned; }));
   function countIn(id) {
     return catalog.filter(function (p) { return id === 'all' || p.category.indexOf(id) !== -1; }).length;
   }
@@ -939,12 +972,13 @@
   var projectsById = {};
   (function () {
   if (!projectsGrid) return;
-  projects.slice()
-    .sort(function (a, b) { return b.date.localeCompare(a.date); })
-    .forEach(function (p, i) {
-      projectsById[p.id] = p;
-      projectsGrid.appendChild(renderCard(p, i));
-    });
+  var firstStaticCard = projectsGrid.firstElementChild;   // dự án nổi bật viết bằng HTML
+  sortedProjects.forEach(function (p, i) {
+    projectsById[p.id] = p;
+    var card = renderCard(p, i);
+    if (p.pinned && firstStaticCard) projectsGrid.insertBefore(card, firstStaticCard);   // pinned: lên đầu nhóm năm
+    else projectsGrid.appendChild(card);
+  });
 
   // Nhóm theo năm: chèn dải tiêu đề năm trước thẻ đầu tiên của mỗi năm
   var yearDividers = [];
