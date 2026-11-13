@@ -193,22 +193,20 @@
     return null;
   }
 
-  // Số dự án hiển thị mặc định (2026: 1 card rộng + 1 card nổi bật + 1 card rộng; 2025: 3 card trên 1 hàng = 6)
-  var PROJECT_LIMIT = 6;
+  // Số dự án hiển thị mặc định (1 card nổi bật + 1 card rộng + 3 card trên 1 hàng = 5)
+  var PROJECT_LIMIT = 5;
 
   var projects = [
     {
       id: 'doorbell',
-      date: '2026', time: '2026',
+      date: '2024', time: '2024',
       kind: 'Đồ án cơ sở 1',
       category: ['electronics'],
-      pinned: true,   // đặt lên đầu nhóm năm mới nhất (trước cả dự án nổi bật)
-      wide: true,
       title: 'Mạch báo chuông cửa dùng LDR',
       desc: 'Mạch cảm biến ánh sáng dùng LDR và IC LM358 để phát hiện khi cửa được mở (ánh sáng thay đổi), kích LED và còi buzzer báo chuông.',
       tags: ['LDR', 'LM358', 'LED', 'Buzzer', 'Điện trở'],
       flow: { caption: '// cảm biến → so sánh → cảnh báo → còi', cols: [['LDR'], ['LM358'], ['LED'], ['Buzzer']], main: 1 },
-      overview: 'Đồ án cơ sở 1 tại VKU, năm 2026: mạch báo chuông cửa dựa trên sự thay đổi ánh sáng khi cửa được mở.',
+      overview: 'Đồ án cơ sở 1 tại VKU, năm 2024: mạch báo chuông cửa dựa trên sự thay đổi ánh sáng khi cửa được mở.',
       goal: 'Thiết kế mạch báo chuông cửa dùng cảm biến ánh sáng LDR và IC LM358: khi cửa được mở làm ánh sáng thay đổi, mạch bật LED và còi buzzer để báo.',
       blocks: [
         'Cảm biến LDR: cùng điện trở tạo cầu phân áp, điện áp ra thay đổi theo cường độ ánh sáng.',
@@ -231,7 +229,6 @@
       id: 'tilelink',
       date: '2026-05', time: '05/2026',
       kind: 'Đồ án thiết kế 1',
-      advisor: 'TS. Dương Ngọc Pháp',
       members: 'Trần Quốc Sĩ, Nguyễn Bá Thiện, Nguyễn Tam Nguyên (23IC)',
       category: ['cpu'],
       badge: 'Mới nhất',
@@ -291,7 +288,6 @@
       date: '2025-12', time: '12/2025',
       kind: 'Đồ án lập trình mạng',
       course: 'Lập trình mạng (khoa Khoa học máy tính)',
-      advisor: 'TS. Lê Tân',
       members: 'Nguyễn Bá Thiện, Lê Quốc Tùng (23IC)',
       category: ['software'],
       title: 'Ứng dụng chat thời gian thực – hướng Hybrid P2P',
@@ -332,7 +328,6 @@
       date: '2025-06', time: '06/2025',
       kind: 'Môn học thiết kế IC số',
       course: 'Thiết kế IC số',
-      advisor: 'TS. Dương Ngọc Pháp',
       members: 'Nguyễn Bá Thiện, Trần Quốc Sĩ (23IC)',
       category: ['cpu'],
       title: 'Thiết kế & mô phỏng CPU RISC-V RV32I pipeline 5 tầng bằng Verilog RTL',
@@ -358,7 +353,6 @@
       id: 'parking',
       date: '2025-05', time: '05/2025',
       kind: 'Đồ án cơ sở 3',
-      advisor: 'TS. Nguyễn Vũ Anh Quang',
       members: 'Nguyễn Bá Thiện, Nguyễn Văn Đức',
       category: ['embedded'],
       title: 'Mạch bãi đỗ xe thông minh',
@@ -382,7 +376,6 @@
       date: '2025-01', time: '01/2025',
       kind: 'Đồ án lập trình hệ thống nhúng',
       course: 'Lập trình hệ thống nhúng',
-      advisor: 'TS. Nguyễn Nhật Ân',
       members: 'Nguyễn Bá Thiện, Trần Dụng Đạt, Nguyễn Văn Đức',
       category: ['embedded'],
       title: 'Hệ thống thu thập dữ liệu môi trường',
@@ -413,7 +406,6 @@
       id: 'water',
       date: '2024-12', time: '12/2024',
       kind: 'Đồ án cơ sở 2',
-      advisor: 'ThS. Hồ Anh Trang',
       category: ['electronics'],
       title: 'Mạch cảm biến mức nước',
       desc: 'Mạch điện tử số/analog cơ bản phát hiện mức nước theo nguyên lý nước dẫn điện, dùng transistor BC547 làm công tắc và các IC logic để hiển thị mức nước trên LED 7 đoạn và LED.',
@@ -435,7 +427,6 @@
       date: '2025-06', time: '06/2025',
       kind: 'Đồ án vi điều khiển',
       course: 'Vi điều khiển',
-      advisor: 'TS. Nguyễn Nhật An',
       members: 'Nhóm 6 sinh viên lớp 23IC',
       category: ['embedded'],
       title: 'Robocar – xe điều khiển từ xa & xe tự hành',
@@ -449,7 +440,7 @@
         ],
         note: 'Nguồn: pin 3×3.7V (11.1V) → LM2596 → 5V'
       },
-      overview: 'Đồ án môn Vi điều khiển của nhóm 6 sinh viên lớp 23IC, GVHD TS. Nguyễn Nhật An, hoàn thành 06/2025. Gồm hai mô hình: xe điều khiển không dây và xe tự hành.',
+      overview: 'Đồ án môn Vi điều khiển của nhóm 6 sinh viên lớp 23IC, hoàn thành 06/2025. Gồm hai mô hình: xe điều khiển không dây và xe tự hành.',
       goal: 'Xây dựng hai mô hình xe: xe điều khiển không dây có tay gắp servo để gắp và bắn bóng; xe tự hành dò line, tránh vật cản, nhận biết và leo bậc thang.',
       blocks: [
         'Xe điều khiển: ESP32 nhận lệnh không dây (tay cầm PS2 / ứng dụng web "Robocar 2025"), điều khiển 4 động cơ DC qua L298N và tay gắp dùng servo MG996R.',
@@ -481,14 +472,13 @@
       date: '2025-05', time: '05/2025',
       kind: 'Đồ án điện tử ứng dụng',
       course: 'Điện tử ứng dụng',
-      advisor: 'TS. Vương Công Đạt',
       members: 'Nguyễn Bá Thiện, Lê Quốc Tùng (23IC)',
       category: ['electronics'],
       title: 'Mạch đèn giao thông đếm lùi',
       desc: 'Mạch mô phỏng đèn giao thông một chiều bằng IC số rời, không dùng vi điều khiển: tạo xung bằng IC 555, đếm và giải mã để hiển thị thời gian đếm lùi trên LED 7 đoạn, kèm 3 đèn Đỏ–Vàng–Xanh.',
       tags: ['IC 555', '74LS192', 'CD4511', 'LED 7 đoạn', 'C1815', '1N4007', 'Proteus', 'PCB tự làm'],
       flow: { caption: '// xung · đếm · giải mã · hiển thị', cols: [['IC 555'], ['74LS192'], ['4511'], ['LED 7 đoạn', 'Đỏ·Vàng·Xanh']], main: 1 },
-      overview: 'Đồ án môn Điện tử ứng dụng, nhóm 2 sinh viên lớp 23IC, GVHD TS. Vương Công Đạt, 05/2025. Quy trình: lý thuyết → mô phỏng Proteus → lắp breadboard → tự làm PCB (in giấy nhiệt, ép nhiệt, ăn mòn đồng, khoan lỗ).',
+      overview: 'Đồ án môn Điện tử ứng dụng, nhóm 2 sinh viên lớp 23IC, 05/2025. Quy trình: lý thuyết → mô phỏng Proteus → lắp breadboard → tự làm PCB (in giấy nhiệt, ép nhiệt, ăn mòn đồng, khoan lỗ).',
       goal: 'Mô phỏng đèn giao thông một chiều bằng IC số rời, không dùng vi điều khiển, hiển thị thời gian đếm lùi trên LED 7 đoạn kèm 3 đèn Đỏ–Vàng–Xanh.',
       blocks: [
         'Khối nguồn: lọc bằng tụ gốm 104 và tụ hóa 100 µF.',
@@ -514,14 +504,13 @@
       id: 'clock',
       date: '2025-05', time: '05/2025',
       kind: 'Đồ án cơ sở 4',
-      advisor: 'ThS. Hồ Anh Trang',
       members: 'Nguyễn Bá Thiện (23IC)',
       category: ['electronics'],
       title: 'Đồng hồ số dùng IC số',
       desc: 'Mạch đồng hồ số dùng toàn bộ IC logic rời (không vi điều khiển): xung chuẩn 1Hz từ IC 555, chuỗi bộ đếm BCD 7490, giải mã 74247 và hiển thị LED 7 đoạn, có nút nhấn chỉnh số.',
       tags: ['IC 555', '74LS90', '74LS247', 'CD4081', 'LED 7 đoạn', 'TTL 5V', 'Proteus'],
       flow: { caption: '// xung 1Hz · đếm BCD · giải mã', cols: [['555 · 1Hz'], ['7490 · BCD'], ['74247'], ['LED 7 đoạn']], main: 1 },
-      overview: 'Đồ án cơ sở 4, thực hiện cá nhân, lớp 23IC, GVHD ThS. Hồ Anh Trang, 05/2025.',
+      overview: 'Đồ án cơ sở 4, thực hiện cá nhân, lớp 23IC, 05/2025.',
       goal: 'Xây dựng mạch đồng hồ số chỉ dùng IC logic rời (không vi điều khiển), hiển thị trên LED 7 đoạn, có nút nhấn chỉnh số.',
       blocks: [
         'Chuỗi khối: tạo xung → chia tần → đếm → giải mã → hiển thị.',
@@ -732,7 +721,6 @@
     title.id = titleId;
     body.appendChild(title);
     body.appendChild(el('p', 'project-desc', p.desc));
-    if (p.advisor) body.appendChild(el('p', 'project-advisor', 'GVHD: ' + p.advisor));
     body.appendChild(renderTech(p.tags));
 
     var foot = el('div', 'project-foot');
@@ -856,7 +844,6 @@
       ['Tên tiếng Anh', p.titleEn],
       ['Loại', p.kind],
       ['Học phần', p.course],
-      ['GVHD', p.advisor],
       ['Thời gian', p.time],
       ['Thành viên', p.members]
     ].forEach(function (row) {
