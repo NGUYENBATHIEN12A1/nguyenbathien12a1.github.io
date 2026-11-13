@@ -592,7 +592,7 @@ main > section[tabindex="-1"]:focus { outline: none; }   /* không viền khi đ
   position: absolute;
   top: 0; bottom: 0; left: 0;
   width: calc(100% + 1920px);
-  background: url("site-wave.svg") repeat-x 0 0 / 1920px 132px;
+  background: url("site-wave.svg?v=19f974a4") repeat-x 0 0 / 1920px 132px;
   animation: scope-run 32s linear infinite;
 }
 @keyframes scope-run { to { translate: -1920px 0; } }
@@ -1490,7 +1490,7 @@ a.contact-value:hover { color: var(--primary); text-decoration: underline; }
 .site-footer { position: relative; background: var(--foot-bg); color: var(--foot-ink); }
 .footer-signal {
   height: 26px;
-  background: url("site-edge.svg") repeat-x 0 50% / 96px 26px;
+  background: url("site-edge.svg?v=1bb261d8") repeat-x 0 50% / 96px 26px;
   border-top: 1px solid var(--foot-line);
 }
 .site-footer .wordmark { color: var(--foot-ink); }
