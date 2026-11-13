@@ -571,65 +571,78 @@ main > section[tabindex="-1"]:focus { outline: none; }   /* không viền khi đ
   overflow: hidden;
   padding: var(--nav-h) 0 128px;
 }
-.hero > .scope { margin-bottom: clamp(2.25rem, 5vw, 3.75rem); }
+.hero > .scope { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
 
-/* Dải waveform kiểu cửa sổ mô phỏng ModelSim (điểm nhấn của website).
+/* Dải waveform kiểu cửa sổ mô phỏng ModelSim (điểm nhấn của website):
+   thanh tiêu đề + cột tên tín hiệu bên trái + vùng sóng bên phải.
    Hình tín hiệu ở assets/site-wave.svg: uart_tx gửi chuỗi "THIEN", trôi sang trái liên tục. */
 .scope {
+  --gutter: 136px;                          /* bề rộng cột tên tín hiệu */
   position: relative;
-  overflow: hidden;
-  height: 132px;
   background: var(--scope-bg);
   border-bottom: 1px solid var(--scope-edge);
   color: #9aa4b2;
 }
-.scope--mini { height: 72px; }
-@media (max-width: 599px) {
-  .scope--full { height: 72px; }               /* điện thoại: chỉ hiện clk + uart_tx */
-  .scope--full .scope-names li:nth-child(n + 3) { display: none; }
+.scope-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 30px;
+  padding: 0 clamp(16px, 3.5vw, 44px) 0 14px;
+  background: #0a0d11;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  font: 500 0.72rem/1 var(--mono);
+  white-space: nowrap;
 }
+.scope-dots { display: inline-flex; gap: 6px; }
+.scope-dots i { width: 9px; height: 9px; border-radius: 50%; background: #3a4049; }
+.scope-dots i:first-child { background: var(--primary); }
+.scope-file { color: #d3d9e2; }
+.scope-note { margin-left: auto; color: #8b95a5; overflow: hidden; text-overflow: ellipsis; }
+.scope-note b { color: #fbbf24; font-weight: 600; }
+.scope-body { position: relative; overflow: hidden; height: 132px; }
+.scope--mini .scope-body { height: 72px; }
 .scope-track {
   position: absolute;
-  top: 0; bottom: 0; left: 0;
-  width: calc(100% + 1920px);
+  top: 0; bottom: 0; left: var(--gutter);
+  width: calc(100% - var(--gutter) + 1920px);
   background: url("site-wave.svg?v=19f974a4") repeat-x 0 0 / 1920px 132px;
   animation: scope-run 32s linear infinite;
 }
 @keyframes scope-run { to { translate: -1920px 0; } }
-.scope-inner { position: relative; height: 100%; }
+/* Cột tên tín hiệu (giống khung "Wave" của ModelSim) */
 .scope-names {
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  z-index: 1;
+  width: var(--gutter);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 12px;
   margin: 0;
-  padding: 12px 0 0;
+  padding: 12px 0 0 14px;
   list-style: none;
+  background: #0d1116;
+  border-right: 1px solid rgba(255, 255, 255, 0.09);
 }
-.scope-names li {
-  height: 20px;
-  padding: 0 0.45rem;
-  border-radius: 4px;
-  background: var(--scope-label);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
-  font: 500 0.72rem/20px var(--mono);
-  color: #c7cfda;
+.scope-names li { height: 20px; font: 500 0.74rem/20px var(--mono); color: #c7cfda; }
+.scope-names li::before {
+  content: "";
+  display: inline-block;
+  width: 7px; height: 7px;
+  margin-right: 0.55rem;
+  border-radius: 2px;
+  background: var(--sig, #c7cfda);
+  vertical-align: 1px;
 }
-.scope-tag {
-  position: absolute;
-  top: 10px; right: clamp(16px, 3.5vw, 44px);
-  padding: 0 0.5rem;
-  border-radius: 4px;
-  background: var(--scope-label);
-  font: 500 0.7rem/20px var(--mono);
-  color: #9aa4b2;
-}
-.scope-tag b { color: #fbbf24; font-weight: 600; }
-@media (max-width: 599px) { .scope-tag { display: none; } }
+.scope-names li:nth-child(1) { --sig: #4ade80; }
+.scope-names li:nth-child(2) { --sig: #fbbf24; }
+.scope-names li:nth-child(3) { --sig: #38bdf8; }
+.scope-names li:nth-child(4) { --sig: #f472b6; }
 /* Con trỏ đo thời gian (cursor) màu đồng */
 .scope-cursor {
   position: absolute;
-  top: 0; bottom: 0; left: 74%;
+  top: 0; bottom: 0; left: 72%;
   width: 1px;
   background: var(--primary);
   box-shadow: 0 0 8px var(--primary);
@@ -642,10 +655,16 @@ main > section[tabindex="-1"]:focus { outline: none; }   /* không viền khi đ
   border: 5px solid transparent;
   border-top-color: var(--primary);
 }
+@media (max-width: 599px) {
+  .scope { --gutter: 100px; }
+  .scope-note { display: none; }
+  .scope--full .scope-body { height: 72px; }   /* điện thoại: chỉ hiện clk + uart_tx */
+  .scope--full .scope-names li:nth-child(n + 3) { display: none; }
+}
 
 .hero-grid { display: grid; gap: 2.25rem; align-items: center; width: 100%; }
 @media (min-width: 900px) {
-  .hero-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.85fr); gap: clamp(3rem, 7vw, 6rem); }
+  .hero-grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr); gap: clamp(2.5rem, 6vw, 5rem); }
 }
 
 .hero-kicker { font-family: var(--mono); font-size: 0.85rem; font-weight: 500; color: var(--primary); }
@@ -673,17 +692,13 @@ main > section[tabindex="-1"]:focus { outline: none; }   /* không viền khi đ
 .hero-bio { margin-top: 1.15rem; max-width: 64ch; }
 .hero-bio p { color: var(--text-muted); font-size: 1rem; line-height: 1.95; }
 .hero-bio p + p { margin-top: 0.7rem; }
-.hero-rule { margin: 1.6rem 0 1.35rem; max-width: 640px; border: 0; border-top: 1px dashed var(--border-strong); }
-.hero-interests h2 { font-size: 0.95rem; font-weight: 600; letter-spacing: -0.01em; }
-.hero-interests .chip-list { margin-top: 0.8rem; }
-.hero-interests p { margin-top: 0.8rem; color: var(--text-muted); font-size: 0.92rem; line-height: 1.8; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1.5rem; margin-top: 1.8rem; }
 
 /* Ảnh đại diện trong khung con chip: vỏ tối, chân đồng ở 4 cạnh, chấm đánh dấu chân số 1 */
 .hero-visual { display: flex; justify-content: center; order: -1; }
-@media (min-width: 900px) { .hero-visual { order: 0; justify-content: flex-end; } }
-.chip-portrait { margin: 0; width: min(66vw, 270px); }
-@media (min-width: 900px) { .chip-portrait { width: min(100%, 350px); } }
+@media (min-width: 900px) { .hero-visual { order: 0; } }
+.chip-portrait { margin: 0; width: min(68vw, 280px); }
+@media (min-width: 900px) { .chip-portrait { width: min(100%, 400px); } }
 .chip-pkg {
   position: relative;
   display: block;
@@ -720,6 +735,7 @@ main > section[tabindex="-1"]:focus { outline: none; }   /* không viền khi đ
 .chip-portrait figcaption {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.6rem;
   margin: 1.1rem 14px 0;
   color: var(--text-muted);
@@ -733,6 +749,49 @@ main > section[tabindex="-1"]:focus { outline: none; }   /* không viền khi đ
   color: var(--on-primary);
   font-weight: 600;
 }
+
+/* Bảng "datasheet" của U1 dưới phần đầu Trang chủ: thông số nhanh + chủ đề quan tâm */
+.datasheet {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+.datasheet-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem 1rem;
+  padding: 0.65rem 1.15rem;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  font: 600 0.8rem/1.5 var(--mono);
+}
+.datasheet-head > span { display: inline-flex; align-items: center; gap: 0.55rem; }
+.datasheet-rev { color: var(--text-faint); font-weight: 500; }
+.spec-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 0; }
+@media (min-width: 900px) { .spec-grid { grid-template-columns: 1fr 1.35fr 0.6fr 0.9fr; } }
+.spec-grid > div { padding: 1rem 1.15rem; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+.spec-grid > div:nth-child(2n) { border-right: 0; }
+@media (min-width: 900px) {
+  .spec-grid > div:nth-child(2n) { border-right: 1px solid var(--border); }
+  .spec-grid > div:last-child { border-right: 0; }
+}
+.spec-grid dt,
+.datasheet-foot h2 {
+  font: 500 0.72rem/1.4 var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.spec-grid dd { margin: 0.35rem 0 0; font-size: 1rem; font-weight: 600; line-height: 1.45; }
+.datasheet-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem 1rem; padding: 0.95rem 1.15rem; }
+.datasheet-foot h2 { margin-right: 0.25rem; }
+.datasheet-hint { margin-left: auto; color: var(--text-faint); font: 500 0.74rem/1.4 var(--mono); }
+@media (max-width: 599px) { .datasheet-hint { margin-left: 0; } }
 
 /* =========================================================
    6. KHUNG CHUNG CỦA CÁC PHẦN

@@ -66,7 +66,7 @@
   </script>
 
   <!-- Giao diện chung của cả 5 trang -->
-  <link rel="stylesheet" href="assets/site.css?v=1f36285a">
+  <link rel="stylesheet" href="assets/site.css?v=aec0fcb7">
 </head>
 <body>
   <!-- Bộ biểu tượng SVG dùng chung (không cần sửa) -->
@@ -143,17 +143,21 @@
     <section class="hero" id="trang-chu" tabindex="-1" aria-labelledby="hero-title">
       <!-- Dải tín hiệu kiểu cửa sổ waveform (ModelSim): uart_tx đang gửi chuỗi "THIEN" (hình ở assets/site-wave.svg) -->
       <div class="scope scope--full" aria-hidden="true">
-        <div class="scope-track"></div>
-        <div class="container scope-inner">
+        <div class="scope-bar">
+          <span class="scope-dots"><i></i><i></i><i></i></span>
+          <span class="scope-file">tb_thien.vcd</span>
+          <span class="scope-note">uart_tx · 8N1 · đang gửi <b>"THIEN"</b></span>
+        </div>
+        <div class="scope-body">
+          <div class="scope-track"></div>
+          <span class="scope-cursor"></span>
           <ul class="scope-names">
             <li>clk</li>
             <li>uart_tx</li>
             <li>data[7:0]</li>
             <li>valid</li>
           </ul>
-          <span class="scope-tag">tb_thien.vcd · 8N1 · <b>"THIEN"</b></span>
         </div>
-        <span class="scope-cursor"></span>
       </div>
 
       <div class="container hero-grid">
@@ -173,20 +177,6 @@
               Website này ghi lại những gì mình đã làm qua các học phần và đồ án: từ mạch điện tử chỉ dùng IC số rời,
               vi điều khiển ESP32 và Arduino, cho tới CPU RISC-V viết bằng Verilog và SoC được đưa qua luồng OpenLane đến layout.
             </p>
-          </div>
-
-          <hr class="hero-rule">
-
-          <div class="hero-interests">
-            <h2>Những điều mình quan tâm</h2>
-            <ul class="chip-list">
-              <li><a class="chip chip--line tone-blue" href="du-an.html?nhom=cpu">Thiết kế vi mạch số</a></li>
-              <li><a class="chip chip--line tone-teal" href="du-an.html?nhom=cpu">RISC-V</a></li>
-              <li><a class="chip chip--line tone-rose" href="du-an.html?nhom=fpga">FPGA</a></li>
-              <li><a class="chip chip--line tone-blue" href="du-an.html?nhom=fpga">AI trên phần cứng</a></li>
-              <li><a class="chip chip--line tone-teal" href="du-an.html?nhom=embedded">Hệ thống nhúng</a></li>
-            </ul>
-            <p>Bấm vào một chủ đề để xem các dự án liên quan.</p>
           </div>
 
           <div class="hero-actions">
@@ -213,6 +203,33 @@
             <figcaption><span class="chip-ref">U1</span><span>thienba · VKU 23IC · Đà Nẵng</span></figcaption>
           </figure>
         </div>
+      </div>
+
+      <!-- Bảng "datasheet" của U1: thông số nhanh + chủ đề quan tâm (bấm chủ đề để lọc dự án) -->
+      <div class="container">
+        <section class="datasheet reveal" aria-labelledby="datasheet-title">
+          <header class="datasheet-head">
+            <span><span class="chip-ref">U1</span><span id="datasheet-title">thienba — thông số nhanh</span></span>
+            <span class="datasheet-rev">datasheet · rev 2026</span>
+          </header>
+          <dl class="spec-grid">
+            <div><dt>Trường</dt><dd>VKU – Đại học Đà Nẵng</dd></div>
+            <div><dt>Chuyên ngành</dt><dd>Thiết kế vi mạch bán dẫn</dd></div>
+            <div><dt>Lớp</dt><dd>23IC</dd></div>
+            <div><dt>Dự án &amp; đồ án</dt><dd><span data-project-total>10</span> dự án</dd></div>
+          </dl>
+          <div class="datasheet-foot">
+            <h2>Quan tâm</h2>
+            <ul class="chip-list">
+              <li><a class="chip chip--line tone-blue" href="du-an.html?nhom=cpu">Thiết kế vi mạch số</a></li>
+              <li><a class="chip chip--line tone-teal" href="du-an.html?nhom=cpu">RISC-V</a></li>
+              <li><a class="chip chip--line tone-rose" href="du-an.html?nhom=fpga">FPGA</a></li>
+              <li><a class="chip chip--line tone-blue" href="du-an.html?nhom=fpga">AI trên phần cứng</a></li>
+              <li><a class="chip chip--line tone-teal" href="du-an.html?nhom=embedded">Hệ thống nhúng</a></li>
+            </ul>
+            <span class="datasheet-hint">↳ bấm để xem dự án liên quan</span>
+          </div>
+        </section>
       </div>
 
       <!-- Nhân vật Clash of Clans của trang này (trang trí, bấm vào để xem chiêu).

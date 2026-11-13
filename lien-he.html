@@ -47,7 +47,7 @@
   </script>
 
   <!-- Giao diện chung của cả 5 trang -->
-  <link rel="stylesheet" href="assets/site.css?v=1f36285a">
+  <link rel="stylesheet" href="assets/site.css?v=aec0fcb7">
 </head>
 <body>
   <!-- Bộ biểu tượng SVG dùng chung (không cần sửa) -->
@@ -123,15 +123,19 @@
     <!-- ===================== ĐẦU TRANG ===================== -->
     <header class="page-hero">
       <div class="scope scope--mini" aria-hidden="true">
-        <div class="scope-track"></div>
-        <div class="container scope-inner">
+        <div class="scope-bar">
+          <span class="scope-dots"><i></i><i></i><i></i></span>
+          <span class="scope-file">tb_thien.vcd</span>
+          <span class="scope-note">uart_tx · 8N1 · đang gửi <b>"THIEN"</b></span>
+        </div>
+        <div class="scope-body">
+          <div class="scope-track"></div>
+          <span class="scope-cursor"></span>
           <ul class="scope-names">
             <li>clk</li>
             <li>uart_tx</li>
           </ul>
-          <span class="scope-tag">tb_thien.vcd · 8N1 · <b>"THIEN"</b></span>
         </div>
-        <span class="scope-cursor"></span>
       </div>
       <div class="container">
         <p class="eyebrow eyebrow--rose"><span class="eyebrow-num">04</span>Liên hệ</p>
