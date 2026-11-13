@@ -58,9 +58,15 @@
   /* ---------- Điện thoại: cuộn dải menu để mục của trang đang mở nằm giữa ---------- */
   var navMenu = document.getElementById('nav-menu');
   var currentLink = navMenu && navMenu.querySelector('[aria-current="page"]');
-  if (currentLink && navMenu.scrollWidth > navMenu.clientWidth) {
-    navMenu.scrollLeft = currentLink.offsetLeft - (navMenu.clientWidth - currentLink.offsetWidth) / 2;
+  function centerCurrentLink() {
+    if (currentLink && navMenu.scrollWidth > navMenu.clientWidth) {
+      navMenu.scrollLeft = currentLink.offsetLeft - (navMenu.clientWidth - currentLink.offsetWidth) / 2;
+    }
   }
+  centerCurrentLink();
+  // Font tải xong thì chữ rộng hơn → căn lại; đổi cỡ cửa sổ cũng căn lại
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(centerCurrentLink);
+  window.addEventListener('resize', centerCurrentLink);
 
   /* ---------- Hero: các dòng chữ hiện lần lượt ---------- */
   var heroSection = document.querySelector('.hero');

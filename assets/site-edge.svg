@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="26" viewBox="0 0 96 26">
+<!-- Đường xung vuông màu đồng ở mép trên chân trang (lặp ngang) -->
+<path d="M0 18H24V8H72V18H96" fill="none" stroke="#d9822b" stroke-width="2" stroke-linejoin="round"/>
+</svg>
